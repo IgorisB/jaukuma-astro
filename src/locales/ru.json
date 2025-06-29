@@ -1,0 +1,8 @@
+{
+  "title": "Astro Основы",
+  "welcome.getStarted": "Чтобы начать, откройте каталог <code><pre>src/pages</pre></code> в вашем проекте.",
+  "welcome.readDocs": "Читать документацию",
+  "welcome.joinDiscord": "Присоединяйтесь к Discord",
+  "welcome.whatsNew": "Что нового в Astro 5.0?",
+  "welcome.astro5Features": "От уровней контента до серверных островов — узнайте больше о новых функциях и улучшениях в Astro 5.0"
+} 

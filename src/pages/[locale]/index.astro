@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslationsFromUrl, getStaticPaths } from '../../i18n/utils';
+
+const t = useTranslationsFromUrl(Astro.url);
+export { getStaticPaths };
+
+---
+<Layout title={t('title')}>
+  <h1>{t('welcome.getStarted')}</h1>
+  <p>{t('welcome.astro5Features')}</p>
+</Layout> 
