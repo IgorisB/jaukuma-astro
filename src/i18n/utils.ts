@@ -1,15 +1,9 @@
-import { ui, defaultLang, languages } from './ui';
+import { defaultLang, languages, locales } from './config';
 
 export function getLangFromUrl(url: URL) {
-  // Try to get language from TLD
-  const hostnameParts = url.hostname.split('.');
-  const tld = hostnameParts[hostnameParts.length - 1];
-  if (tld in ui) return tld as keyof typeof ui;
-
-  // Fallback: get language from path
+  // get language from path
   const [, lang] = url.pathname.split('/');
-  if (lang in ui) return lang as keyof typeof ui;
-
+  if (lang in locales) return lang as keyof typeof locales;
   // Default
   return defaultLang;
 }
@@ -19,14 +13,29 @@ export function useTranslationsFromUrl(url: URL) {
   return useTranslations(lang);
 }
 
-export function useTranslations(lang: keyof typeof ui) {
-  return function t(key: keyof typeof ui[typeof defaultLang]) {
-    return key in ui[lang] ? (ui[lang] as any)[key] : ui[defaultLang][key];
+export function useTranslations(lang: string) {
+  return function t(key: string) {
+    return key in locales[lang] ? (locales[lang])[key] : locales[defaultLang][key];
   };
-} 
+}
 
 export function getStaticPaths() {
-  return Object.keys(languages).map((locale) => ({
+  return languages.map((locale) => ({
     params: { locale }
   }));
+}
+
+// Generates a locale-specific URL for the current page
+export function getLocalePath(code: string, url: URL) {
+  const segments = url.pathname.split('/').filter(Boolean);
+  // Remove the first segment if it matches a language code
+  if (segments.length && languages.includes(segments[0])) {
+    segments.shift();
+  }
+  const path = segments.join('/');
+  if (code === defaultLang) {
+    return path ? `/${path}` : '/';
+  } else {
+    return path ? `/${code}/${path}` : `/${code}/`;
+  }
 }

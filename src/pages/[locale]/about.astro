@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslationsFromUrl, getStaticPaths } from '../../i18n/utils';
+
+const t = useTranslationsFromUrl(Astro.url);
+export { getStaticPaths };
+
+---
+
+<Layout title={t('title')}>
+	<h1>{t('welcome.readDocs')}</h1>
+	<p>{t('welcome.whatsNew')}</p>
+</Layout>

@@ -1,13 +1,13 @@
 ---
-import { languages } from '../i18n/ui';
-import { getLangFromUrl } from '../i18n/utils';
+import { languages, defaultLang } from '../i18n/config';
+import { getLangFromUrl, getLocalePath } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 ---
 <ul>
-  {Object.entries(languages).map(([code, label]) => (
+  {languages.map((code) => (
     <li>
-      <a href={code === 'lt' ? '/' : `/${code}/`} aria-current={lang === code ? 'page' : undefined}>
-        {label}
+      <a href={getLocalePath(code, Astro.url)} aria-current={lang === code ? 'page' : undefined}>
+        {code.toUpperCase()}
       </a>
     </li>
   ))}
