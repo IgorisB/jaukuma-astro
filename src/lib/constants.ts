@@ -1,4 +1,3 @@
-import { getDefaultLang } from './utils';
 // Global application constants
 
 // I18n configuration
@@ -20,9 +19,26 @@ export const locales: Record<string, any> = {
   'ru': await import('../locales/ru.json').then(m => m.default),
 } as const; 
 
+export const defaultLang = getDefaultLang();
 
 // Pages routes for url paths
 export const PAGES = {
     HOME: '',
     ABOUT: 'about',
 } as const;
+
+// Helper functions
+
+// Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'en'
+function getDefaultLang(): string {
+  if (process.env.DEFAULT_LANG && languages.includes(process.env.DEFAULT_LANG)) {
+    return process.env.DEFAULT_LANG;
+  }
+  if (hostname) {
+    const tld = hostname.split('.').pop();
+    if (tld && languages.includes(tld)) {
+      return tld;
+    }
+  }
+  return languages[0];
+}

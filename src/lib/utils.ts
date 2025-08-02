@@ -1,6 +1,6 @@
 // General utility functions
 
-import { defaultLang, languages, locales, hostname } from './constants';
+import { languages, locales, hostname, defaultLang } from './constants';
 
 // Language and internationalization utilities
 export function getLangFromUrl(url: URL) {
