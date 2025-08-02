@@ -1,8 +1,7 @@
 {
-  "title": "Тестовая страница",
-  "welcome.getStarted": "Чтобы начать, откройте каталог <code><pre>src/pages</pre></code> в вашем проекте.",
-  "welcome.readDocs": "Читать документацию",
-  "welcome.joinDiscord": "Присоединяйтесь к Discord",
-  "welcome.whatsNew": "Что нового в Astro 5.0?",
-  "welcome.astro5Features": "От уровней контента до серверных островов — узнайте больше о новых функциях и улучшениях в Astro 5.0"
+  "page.about.title": "О нас",
+  "page.about.description": "Это страница о нас",
+  "page.index.title": "Главная",
+  "page.index.description": "Это главная страница",
+  "section.footer.copyright": "Copyright &copy; 2025 {Astro.url}" 
 } 

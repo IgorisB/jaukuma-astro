@@ -1,12 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { useTranslationsFromUrl, getStaticPaths } from '../../i18n/utils';
-
+import PageIndexBody from '../../components/pages/page.index.astro';
+import { useTranslationsFromUrl, getLangFromUrl, getStaticPaths } from '../../lib/utils';
+const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 export { getStaticPaths };
-
 ---
-<Layout title={t('title')}>
-  <h1>{t('welcome.getStarted')}</h1>
-  <p>{t('welcome.astro5Features')}</p>
-</Layout> 
+<Layout title={t('page.index.title')} locale={lang}>
+  <PageIndexBody locale={lang} />
+</Layout>

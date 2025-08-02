@@ -3,14 +3,15 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import cloudflare from "@astrojs/cloudflare";
-import { defaultLang, hostname, languages } from "./src/i18n/config.js";
+import { getDefaultLang } from "./src/lib/utils.ts";
+import { hostname, languages } from "./src/lib/constants.ts";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://" + hostname,
   integrations: [mdx(), sitemap()],
   i18n: {
-    defaultLocale: defaultLang,
+    defaultLocale: getDefaultLang(),
     locales: languages,
     // You can add fallback or routing options here if needed
   },

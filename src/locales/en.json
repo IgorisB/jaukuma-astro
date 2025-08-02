@@ -1,8 +1,7 @@
 {
-  "title": "Test site",
-  "welcome.getStarted": "To get started, open the <code><pre>src/pages</pre></code> directory in your project.",
-  "welcome.readDocs": "Read our docs",
-  "welcome.joinDiscord": "Join our Discord",
-  "welcome.whatsNew": "What's New in Astro 5.0?",
-  "welcome.astro5Features": "From content layers to server islands, click to learn more about the new features and improvements in Astro 5.0"
+  "page.about.title": "About",
+  "page.about.description": "This is the about page",
+  "page.index.title": "Home",
+  "page.index.description": "This is the home page",
+  "section.footer.copyright": "Copyright &copy; 2025 {Astro.url}"
 } 

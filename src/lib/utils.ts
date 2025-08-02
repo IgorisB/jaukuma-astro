@@ -1,5 +1,8 @@
-import { defaultLang, languages, locales } from './config';
+// General utility functions
 
+import { defaultLang, languages, locales, hostname } from './constants';
+
+// Language and internationalization utilities
 export function getLangFromUrl(url: URL) {
   // get language from path
   const [, lang] = url.pathname.split('/');
@@ -26,16 +29,30 @@ export function getStaticPaths() {
 }
 
 // Generates a locale-specific URL for the current page
-export function getLocalePath(code: string, url: URL) {
-  const segments = url.pathname.split('/').filter(Boolean);
+export function getLocalePath(code: string, path: string) {
+  const segments = path.split('/').filter(Boolean);
   // Remove the first segment if it matches a language code
   if (segments.length && languages.includes(segments[0])) {
     segments.shift();
   }
-  const path = segments.join('/');
+  const newPath = segments.join('/');
   if (code === defaultLang) {
-    return path ? `/${path}` : '/';
+    return newPath ? `/${newPath}` : '/';
   } else {
-    return path ? `/${code}/${path}` : `/${code}/`;
+    return newPath ? `/${code}/${newPath}` : `/${code}/`;
   }
+}
+
+// Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'en'
+export function getDefaultLang(): string {
+  if (process.env.DEFAULT_LANG && languages.includes(process.env.DEFAULT_LANG)) {
+    return process.env.DEFAULT_LANG;
+  }
+  if (hostname) {
+    const tld = hostname.split('.').pop();
+    if (tld && languages.includes(tld)) {
+      return tld;
+    }
+  }
+  return languages[0];
 }

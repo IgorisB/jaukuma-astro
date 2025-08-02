@@ -1,0 +1,11 @@
+---
+import { PAGES } from '../../lib/constants';
+import { useTranslations, getLangFromUrl } from '../../lib/utils';
+import Link from './control.link.astro';
+const lang = Astro.props.locale || getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<nav>
+            | <Link page={PAGES.HOME} text={t('page.index.title')} /> |
+            | <Link page={PAGES.ABOUT} text={t('page.about.title')} /> |
+</nav>

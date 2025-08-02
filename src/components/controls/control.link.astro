@@ -1,0 +1,5 @@
+---
+import { getLocalePath, getLangFromUrl } from '../../lib/utils';
+const lang = Astro.props.locale || getLangFromUrl(Astro.url);
+---
+<a href={getLocalePath(lang, Astro.props.page)}>{Astro.props.text}</a>

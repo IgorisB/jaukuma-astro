@@ -1,0 +1,13 @@
+---
+import LanguagePicker from '../controls/control.languagepicker.astro';
+import { useTranslations, getLangFromUrl } from '../../lib/utils';
+const lang = Astro.props.locale || getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<footer>
+    <LanguagePicker />
+    <hr/>
+    <p>
+        {t('section.footer.copyright')}
+    </p>
+</footer>

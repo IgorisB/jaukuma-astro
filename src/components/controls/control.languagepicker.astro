@@ -1,0 +1,14 @@
+---
+import { languages } from '../../lib/constants';
+import { getLangFromUrl, getLocalePath } from '../../lib/utils';
+const lang = getLangFromUrl(Astro.url);
+---
+<ul>
+  {languages.map((code) => (
+    <li>
+      <a href={getLocalePath(code, Astro.url.pathname)} aria-current={lang === code ? 'page' : undefined}>
+        {code.toUpperCase()}
+      </a>
+    </li>
+  ))}
+</ul> 
