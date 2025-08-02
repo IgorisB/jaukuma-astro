@@ -1,7 +1,9 @@
 {
   "page.about.title": "About",
   "page.about.description": "This is the about page",
+  
   "page.index.title": "Home",
   "page.index.description": "This is the home page",
-  "section.footer.copyright": "Copyright &copy; 2025 {Astro.url}"
+  
+  "section.footer.copyright": "Copyright &copy; 2025"
 } 

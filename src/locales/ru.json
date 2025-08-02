@@ -3,5 +3,5 @@
   "page.about.description": "Это страница о нас",
   "page.index.title": "Главная",
   "page.index.description": "Это главная страница",
-  "section.footer.copyright": "Copyright &copy; 2025 {Astro.url}" 
+  "section.footer.copyright": "Copyright &copy; 2025" 
 } 

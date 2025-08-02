@@ -3,5 +3,5 @@
   "page.about.description": "Ši yra apie puslapis",
   "page.index.title": "Pradžia",
   "page.index.description": "Ši yra pradžios puslapis",
-  "section.footer.copyright": "Copyright &copy; 2025 {Astro.url}" 
+  "section.footer.copyright": "Copyright &copy; 2025" 
 } 

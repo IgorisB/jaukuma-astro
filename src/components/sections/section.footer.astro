@@ -4,10 +4,10 @@ import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
-<footer>
+<footer class="container">
     <LanguagePicker />
     <hr/>
     <p>
-        {t('section.footer.copyright')}
+        {t('section.footer.copyright')}<br />
     </p>
 </footer>

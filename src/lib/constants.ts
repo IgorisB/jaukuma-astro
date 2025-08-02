@@ -27,6 +27,25 @@ export const PAGES = {
     ABOUT: 'about',
 } as const;
 
+// Breakpoint configuration
+export const BREAKPOINTS = {
+    xs: 376,
+    sm: 640,
+    md: 768,
+    lg: 1024,
+    xl: 1280,
+    '2xl': 1536,
+} as const;
+
+// Page size constraints
+export const PAGE_SIZES = {
+    max: BREAKPOINTS['2xl'],
+    min: BREAKPOINTS.xs,
+} as const;
+
+// Export color constants
+export { COLORS, CSS_COLOR_VARS } from './colors.js';
+
 // Helper functions
 
 // Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'en'
