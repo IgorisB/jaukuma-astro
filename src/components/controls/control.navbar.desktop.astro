@@ -1,0 +1,147 @@
+---
+import { useTranslations } from '../../lib/utils';
+const lang = Astro.props.locale 
+const t = useTranslations(lang);
+---
+<nav class="nav-bar">
+    <div class="nav-container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="/images/jaukuma-logo.svg" alt="Jaukuma" class="logo-image" />
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
+            <div class="nav-item dropdown">
+            <span class="nav-link">{t('nav.services')}</span>
+            <svg class="dropdown-icon" width="16" height="8" viewBox="0 0 16 8" fill="none">
+                <path d="M1 1L8 7L15 1" stroke="white" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            </div>
+            <a href="/about" class="nav-link">{t('nav.about')}</a>
+            <a href="/contact" class="nav-link">{t('nav.contact')}</a>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+            <a href="/lt" class={`lang-link ${lang === 'lt' ? 'active' : ''}`}>LT</a>
+            <span class="lang-separator">|</span>
+            <a href="/en" class={`lang-link ${lang === 'en' ? 'active' : ''}`}>EN</a>
+            <span class="lang-separator">|</span>
+            <a href="/ru" class={`lang-link ${lang === 'ru' ? 'active' : ''}`}>RU</a>
+            </div>
+            
+            <!-- Contact Button -->
+            <a href="/contact" class="contact-button">
+            {t('nav.contact.button')}
+            </a>
+        </div>
+  </div>
+</nav>
+<style>
+  /* Navigation Bar */
+  .nav-bar {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 53px;
+  }
+
+  .logo {
+    flex-shrink: 0;
+  }
+
+  .logo-image {
+    width: 99px;
+    object-fit: contain;
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    flex: 1;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 19px 0;
+  }
+
+  .nav-link {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .dropdown-icon {
+    width: 16px;
+    height: 8px;
+  }
+
+  .language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lang-link {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: #D7D2C5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .lang-link.active,
+  .lang-link:hover {
+    color: white;
+  }
+
+  .lang-separator {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.33;
+    color: #D7D2C5;
+  }
+
+  .contact-button {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    padding: 12px 48px;
+    border: 1px solid white;
+    transition: all 0.3s ease;
+  }
+
+  .contact-button:hover {
+    background: white;
+    color: var(--color-main-primary);
+  }
+
+</style>

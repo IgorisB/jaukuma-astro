@@ -5,5 +5,13 @@
   "page.index.title": "Home",
   "page.index.description": "This is the home page",
   
-  "section.footer.copyright": "Copyright &copy; 2025"
+  "section.footer.copyright": "Copyright &copy; 2025",
+  "section.hero.title": "Gentle luxury born from love for flowers",
+  "section.hero.description": "Jaukuma is more than just floristry. Here, the highest quality flowers, individually tailored design, and warm, personal attention come together. Each of our bouquets is born from love for beauty and the desire to create a true sense of coziness.",
+  "section.hero.button": "Services",
+  
+  "nav.services": "Services",
+  "nav.about": "About",
+  "nav.contact": "Contact",
+  "nav.contact.button": "CONTACT US"
 } 

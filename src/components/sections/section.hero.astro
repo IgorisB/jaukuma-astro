@@ -1,8 +1,94 @@
 ---
+import ControlNavbarDesktop from '../controls/control.navbar.desktop.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
-<section>
-    <h1>[HERO SECTION]</h1>
+
+<section class="hero-section">
+  <!-- Navigation Bar -->
+  <ControlNavbarDesktop locale={lang} />
+  
+  <!-- Hero Content -->
+  <div class="hero-content">
+    <div class="hero-container">
+      <h1 class="hero-title">{t('section.hero.title')}</h1>
+      <p class="hero-description">{t('section.hero.description')}</p>
+      <a href="/services" class="hero-button">
+        {t('section.hero.button')}
+      </a>
+    </div>
+  </div>
 </section>
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgba(50, 62, 72, 0.6), rgba(50, 62, 72, 0.6)), 
+                url('/images/hero-background.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 36px 144px 144px 144px;
+    gap: 144px;
+  }
+
+  /* Hero Content */
+  .hero-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: var(--max-page-width);
+    margin: 0 auto;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 85px;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  .hero-description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.26;
+    text-align: center;
+    margin: 0;
+  }
+
+  .hero-button {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: var(--color-main-primary);
+    text-decoration: none;
+    background: white;
+    padding: 15px 60px;
+    width: 192px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .hero-button:hover {
+    background: var(--color-main-secondary);
+    transform: translateY(-2px);
+  }
+
+</style>

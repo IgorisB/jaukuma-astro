@@ -3,5 +3,12 @@
   "page.about.description": "Ši yra apie puslapis",
   "page.index.title": "Pradžia",
   "page.index.description": "Ši yra pradžios puslapis",
-  "section.footer.copyright": "Copyright &copy; 2025" 
+  "section.footer.copyright": "Copyright &copy; 2025",
+  "section.hero.title": "Švelni prabanga, gimstanti iš meilės gėlėms",
+  "section.hero.description": "Jaukuma – tai daugiau nei tik floristika. Čia susijungia aukščiausios kokybės gėlės, individualiai pritaikytas dizainas ir šiltas, asmeniškas dėmesys. Kiekviena mūsų puokštė gimsta iš meilės grožiui ir noro sukurti tikrą jaukumo jausmą.",
+  "section.hero.button": "Paslaugos",
+  "nav.services": "Paslaugos",
+  "nav.about": "Apie",
+  "nav.contact": "Kontaktai",
+  "nav.contact.button": "SUSISIEKIME"
 } 

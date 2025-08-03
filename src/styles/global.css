@@ -93,55 +93,6 @@ p, span, div, a, li, button, input, textarea, select {
   max-width: var(--max-page-width);
   min-width: var(--min-page-width);
   margin: 0 auto;
-  padding: 0 1rem;
-}
-
-/* Responsive breakpoint utilities */
-@media (min-width: 376px) {
-  .container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding: 0 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 2.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding: 0 3rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    padding: 0 4rem;
-  }
-}
-
-/* Background for screens wider than 2xl */
-@media (min-width: 1536px) {
-  body {
-    background: var(--color-main-secondary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .container {
-    background: white;
-    margin: 0 auto;
-    width: 100%;
-    max-width: var(--max-page-width);
-  }
 }
 
 /* Utility classes for responsive design */

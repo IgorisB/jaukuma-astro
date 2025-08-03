@@ -1,11 +1,11 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import LayoutHero from '../../layouts/LayoutHero.astro';
 import PageIndexBody from '../../components/pages/page.index.astro';
 import { useTranslationsFromUrl, getLangFromUrl, getStaticPaths } from '../../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 export { getStaticPaths };
 ---
-<Layout title={t('page.index.title')} locale={lang}>
+<LayoutHero title={t('page.index.title')} locale={lang}>
   <PageIndexBody locale={lang} />
-</Layout>
+</LayoutHero>

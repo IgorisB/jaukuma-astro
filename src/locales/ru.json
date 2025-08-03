@@ -3,5 +3,12 @@
   "page.about.description": "Это страница о нас",
   "page.index.title": "Главная",
   "page.index.description": "Это главная страница",
-  "section.footer.copyright": "Copyright &copy; 2025" 
+  "section.footer.copyright": "Copyright &copy; 2025",
+  "section.hero.title": "Нежная роскошь, рожденная любовью к цветам",
+  "section.hero.description": "Jaukuma – это больше, чем просто флористика. Здесь соединяются цветы высочайшего качества, индивидуально подобранный дизайн и теплое, личное внимание. Каждый наш букет рождается из любви к красоте и желания создать настоящее чувство уюта.",
+  "section.hero.button": "Услуги",
+  "nav.services": "Услуги",
+  "nav.about": "О нас",
+  "nav.contact": "Контакты",
+  "nav.contact.button": "СВЯЗАТЬСЯ"
 } 
