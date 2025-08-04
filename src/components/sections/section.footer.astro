@@ -4,10 +4,21 @@ import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
-<footer class="container">
-    <LanguagePicker />
-    <hr/>
+<footer class="container footer">
     <p>
         {t('section.footer.copyright')}<br />
     </p>
 </footer>
+
+<style>
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: var(--color-main-primary);
+        color: var(--color-main-secondary);
+    }
+</style>

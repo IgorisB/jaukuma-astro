@@ -11,19 +11,17 @@ const t = useTranslations(lang);
   
   <!-- Hero Content -->
   <div class="hero-content">
-    <div class="hero-container">
       <h1 class="hero-title">{t('section.hero.title')}</h1>
       <p class="hero-description">{t('section.hero.description')}</p>
       <a href="/services" class="hero-button">
         {t('section.hero.button')}
       </a>
-    </div>
   </div>
 </section>
 <style>
   .hero-section {
     position: relative;
-    min-height: 100vh;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,17 +36,11 @@ const t = useTranslations(lang);
   /* Hero Content */
   .hero-content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: var(--max-page-width);
     margin: 0 auto;
-  }
-
-  .hero-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 40px;
     text-align: center;
   }
