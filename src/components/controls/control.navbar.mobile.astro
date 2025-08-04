@@ -1,0 +1,126 @@
+---
+import { useTranslations } from '../../lib/utils';
+const lang = Astro.props.locale 
+const t = useTranslations(lang);
+---
+
+<nav class="nav-bar-mobile visible-md">
+    <div class="nav-container-mobile">
+        <!-- Hamburger Menu Icon -->
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <div class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </div>
+        </button>
+
+        <!-- Logo -->
+        <div class="logo-mobile">
+            <img src="/images/jaukuma-logo-mobile.svg" alt="Jaukuma" class="logo-image-mobile" />
+        </div>
+
+        <!-- Phone Icon -->
+        <a href="tel:+37000000000" class="phone-link" aria-label="Call us">
+            <img src="/images/phone-icon.svg" alt="Phone" class="phone-icon" />
+        </a>
+    </div>
+</nav>
+
+<style>
+    .nav-bar-mobile {
+        width: 100%;
+        background: transparent;
+    }
+
+    .nav-container-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 3.5625rem; /* 57px */
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 1.5625rem; /* 25px */
+        height: auto;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3125rem; /* 5px */
+        width: 100%;
+    }
+
+    .hamburger-line {
+        width: 100%;
+        height: 0.1875rem; /* 3px */
+        background-color: #F3F1F1;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle:hover .hamburger-line {
+        background-color: #D6D2C4;
+    }
+
+    /* Logo */
+    .logo-mobile {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo-image-mobile {
+        height: 3.326875rem; /* 53.23px */
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* Phone Icon */
+    .phone-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.125rem; /* 2px */
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .phone-link:hover {
+        opacity: 0.8;
+    }
+
+    .phone-icon {
+        width: 1.243125rem; /* 19.89px */
+        height: 1.245625rem; /* 19.93px */
+        filter: brightness(0) invert(1); /* Make icon white */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+        .nav-container-mobile {
+            padding: 1rem 0;
+            gap: 2rem;
+        }
+
+        .logo-image-mobile {
+            height: 2.5rem;
+        }
+
+        .hamburger-line {
+            height: 0.125rem; /* 2px */
+        }
+    }
+</style> 

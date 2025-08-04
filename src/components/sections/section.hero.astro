@@ -1,5 +1,6 @@
 ---
 import ControlNavbarDesktop from '../controls/control.navbar.desktop.astro';
+import ControlNavbarMobile from '../controls/control.navbar.mobile.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -8,6 +9,7 @@ const t = useTranslations(lang);
 <section class="hero-section">
   <!-- Navigation Bar -->
   <ControlNavbarDesktop locale={lang} />
+  <ControlNavbarMobile locale={lang} />
   
   <!-- Hero Content -->
   <div class="hero-content">
@@ -18,6 +20,9 @@ const t = useTranslations(lang);
         {t('section.hero.button')}
       </a>
   </div>
+  <a href="#about" class="scroll-down">
+    <img src="/images/down-arrow-circle.svg" alt="Scroll Down" />
+  </a>
 </section>
 <style>
   .hero-section {
@@ -30,8 +35,8 @@ const t = useTranslations(lang);
                 url('/images/hero-background.jpg') no-repeat center center;
     background-size: cover;
     color: white;
-    padding: 36px 144px 144px 144px;
-    gap: 144px;
+    padding: 2.25rem 9rem 9rem 9rem;
+    gap: 9rem;
   }
 
   /* Hero Content */
@@ -44,6 +49,24 @@ const t = useTranslations(lang);
     margin: 0 auto;
     gap: 40px;
     text-align: center;
+  }
+  /* Media queries */
+  @media (min-width: 1024px) {
+    .hero-section {
+      padding: 2.25rem 9rem 9rem 9rem;
+    }
+  } 
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .hero-section {
+      padding: 1.5rem 3rem ;
+    }
+  }
+
+  @media (min-width: 376px) and (max-width: 768px) {
+    .hero-section {
+      padding: 0.75rem 1.5rem 1.5rem 1.5rem;
+    }
   }
 
 

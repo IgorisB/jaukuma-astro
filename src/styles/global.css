@@ -154,6 +154,34 @@ p, span, div, a, li, button, input, textarea, select {
   margin: 0;
 }
 
+/* Media queries */
+@media (min-width: 1024px) {
+  .main-title { font-size: 5rem; }
+  .accent-title { font-size: 6rem; }
+  .section-title { font-size: 4rem; }
+  .item-title { font-size: 1.25rem; }
+  .description { font-size: 1rem; }
+  .caption { font-size: 0.875rem; }
+} 
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main-title { font-size: 4rem; }
+  .accent-title { font-size: 4rem; }
+  .section-title { font-size: 3.5rem; }
+  .item-title { font-size: 1.5rem; }
+  .description { font-size: 1rem; }
+  .caption { font-size: 0.875rem; }
+}
+
+@media (min-width: 376px) and (max-width: 768px) {
+  .main-title { font-size: 2.5rem; }
+  .accent-title { font-size: 2.5rem; }
+  .section-title { font-size: 2.5rem; }
+  .item-title { font-size: 1.5rem; }
+  .description { font-size: 1rem; }
+  .caption { font-size: 0.875rem; }
+}
+
 /* Buttons styles */
 .button-primary-light {
   font-family: 'Playfair Display', serif;

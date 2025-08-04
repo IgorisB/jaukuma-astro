@@ -3,20 +3,45 @@ import { useTranslations } from '../../lib/utils';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
 ---
-<nav class="nav-bar">
+<nav class="nav-bar hidden-md">
     <div class="nav-container">
         <!-- Logo -->
-        <div class="logo">
+        <div class="logo hidden-lg">
             <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" class="logo-image" />
         </div>
+        <div class="logo visible-lg">
+          <img src="/images/jaukuma-logo-square.svg" alt="Jaukuma" class="logo-image" />
+      </div>
 
         <!-- Navigation Menu -->
         <div class="nav-menu">
             <div class="nav-item dropdown">
-            <span class="nav-link">{t('nav.services')}</span>
-            <svg class="dropdown-icon" width="16" height="8" viewBox="0 0 16 8" fill="none">
-                <path d="M1 1L8 7L15 1" stroke="white" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+                <span class="nav-link">{t('nav.services')}</span>
+                <svg class="dropdown-icon" width="16" height="8" viewBox="0 0 16 8" fill="none">
+                    <path d="M1 1L8 7L15 1" stroke="white" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <!-- Submenu -->
+                <div class="submenu">
+                    <div class="submenu-item">
+                        <a href="/services/bouquets" class="submenu-link">{t('nav.services.bouquets')}</a>
+                        <div class="submenu-separator"></div>
+                    </div>
+                    <div class="submenu-item">
+                        <a href="/services/decoration" class="submenu-link">{t('nav.services.decoration')}</a>
+                        <div class="submenu-separator"></div>
+                    </div>
+                    <div class="submenu-item">
+                        <a href="/services/plants" class="submenu-link">{t('nav.services.plants')}</a>
+                        <div class="submenu-separator"></div>
+                    </div>
+                    <div class="submenu-item">
+                        <a href="/services/events" class="submenu-link">{t('nav.services.events')}</a>
+                        <div class="submenu-separator"></div>
+                    </div>
+                    <div class="submenu-item">
+                        <a href="/services/subscription" class="submenu-link">{t('nav.services.subscription')}</a>
+                    </div>
+                </div>
             </div>
             <a href="/about" class="nav-link">{t('nav.about')}</a>
             <a href="/contact" class="nav-link">{t('nav.contact')}</a>
@@ -75,6 +100,10 @@ const t = useTranslations(lang);
     padding: 19px 0;
   }
 
+  .dropdown {
+    position: relative;
+  }
+
   .nav-link {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
@@ -95,6 +124,60 @@ const t = useTranslations(lang);
   .dropdown-icon {
     width: 16px;
     height: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Submenu Styles */
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #323E48;
+    border-radius: 0;
+    padding: 1.5625rem 0.875rem;
+    min-width: 17rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+
+  .dropdown:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .submenu-item {
+    position: relative;
+  }
+
+  .submenu-link {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .submenu-link:hover {
+    opacity: 0.6;
+  }
+
+  .submenu-separator {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0.625rem 0;
   }
 
   .language-switcher {

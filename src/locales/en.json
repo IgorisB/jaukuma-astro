@@ -13,6 +13,11 @@
   "section.hero.button": "Services",
   
   "nav.services": "Services",
+  "nav.services.bouquets": "Flower bouquets and compositions",
+  "nav.services.decoration": "Interior, exterior decoration",
+  "nav.services.plants": "Potted plants, care, rental",
+  "nav.services.events": "Event and celebration decoration",
+  "nav.services.subscription": "Flower subscription",
   "nav.about": "About",
   "nav.contact": "Contact",
   "nav.contact.button": "CONTACT US",

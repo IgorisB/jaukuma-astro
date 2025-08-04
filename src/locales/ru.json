@@ -13,6 +13,11 @@
   "section.hero.button": "Услуги",
 
   "nav.services": "Услуги",
+  "nav.services.bouquets": "Букеты и композиции из цветов",
+  "nav.services.decoration": "Декор интерьера и экстерьера",
+  "nav.services.plants": "Комнатные растения, уход, аренда",
+  "nav.services.events": "Декор мероприятий и праздников",
+  "nav.services.subscription": "Подписка на цветы",
   "nav.about": "О нас",
   "nav.contact": "Контакты",
   "nav.contact.button": "СВЯЗАТЬСЯ",
