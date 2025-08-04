@@ -10,5 +10,10 @@
   "nav.services": "Paslaugos",
   "nav.about": "Apie",
   "nav.contact": "Kontaktai",
-  "nav.contact.button": "SUSISIEKIME"
+  "nav.contact.button": "SUSISIEKIME",
+  
+  "page.404.title": "Puslapis nerastas",
+  "page.404.description": "Puslapis, kurio ieškote, neegzistuoja arba buvo perkeltas.",
+  "page.404.button.home": "Į pradžią",
+  "page.404.button.about": "Apie mus"
 } 

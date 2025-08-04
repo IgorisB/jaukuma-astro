@@ -1,10 +1,10 @@
 ---
-import LayoutHero from '../layouts/LayoutHero.astro';
+import Layout from '../layouts/Layout.astro';
 import PageIndexBody from '../components/pages/page.index.astro';
 import { useTranslationsFromUrl, getLangFromUrl } from '../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 ---
-<LayoutHero title={t('page.index.title')} locale={lang}>
+<Layout title={t('page.index.title')} locale={lang}>
 	<PageIndexBody locale={lang} />
-</LayoutHero>
+</Layout>

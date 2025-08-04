@@ -13,5 +13,10 @@
   "nav.services": "Services",
   "nav.about": "About",
   "nav.contact": "Contact",
-  "nav.contact.button": "CONTACT US"
+  "nav.contact.button": "CONTACT US",
+  
+  "page.404.title": "Page Not Found",
+  "page.404.description": "The page you're looking for doesn't exist or has been moved.",
+  "page.404.button.home": "Go Home",
+  "page.404.button.about": "About Us"
 } 
