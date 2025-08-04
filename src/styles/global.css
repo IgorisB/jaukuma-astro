@@ -173,7 +173,7 @@ p, span, div, a, li, button, input, textarea, select {
   .caption { font-size: 0.875rem; }
 }
 
-@media (min-width: 376px) and (max-width: 768px) {
+@media (min-width: 0px) and (max-width: 768px) {
   .main-title { font-size: 2.5rem; }
   .accent-title { font-size: 2.5rem; }
   .section-title { font-size: 2.5rem; }
