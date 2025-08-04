@@ -98,6 +98,157 @@ p, span, div, a, li, button, input, textarea, select {
     10px 0 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Texts styles */
+
+.main-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 5rem;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.accent-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.item-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.26;
+  text-align: center;
+  margin: 0;
+}
+
+.caption {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1;
+  text-align: center;
+  margin: 0;
+}
+
+/* Buttons styles */
+.button-primary-light {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: #323E48;
+  text-decoration: none;
+  background: white;
+  padding: 1rem 5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.button-primary-light:hover {
+  background: #323E48;
+  color: white;
+}
+
+.button-primary-dark {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  background: #323E48;;
+  padding: 1rem 5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.button-primary-dark:hover {
+  background: var(--color-additional-green);
+  color: white;
+}
+
+.button-secondary-light {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  padding: .75rem 3rem;
+  border: 1px solid white;
+  transition: all 0.3s ease;
+}
+
+.button-secondary-light:hover {
+  background: white;
+  color: var(--color-main-primary);
+}
+/* Colors styles */
+
+.color-primary {
+  color: var(--color-main-primary);
+}
+.color-secondary {
+  color: var(--color-main-secondary);
+}
+.color-additional-red {
+  color: var(--color-additional-red);
+}
+.color-additional-blue {
+  color: var(--color-additional-blue);
+}
+.color-additional-green {
+  color: var(--color-additional-green);
+}
+.color-aux-cream {
+  color: var(--color-aux-cream);
+}
+.color-aux-peach {
+  color: var(--color-aux-peach);
+}
+.color-aux-mint {
+  color: var(--color-aux-mint);
+}
+.color-aux-sky {
+  color: var(--color-aux-sky);
+}
+.color-aux-tan {
+  color: var(--color-aux-tan);
+}
+.color-white {
+  color: white;
+}
+.color-black {
+  color: black;
+}
+
 /* Utility classes for responsive design */
 .hidden { display: none; }
 .hidden-xs { display: none; }

@@ -23,15 +23,15 @@ const t = useTranslations(lang);
             
             <!-- Language Switcher -->
             <div class="language-switcher">
-            <a href="/lt" class={`lang-link ${lang === 'lt' ? 'active' : ''}`}>LT</a>
+            <a href="/lt" class={`nav-link ${lang === 'lt' ? 'active' : ''}`}>LT</a>
             <span class="lang-separator">|</span>
-            <a href="/en" class={`lang-link ${lang === 'en' ? 'active' : ''}`}>EN</a>
+            <a href="/en" class={`nav-link ${lang === 'en' ? 'active' : ''}`}>EN</a>
             <span class="lang-separator">|</span>
-            <a href="/ru" class={`lang-link ${lang === 'ru' ? 'active' : ''}`}>RU</a>
+            <a href="/ru" class={`nav-link ${lang === 'ru' ? 'active' : ''}`}>RU</a>
             </div>
             
             <!-- Contact Button -->
-            <a href="/contact" class="contact-button">
+            <a href="/contact" class="button-secondary-light">
             {t('nav.contact.button')}
             </a>
         </div>
@@ -87,8 +87,9 @@ const t = useTranslations(lang);
     transition: opacity 0.3s ease;
   }
 
-  .nav-link:hover {
-    opacity: 0.8;
+  .nav-link:hover,
+  .nav-link.active {
+    opacity: 0.6;
   }
 
   .dropdown-icon {
@@ -102,22 +103,6 @@ const t = useTranslations(lang);
     gap: 8px;
   }
 
-  .lang-link {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.33;
-    text-transform: uppercase;
-    color: #D7D2C5;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .lang-link.active,
-  .lang-link:hover {
-    color: white;
-  }
-
   .lang-separator {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
@@ -125,23 +110,4 @@ const t = useTranslations(lang);
     line-height: 1.33;
     color: #D7D2C5;
   }
-
-  .contact-button {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 1.33;
-    text-transform: uppercase;
-    color: white;
-    text-decoration: none;
-    padding: .75rem 3rem;
-    border: 1px solid white;
-    transition: all 0.3s ease;
-  }
-
-  .contact-button:hover {
-    background: white;
-    color: var(--color-main-primary);
-  }
-
 </style>

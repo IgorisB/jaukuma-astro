@@ -11,10 +11,10 @@ const t = useTranslations(lang);
   
   <!-- Hero Content -->
   <div class="hero-content">
-      <p class="hero-title" set:html={t('section.hero.slogan')}></p>
+      <p class="main-title color-white" set:html={t('section.hero.slogan')}></p>
       <h1 class="hidden">{t('section.hero.title')}</h1>
-      <p class="hero-description" set:html={t('section.hero.description')}></p>
-      <a href="/services" class="hero-button">
+      <p class="description color-white" set:html={t('section.hero.description')}></p>
+      <a href="/services" class="button-primary-light">
         {t('section.hero.button')}
       </a>
   </div>
@@ -46,41 +46,6 @@ const t = useTranslations(lang);
     text-align: center;
   }
 
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    font-size: 85px;
-    line-height: 1;
-    text-align: center;
-    margin: 0;
-  }
 
-  .hero-description {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.26;
-    text-align: center;
-    margin: 0;
-  }
-
-  .hero-button {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 1.33;
-    text-transform: uppercase;
-    color: var(--color-main-primary);
-    text-decoration: none;
-    background: white;
-    padding: 1rem 5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .hero-button:hover {
-    background: var(--color-main-secondary);
-    transform: translateY(-2px);
-  }
 
 </style>
