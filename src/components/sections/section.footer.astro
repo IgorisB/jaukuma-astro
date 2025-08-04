@@ -1,13 +1,10 @@
 ---
-import LanguagePicker from '../controls/control.languagepicker.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 <footer class="container footer">
-    <p>
-        {t('section.footer.copyright')}<br />
-    </p>
+    <p set:html={t('section.footer.copyright')}/>
 </footer>
 
 <style>

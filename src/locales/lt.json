@@ -1,12 +1,17 @@
 {
   "page.about.title": "Apie mus",
   "page.about.description": "Ši yra apie puslapis",
-  "page.index.title": "Pradžia",
+
+  "page.index.title": "Jaukuma pradinis puslapis",
   "page.index.description": "Ši yra pradžios puslapis",
+
   "section.footer.copyright": "Copyright &copy; 2025",
-  "section.hero.title": "Švelni prabanga, gimstanti iš meilės gėlėms",
+
+  "section.hero.slogan": "Švelni <em>prabanga</em>, gimstanti iš meilės <em>gėlėms</em>",
+  "section.hero.title": "Jaukuma - pradinis puslapis",
   "section.hero.description": "Jaukuma – tai daugiau nei tik floristika. Čia susijungia aukščiausios kokybės gėlės, individualiai pritaikytas dizainas ir šiltas, asmeniškas dėmesys. Kiekviena mūsų puokštė gimsta iš meilės grožiui ir noro sukurti tikrą jaukumo jausmą.",
   "section.hero.button": "Paslaugos",
+  
   "nav.services": "Paslaugos",
   "nav.about": "Apie",
   "nav.contact": "Kontaktai",

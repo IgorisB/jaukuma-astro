@@ -11,8 +11,9 @@ const t = useTranslations(lang);
   
   <!-- Hero Content -->
   <div class="hero-content">
-      <h1 class="hero-title">{t('section.hero.title')}</h1>
-      <p class="hero-description">{t('section.hero.description')}</p>
+      <p class="hero-title" set:html={t('section.hero.slogan')}></p>
+      <h1 class="hidden">{t('section.hero.title')}</h1>
+      <p class="hero-description" set:html={t('section.hero.description')}></p>
       <a href="/services" class="hero-button">
         {t('section.hero.button')}
       </a>

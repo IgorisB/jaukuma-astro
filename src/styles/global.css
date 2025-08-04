@@ -99,6 +99,7 @@ p, span, div, a, li, button, input, textarea, select {
 }
 
 /* Utility classes for responsive design */
+.hidden { display: none; }
 .hidden-xs { display: none; }
 .hidden-sm { display: none; }
 .hidden-md { display: none; }

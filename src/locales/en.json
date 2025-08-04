@@ -2,11 +2,13 @@
   "page.about.title": "About",
   "page.about.description": "This is the about page",
   
-  "page.index.title": "Home",
+  "page.index.title": "Jaukuma home page",
   "page.index.description": "This is the home page",
   
   "section.footer.copyright": "Copyright &copy; 2025",
-  "section.hero.title": "Gentle luxury born from love for flowers",
+
+  "section.hero.slogan": "Gentle <em>luxury</em> born from love for <em>flowers</em>",
+  "section.hero.title": "Jaukuma - home page",
   "section.hero.description": "Jaukuma is more than just floristry. Here, the highest quality flowers, individually tailored design, and warm, personal attention come together. Each of our bouquets is born from love for beauty and the desire to create a true sense of coziness.",
   "section.hero.button": "Services",
   
