@@ -1,13 +1,16 @@
 ---
 import { useTranslations } from '../../lib/utils';
+import { languages } from '../../lib/constants';
+import { getLangFromUrl, getLocalePath } from '../../lib/utils';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
+const currentLang = getLangFromUrl(Astro.url);
 ---
 
 <nav class="nav-bar-mobile visible-md">
     <div class="nav-container-mobile">
         <!-- Hamburger Menu Icon -->
-        <button class="menu-toggle" aria-label="Toggle menu">
+        <button class="menu-toggle" aria-label="Toggle menu" id="menuToggle">
             <div class="hamburger">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -25,12 +28,104 @@ const t = useTranslations(lang);
             <img src="/images/phone-icon.svg" alt="Phone" class="phone-icon" />
         </a>
     </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <!-- Menu Header -->
+            <div class="menu-header">
+                <button class="menu-close" aria-label="Close menu" id="menuClose">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L17 17M17 1L1 17" stroke="#D7D2C5" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    {languages.map((code) => (
+                        <a 
+                            href={getLocalePath(code, Astro.url.pathname)} 
+                            class={`lang-link ${currentLang === code ? 'active' : ''}`}
+                            aria-current={currentLang === code ? 'page' : undefined}
+                        >
+                            {code.toUpperCase()}
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- Menu Items -->
+            <div class="menu-items">
+                <!-- Expandable Services Menu -->
+                <div class="menu-item expandable" id="servicesMenuItem">
+                    <button class="menu-item-button" id="servicesToggle">
+                        <span class="menu-item-text">{t('nav.services')}</span>
+                        <svg class="expand-icon" width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L8 7L15 1" stroke="currentColor" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Services Submenu -->
+                    <div class="submenu" id="servicesSubmenu">
+                        <div class="submenu-item">
+                            <a href="#" class="submenu-link">{t('nav.services.bouquets')}</a>
+                            <div class="submenu-divider"></div>
+                        </div>
+                        <div class="submenu-item">
+                            <a href="#" class="submenu-link">{t('nav.services.decoration')}</a>
+                            <div class="submenu-divider"></div>
+                        </div>
+                        <div class="submenu-item">
+                            <a href="#" class="submenu-link">{t('nav.services.plants')}</a>
+                            <div class="submenu-divider"></div>
+                        </div>
+                        <div class="submenu-item">
+                            <a href="#" class="submenu-link">{t('nav.services.events')}</a>
+                            <div class="submenu-divider"></div>
+                        </div>
+                        <div class="submenu-item">
+                            <a href="#" class="submenu-link">{t('nav.services.subscription')}</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Regular Menu Items -->
+                <a href="/about" class="menu-item-link">{t('nav.about')}</a>
+                <a href="/contact" class="menu-item-link">{t('nav.contact')}</a>
+            </div>
+
+            <!-- Menu Footer -->
+            <div class="menu-footer">
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="Instagram">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="35" height="35" rx="4" fill="#672E2E"/>
+                            <path d="M17.5 11.5C14.1863 11.5 11.5 14.1863 11.5 17.5C11.5 20.8137 14.1863 23.5 17.5 23.5C20.8137 23.5 23.5 20.8137 23.5 17.5C23.5 14.1863 20.8137 11.5 17.5 11.5ZM17.5 21.5C15.2909 21.5 13.5 19.7091 13.5 17.5C13.5 15.2909 15.2909 13.5 17.5 13.5C19.7091 13.5 21.5 15.2909 21.5 17.5C21.5 19.7091 19.7091 21.5 17.5 21.5Z" fill="white"/>
+                            <circle cx="21" cy="14" r="1" fill="white"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon" aria-label="Facebook">
+                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M26.42 11.37H22.63V9.5C22.63 8.67 23.25 8.05 24.08 8.05H26.42V4.5H22.63C20.15 4.5 18.13 6.52 18.13 9V11.37H16.5V15.5H18.13V30.5H22.63V15.5H25.5L26.42 11.37Z" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Logo -->
+                <div class="menu-logo">
+                    <img src="/images/jaukuma-logo-square.svg" alt="Jaukuma" class="menu-logo-image" />
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
 
 <style>
     .nav-bar-mobile {
         width: 100%;
         background: transparent;
+        position: relative;
     }
 
     .nav-container-mobile {
@@ -108,6 +203,230 @@ const t = useTranslations(lang);
         filter: brightness(0) invert(1); /* Make icon white */
     }
 
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #323E48;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-menu-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 1rem 1.5rem;
+        gap: 0.5rem;
+    }
+
+    /* Menu Header */
+    .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        gap: 0.5rem;
+    }
+
+    .menu-close {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        width: 2.1875rem; /* 35px */
+        height: 2.1875rem; /* 35px */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.3s ease;
+    }
+
+    .menu-close:hover {
+        opacity: 0.8;
+    }
+
+    .language-switcher {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+
+    .lang-link {
+        font-family: 'Playfair Display', serif;
+        font-weight: 400;
+        font-size: 1.5rem; /* 24px */
+        line-height: 1.333;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .lang-link.active {
+        color: #D7D2C5;
+    }
+
+    .lang-link:hover {
+        color: #D7D2C5;
+    }
+
+    /* Menu Items */
+    .menu-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; /* 24px */
+        padding: 1.5rem 0;
+        flex: 1;
+    }
+
+    .menu-item.expandable {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-item-button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        width: 100%;
+        gap: 0.625rem; /* 10px */
+    }
+
+    .menu-item-text {
+        font-family: 'Playfair Display', serif;
+        font-weight: 400;
+        font-size: 1.5rem; /* 24px */
+        line-height: 1.333;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        text-align: left;
+    }
+
+    .expand-icon {
+        transition: transform 0.3s ease;
+        color: #FFFFFF;
+    }
+
+    .menu-item.expanded .expand-icon {
+        transform: rotate(180deg);
+    }
+
+    .menu-item.expanded .menu-item-text {
+        color: #D7D2C5;
+    }
+
+    /* Submenu */
+    .submenu {
+        display: none;
+        flex-direction: column;
+        gap: 1.25rem; /* 20px */
+        padding: 1.25rem 0 0 0.75rem; /* 12px left padding */
+        margin-top: 0.75rem; /* 12px */
+    }
+
+    .submenu.active {
+        display: flex;
+    }
+
+    .submenu-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem; /* 12px */
+    }
+
+    .submenu-link {
+        font-family: 'Playfair Display', serif;
+        font-weight: 400;
+        font-size: 1rem; /* 16px */
+        line-height: 1.333;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .submenu-link:hover {
+        color: #D7D2C5;
+    }
+
+    .submenu-divider {
+        height: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+
+    .menu-item-link {
+        font-family: 'Playfair Display', serif;
+        font-weight: 400;
+        font-size: 1.5rem; /* 24px */
+        line-height: 1.333;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .menu-item-link:hover {
+        color: #D7D2C5;
+    }
+
+    /* Menu Footer */
+    .menu-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5.8125rem; /* 93px */
+        padding: 0;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 0;
+        width: 4.375rem; /* 70px */
+        height: 2.1875rem; /* 35px */
+    }
+
+    .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .social-icon:hover {
+        opacity: 0.8;
+    }
+
+    .menu-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-logo-image {
+        width: 8.3275rem; /* 133.24px */
+        height: 3.326875rem; /* 53.23px */
+        object-fit: contain;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 640px) {
         .nav-container-mobile {
@@ -122,5 +441,70 @@ const t = useTranslations(lang);
         .hamburger-line {
             height: 0.125rem; /* 2px */
         }
+
+        .mobile-menu-content {
+            padding: 1rem;
+        }
+
+        .menu-items {
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .menu-footer {
+            gap: 3rem;
+        }
+
+        .menu-logo-image {
+            width: 6rem;
+            height: 2.5rem;
+        }
     }
-</style> 
+</style>
+
+<script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const servicesToggle = document.getElementById('servicesToggle');
+        const servicesMenuItem = document.getElementById('servicesMenuItem');
+        const servicesSubmenu = document.getElementById('servicesSubmenu');
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+            }
+        }
+
+        // Toggle services submenu
+        function toggleServicesSubmenu() {
+            if (servicesMenuItem && servicesSubmenu) {
+                servicesMenuItem.classList.toggle('expanded');
+                servicesSubmenu.classList.toggle('active');
+            }
+        }
+
+        // Event listeners
+        menuToggle?.addEventListener('click', toggleMobileMenu);
+        menuClose?.addEventListener('click', toggleMobileMenu);
+        servicesToggle?.addEventListener('click', toggleServicesSubmenu);
+
+        // Close menu when clicking outside
+        mobileMenuOverlay?.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenuOverlay?.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    });
+</script> 
