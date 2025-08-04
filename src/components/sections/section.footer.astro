@@ -1,21 +1,224 @@
 ---
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
+import { SOCIAL_MEDIA, CONTACT } from '../../lib/constants';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
-<footer class="container footer">
-    <p set:html={t('section.footer.copyright')}/>
+
+<footer class="footer container">
+  <div class="footer-menu">
+    <div class="hidden-lg">
+      <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" width="174" />
+    </div>
+    
+    <div class="footer-services-submenu">
+      <h3 class="submenu-title">{t('section.footer.services.title')}</h3>
+      <ul class="submenu-list">
+        <li><a href="#bouquets">{t('section.footer.services.bouquets')}</a></li>
+        <li><a href="#decoration">{t('section.footer.services.decoration')}</a></li>
+        <li><a href="#plants">{t('section.footer.services.plants')}</a></li>
+        <li><a href="#events">{t('section.footer.services.events')}</a></li>
+        <li><a href="#subscription">{t('section.footer.services.subscription')}</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-info-submenu">
+      <div class="contacts">
+        <h3 class="submenu-title">{t('section.footer.contact.title')}</h3>
+                 <ul class="submenu-list">
+           <li><a href={`tel:${CONTACT.PHONE}`}>{t('section.footer.contact.phone')}</a></li>
+           <li>{t('section.footer.contact.address1')}</li>
+           <li>{t('section.footer.contact.address2')}</li>
+         </ul>
+      </div>
+      
+      <div class="company-info">
+        <h3 class="submenu-title">{t('section.footer.company.title')}</h3>
+        <ul class="submenu-list">
+          <li><a href="/about">{t('section.footer.company.about')}</a></li>
+          <li><a href="/privacy">{t('section.footer.company.privacy')}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Copyright and Social Icons (Always Visible) -->
+  <div class="copyright">
+    <div class="social-icons">
+      <a href={SOCIAL_MEDIA.INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <img src="/images/instagram-icon.svg" alt="Instagram" width="32" height="32" />
+      </a>
+      <a href={SOCIAL_MEDIA.FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <img src="/images/facebook-icon.svg" alt="Facebook" width="32" height="32" />
+      </a>
+    </div>
+    
+    <div class="footer-info">
+      <p class="copyright-text">{t('section.footer.copyright')}</p>
+    </div>
+  </div>
 </footer>
 
 <style>
-    .footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding: 1rem;
-        background-color: var(--color-main-primary);
-        color: var(--color-main-secondary);
+  /* Common Footer Styles */
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-aux-tan);
+    color: white;
+    width: 100%;
+    padding: 2.5rem 9rem;
+  }
+
+
+  /* Footer Menu Styles */
+  .footer-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 0 1rem 0;
+    flex-wrap: wrap;
+  }
+
+  /* Services Submenu */
+  .footer-services-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 0 1rem 1rem;
+  }
+
+  /* Info Submenu */
+  .footer-info-submenu {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .contacts,
+  .company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 0 1rem;
+  }
+
+  /* Typography */
+  .submenu-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.33;
+    margin: 0;
+    color: white;
+  }
+
+  @media (min-width: 1024px) {
+    .submenu-title {
+      font-size: 1.125rem;
     }
+    .submenu-list li {
+      font-size: 0.875rem;
+    }
+    .copyright-text {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .submenu-title {
+      font-size: 1.25rem;
+    }
+    .submenu-list li {
+      font-size: 1rem;
+    }
+    .copyright-text {
+      font-size: 1rem;
+    }
+    .footer {
+      padding: 2.5rem 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-menu  {
+      display: none;
+    }
+  }
+
+  .submenu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .submenu-list li {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.26;
+    color: white;
+  }
+
+  .submenu-list a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .submenu-list a:hover {
+    opacity: 0.8;
+  }
+
+  /* Copyright and Social Icons (Always Visible) */
+  .copyright {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0.625rem;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    opacity: 0.8;
+  }
+
+  .footer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .copyright-text {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.26;
+    letter-spacing: 0.01em;
+    text-align: center;
+    margin: 0;
+    color: white;
+  }
 </style>

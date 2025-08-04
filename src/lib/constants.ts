@@ -46,6 +46,17 @@ export const PAGE_SIZES = {
 // Export color constants
 export { COLORS, CSS_COLOR_VARS } from './colors.js';
 
+// Social media URLs
+export const SOCIAL_MEDIA = {
+    INSTAGRAM: 'https://instagram.com/jaukuma',
+    FACEBOOK: 'https://facebook.com/jaukuma',
+} as const;
+
+// Contact information
+export const CONTACT = {
+    PHONE: '+37066821177',
+} as const;
+
 // Helper functions
 
 // Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'en'

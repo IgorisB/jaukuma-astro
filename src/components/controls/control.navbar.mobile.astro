@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../../lib/utils';
-import { languages } from '../../lib/constants';
+import { languages, SOCIAL_MEDIA, CONTACT } from '../../lib/constants';
 import { getLangFromUrl, getLocalePath } from '../../lib/utils';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
@@ -24,7 +24,7 @@ const currentLang = getLangFromUrl(Astro.url);
         </div>
 
         <!-- Phone Icon -->
-        <a href="tel:+37000000000" class="phone-link" aria-label="Call us">
+        <a href={`tel:${CONTACT.PHONE}`} class="phone-link" aria-label="Call us">
             <img src="/images/phone-icon.svg" alt="Phone" class="phone-icon" />
         </a>
     </div>
@@ -98,23 +98,17 @@ const currentLang = getLangFromUrl(Astro.url);
             <div class="menu-footer">
                 <!-- Social Icons -->
                 <div class="social-icons">
-                    <a href="#" class="social-icon" aria-label="Instagram">
-                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="35" height="35" rx="4" fill="#672E2E"/>
-                            <path d="M17.5 11.5C14.1863 11.5 11.5 14.1863 11.5 17.5C11.5 20.8137 14.1863 23.5 17.5 23.5C20.8137 23.5 23.5 20.8137 23.5 17.5C23.5 14.1863 20.8137 11.5 17.5 11.5ZM17.5 21.5C15.2909 21.5 13.5 19.7091 13.5 17.5C13.5 15.2909 15.2909 13.5 17.5 13.5C19.7091 13.5 21.5 15.2909 21.5 17.5C21.5 19.7091 19.7091 21.5 17.5 21.5Z" fill="white"/>
-                            <circle cx="21" cy="14" r="1" fill="white"/>
-                        </svg>
+                    <a href={SOCIAL_MEDIA.INSTAGRAM} class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                        <img src="/images/instagram-icon.svg" alt="Instagram" class="social-icon-image" />
                     </a>
-                    <a href="#" class="social-icon" aria-label="Facebook">
-                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M26.42 11.37H22.63V9.5C22.63 8.67 23.25 8.05 24.08 8.05H26.42V4.5H22.63C20.15 4.5 18.13 6.52 18.13 9V11.37H16.5V15.5H18.13V30.5H22.63V15.5H25.5L26.42 11.37Z" fill="white"/>
-                        </svg>
+                    <a href={SOCIAL_MEDIA.FACEBOOK} class="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                        <img src="/images/facebook-icon.svg" alt="Facebook" class="social-icon-image" />
                     </a>
                 </div>
 
                 <!-- Logo -->
                 <div class="menu-logo">
-                    <img src="/images/jaukuma-logo-square.svg" alt="Jaukuma" class="menu-logo-image" />
+                    <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" class="menu-logo-image" />
                 </div>
             </div>
         </div>
@@ -394,7 +388,7 @@ const currentLang = getLangFromUrl(Astro.url);
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 5.8125rem; /* 93px */
+        gap: 6rem; /* 93px */
         padding: 0;
     }
 
@@ -415,6 +409,12 @@ const currentLang = getLangFromUrl(Astro.url);
 
     .social-icon:hover {
         opacity: 0.8;
+    }
+
+    .social-icon-image {
+        width: 2.1875rem; /* 35px */
+        height: 2.1875rem; /* 35px */
+        object-fit: contain;
     }
 
     .menu-logo {
