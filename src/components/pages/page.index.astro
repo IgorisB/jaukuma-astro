@@ -1,9 +1,11 @@
 ---
 import { useTranslations } from '../../lib/utils';
 import HeroSection from '../sections/section.hero.astro';
+import AboutSection from '../sections/section.about.astro';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
 ---
 <main class="container">
     <HeroSection />
+    <AboutSection />
 </main>

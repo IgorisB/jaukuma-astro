@@ -22,8 +22,14 @@
 
   "section.hero.slogan": "Švelni <em>prabanga</em>, gimstanti iš meilės <em>gėlėms</em>",
   "section.hero.title": "Jaukuma - pradinis puslapis",
-  "section.hero.description": "Jaukuma – tai daugiau nei tik floristika. Čia susijungia aukščiausios kokybės gėlės, individualiai pritaikytas dizainas ir šiltas, asmeniškas dėmesys. Kiekviena mūsų puokštė gimsta iš meilės grožiui ir noro sukurti tikrą jaukumo jausmą.",
+  "section.hero.description": "Jaukuma – tai daugiau nei tik floristika. Čia susijungia kokybė, individualiai pritaikytas dizainas ir šiltas, asmeniškas dėmesys. Kiekviena mūsų puokštė gimsta iš meilės grožiui ir noro sukurti tikrą jaukumo jausmą.",
   "section.hero.button": "Paslaugos",
+  
+  "section.about.title": "Apie mus",
+  "section.about.mission": "Mūsų misija – kurti rankų darbo gėlių kompozicijas, kurios ne tik puošia svarbius įvykius, bet ir pripildo juos malonių emocijų.",
+  "section.about.philosophy": "Mūsų filosofija – tikime, kad tikrasis grožis slypi dėmesyje detalėms. Todėl kiekviena puokštė ar kompozicija \"Jaukumoje\" yra kruopščiai apgalvota, atitinkanti kliento norus ir šventės dvasią.",
+  "section.about.promise": "Mūsų pažadas – visada naudoti šviežiausias, aukščiausios kokybės gėles ir kurti unikalius dizainus, atspindinčius tiek kliento individualumą, tiek \"Jaukumos\" kūrybinį stilių.",
+  "section.about.button": "Daugiau apie mus",
   
   "nav.services": "Paslaugos",
   "nav.services.bouquets": "Gėlių puokštės ir kompozicijos",

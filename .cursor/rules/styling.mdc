@@ -208,8 +208,8 @@ import ControlNavbar from '../controls/control.navbar.desktop.astro';
   - 2XL: 1536px
 - **Use** utility classes for responsive visibility: `.hidden-xs`, `.visible-sm`, etc.
 - Desktop is between LG and 2XL
-- Tablet is between SM and LG
-- Mobile is between XS and SM
+- Tablet is between MD and LG
+- Mobile is till MD
 - 
 
 ## 🧹 Code Quality Standards
