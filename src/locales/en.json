@@ -25,10 +25,10 @@
   "section.hero.description": "Jaukuma is more than just floristry. Here, the quality, individually tailored design, and warm, personal attention come together. Each of our bouquets is born from love for beauty and the desire to create a true sense of coziness.",
   "section.hero.button": "Services",
   
-  "section.about.title": "About us",
-  "section.about.mission": "Our mission – to create handcrafted flower compositions that not only decorate important events but also fill them with pleasant emotions.",
-  "section.about.philosophy": "Our philosophy – we believe that true beauty lies in attention to detail. Therefore, every bouquet or composition at \"Jaukuma\" is carefully thought out, meeting the client's wishes and the spirit of the celebration.",
-  "section.about.promise": "Our promise – to always use the freshest, highest quality flowers and create unique designs that reflect both the client's individuality and \"Jaukuma's\" creative style.",
+  "section.about.title": "About <em>us</em>",
+  "section.about.mission": "Our <strong>mission</strong> – to create handcrafted flower compositions that not only decorate important events but also fill them with pleasant emotions.",
+  "section.about.philosophy": "Our <strong>philosophy</strong> – we believe that true beauty lies in attention to detail. Therefore, every bouquet or composition at \"<em>Jaukuma</em>\" is carefully thought out, meeting the client's wishes and the spirit of the celebration.",
+  "section.about.promise": "Our <strong>promise</strong> – to always use the <strong>freshest</strong>, <strong>highest quality</strong> flowers and create unique designs that reflect both the client's individuality and \"<em>Jaukuma's</em>\" creative style.",
   "section.about.button": "Learn more about us",
   
   "nav.services": "Services",

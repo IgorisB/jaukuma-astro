@@ -31,11 +31,11 @@ const t = useTranslations(lang);
   <div class="about-content">
     <!-- About us information -->
     <div class="about-info">
-      <h2 class="about-title">{t('section.about.title')}</h2>
+      <h2 class="about-title" set:html={t('section.about.title')}></h2>
       <div class="about-text">
-        <p>{t('section.about.mission')}</p>
-        <p>{t('section.about.philosophy')}</p>
-        <p>{t('section.about.promise')}</p>
+        <p set:html={t('section.about.mission')}></p>
+        <p set:html={t('section.about.philosophy')}></p>
+        <p set:html={t('section.about.promise')}></p>
       </div>
       <a href="/about" class="button-secondary">{t('section.about.button')}</a>
     </div>

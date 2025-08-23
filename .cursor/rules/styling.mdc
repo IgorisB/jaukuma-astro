@@ -151,6 +151,18 @@ import ControlNavbar from '../controls/control.navbar.desktop.astro';
 - **Props** should accept localized content
 - **Fallbacks** should be provided for missing translations
 
+### Rich Text Support
+- **SUPPORT** HTML formatting in locale files: `<strong>`, `<em>`, `<b>`, `<i>`
+- **USE** `set:html` directive for rich text content to preserve HTML formatting
+- **IMPLEMENT** semantic HTML tags for proper accessibility
+- **TRANSLATE** Figma text formatting (bold, italic) to appropriate HTML tags
+- **MAINTAIN** consistent formatting across all language variants
+- **EXAMPLE**:
+  ```json
+  "section.about.mission": "Our <strong>mission</strong> – to create..."
+  "section.about.philosophy": "Our <strong>philosophy</strong> – we believe..."
+  ```
+
 ---
 
 # Style, CSS, and Branding Rules
@@ -301,6 +313,13 @@ import ControlNavbar from '../controls/control.navbar.desktop.astro';
 - **MINIMUM** contrast ratio: 4.5:1 for normal text
 - **MINIMUM** contrast ratio: 3:1 for large text
 - **TEST** all color combinations for accessibility
+
+### 2. Rich Text and Typography
+- **SUPPORT** HTML tags in locale files: `<strong>`, `<em>`, `<b>`, `<i>`
+- **USE** `set:html` directive for rich text content to preserve formatting
+- **ENSURE** semantic meaning: `<strong>` for importance, `<em>` for emphasis
+- **MAINTAIN** accessibility when using rich text (screen readers handle HTML tags)
+- **AVOID** overuse of formatting - prioritize readability over decoration
 
 ### 2. Focus Management
 - **VISIBLE** focus indicators on all interactive elements
