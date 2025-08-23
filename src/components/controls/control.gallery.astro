@@ -1,0 +1,206 @@
+---
+export interface GalleryItem {
+  imageRef: string;
+  imageTitle: string;
+  imageDescription: string;
+}
+
+export interface Props {
+  items: GalleryItem[];
+  showNavigation?: boolean;
+  class?: string;
+}
+
+const { items, showNavigation = true, class: className = '' } = Astro.props;
+---
+
+<div class={`gallery-control ${className}`}>
+  <!-- Navigation arrows -->
+  {showNavigation && (
+    <div class="navigation">
+      <button class="nav-arrow nav-prev" aria-label="Previous">
+        <img src="/images/nav-arrow-left.svg" alt="Previous" width="29" height="29" class="nav-arrow-img" />
+      </button>
+      <button class="nav-arrow nav-next" aria-label="Next">
+        <img src="/images/nav-arrow-right.svg" alt="Next" width="29" height="29" class="nav-arrow-img" />
+      </button>
+    </div>
+  )}
+
+  <!-- Gallery images -->
+  <div class="gallery">
+    {items.map((item, index) => (
+      <div class={`gallery-item ${index >= 3 ? 'mobile-only' : ''}`}>
+        <div class="image-container">
+          <img src={item.imageRef} alt={item.imageTitle} class="gallery-image" />
+        </div>
+        <h3 class="image-title">{item.imageTitle}</h3>
+        <p class="image-description">{item.imageDescription}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .gallery-control {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    flex: 1;
+    position: relative;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 1.786rem;
+    height: 1.786rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-arrow:hover {
+    opacity: 0.8;
+  }
+
+  /* Hover states for navigation arrows */
+  .nav-arrow.nav-prev:hover .nav-arrow-img {
+    content: url('/images/nav-arrow-left-hover.svg');
+  }
+
+  .nav-arrow.nav-next:hover .nav-arrow-img {
+    content: url('/images/nav-arrow-right-hover.svg');
+  }
+
+  .gallery {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: left;
+    align-items: center;
+    align-self: stretch;
+    padding-top: 4rem;
+  }
+
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+    width: 100%;
+  }
+
+  .image-container {
+    width: 18rem;
+    height: 25.94rem;
+    border-radius: 10rem 10rem 0 0;
+    overflow: hidden;
+    background: #D9D9D9;
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 9.375rem 9.375rem 0 0;
+  }
+
+  .image-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.333;
+    color: #323E48;
+    margin: 0;
+  }
+
+  .image-description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.257;
+    color: #323E48;
+    margin: 0;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  /* Tablet Layout */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .navigation {
+      position: absolute;
+      right: 4rem;
+      top: 0;
+      z-index: 100;
+    }
+
+    .gallery {
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      width: 18rem;
+    }
+
+    .mobile-only {
+      display: flex;
+    }
+  }
+
+  /* Mobile Layout */
+  @media (max-width: 767px) {
+    .navigation {
+      display: none;
+    }
+
+    .gallery {
+      gap: 0.5rem;
+    }
+
+    .gallery-item {
+      width: 10rem;
+    }
+
+    .image-container {
+      height: 14rem;
+      border-radius: 5rem 5rem 0 0;
+    }
+
+    .gallery-image {
+      border-radius: 5rem 5rem 0 0;
+    }
+
+    .image-title {
+      font-size: 0.875rem;
+      color: rgba(50, 62, 72, 0.8);
+    }
+
+    .image-description {
+      font-size: 0.875rem;
+      color: rgba(50, 62, 72, 0.8);
+    }
+
+    .mobile-only {
+      display: flex;
+    }
+  }
+</style>
