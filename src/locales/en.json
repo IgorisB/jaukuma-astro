@@ -62,6 +62,9 @@
   
   "section.contact-hero.title": "Contact us",
   "section.contact-hero.description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+
+  "section.aboutus-hero.title": "About <em>us</em>",
+  "section.aboutus-hero.description": "Our mission is to create handcrafted flower compositions that not only decorate important events but also fill them with pleasant emotions.",
   
   "nav.services": "Services",
   "nav.services.bouquets": "Flower bouquets and compositions",

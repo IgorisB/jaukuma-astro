@@ -2,30 +2,38 @@
 import ControlNavbarDesktop from '../controls/control.navbar.desktop.astro';
 import ControlNavbarMobile from '../controls/control.navbar.mobile.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
+
+interface Props {
+  backgroundImage: string;
+  title: string;
+  description: string;
+  locale?: string;
+}
+
+const { backgroundImage, title, description } = Astro.props;
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
-<section class="contact-hero-section">
+<section class="page-hero-section" style={`background-image: linear-gradient(rgba(50, 62, 72, 0.6), rgba(50, 62, 72, 0.6)), url(${backgroundImage})`}>
   <!-- Navigation Bar -->
   <ControlNavbarDesktop locale={lang} />
   <ControlNavbarMobile locale={lang} />
   
   <!-- Hero Content -->
-  <div class="contact-hero-content">
-      <h1 class="contact-title color-white" set:html={t('section.contact-hero.title')}></h1>
-      <p class="contact-description color-white" set:html={t('section.contact-hero.description')}></p>
+  <div class="page-hero-content">
+      <h1 class="page-title color-white" set:html={title}></h1>
+      <p class="page-description color-white" set:html={description}></p>
   </div>
 </section>
 
 <style>
-  .contact-hero-section {
+  .page-hero-section {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(rgba(50, 62, 72, 0.6), rgba(50, 62, 72, 0.6)), 
-                url('/images/contact-hero-background.jpg') no-repeat center center;
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     color: white;
     padding: 2.25rem 9rem 9rem 9rem;
@@ -34,7 +42,7 @@ const t = useTranslations(lang);
   }
 
   /* Hero Content */
-  .contact-hero-content {
+  .page-hero-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,7 +53,7 @@ const t = useTranslations(lang);
     text-align: left;
   }
 
-  .contact-title {
+  .page-title {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
     font-size: 5.3125rem; /* 85px from Figma */
@@ -55,7 +63,7 @@ const t = useTranslations(lang);
     text-align: left;
   }
 
-  .contact-description {
+  .page-description {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     font-size: 0.875rem; /* 14px from Figma */
@@ -68,35 +76,35 @@ const t = useTranslations(lang);
 
   /* Media queries */
   @media (min-width: 1024px) {
-    .contact-hero-section {
+    .page-hero-section {
       padding: 2.25rem 9rem 9rem 9rem;
     }
   } 
 
   @media (min-width: 768px) and (max-width: 1024px) {
-    .contact-hero-section {
+    .page-hero-section {
       padding: 1.5rem 3rem;
       height: 30rem;
     }
     
-    .contact-title {
+    .page-title {
       font-size: 4rem;
     }
   }
 
   @media (max-width: 768px) {
-    .contact-hero-section {
+    .page-hero-section {
       padding: 0.75rem 1.5rem 1.5rem 1.5rem;
       height: 25rem;
       gap: 4rem;
     }
     
-    .contact-title {
+    .page-title {
       font-size: 3rem;
       text-align: center;
     }
     
-    .contact-description {
+    .page-description {
       text-align: center;
     }
   }
