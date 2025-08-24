@@ -1,5 +1,6 @@
 ---
 import { useTranslations, getLocalePath } from '../../lib/utils';
+import { defaultLang, PAGES } from '../../lib/constants';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
 ---
@@ -23,40 +24,40 @@ const t = useTranslations(lang);
                 <!-- Submenu -->
                 <div class="submenu">
                     <div class="submenu-item">
-                        <a href="/services/bouquets" class="submenu-link">{t('nav.services.bouquets')}</a>
+                        <a href={getLocalePath(lang, PAGES.SERVICES.BOUQUETS)} class="submenu-link">{t('nav.services.bouquets')}</a>
                         <div class="submenu-separator"></div>
                     </div>
                     <div class="submenu-item">
-                        <a href="/services/decoration" class="submenu-link">{t('nav.services.decoration')}</a>
+                        <a href={getLocalePath(lang, PAGES.SERVICES.DECORATION)} class="submenu-link">{t('nav.services.decoration')}</a>
                         <div class="submenu-separator"></div>
                     </div>
                     <div class="submenu-item">
-                        <a href="/services/plants" class="submenu-link">{t('nav.services.plants')}</a>
+                        <a href={getLocalePath(lang, PAGES.SERVICES.PLANTS)} class="submenu-link">{t('nav.services.plants')}</a>
                         <div class="submenu-separator"></div>
                     </div>
                     <div class="submenu-item">
-                        <a href="/services/events" class="submenu-link">{t('nav.services.events')}</a>
+                        <a href={getLocalePath(lang, PAGES.SERVICES.EVENTS)} class="submenu-link">{t('nav.services.events')}</a>
                         <div class="submenu-separator"></div>
                     </div>
                     <div class="submenu-item">
-                        <a href="/services/subscription" class="submenu-link">{t('nav.services.subscription')}</a>
+                        <a href={getLocalePath(lang, PAGES.SERVICES.SUBSCRIPTION)} class="submenu-link">{t('nav.services.subscription')}</a>
                     </div>
                 </div>
             </div>
-            <a href="/about" class="nav-link">{t('nav.about')}</a>
-            <a href="/contact" class="nav-link">{t('nav.contact')}</a>
+            <a href={getLocalePath(lang, PAGES.ABOUT)} class="nav-link">{t('nav.about')}</a>
+            <a href={getLocalePath(lang, PAGES.CONTACT)} class="nav-link">{t('nav.contact')}</a>
             
             <!-- Language Switcher -->
             <div class="language-switcher">
-            <a href="/lt" class={`nav-link ${lang === 'lt' ? 'active' : ''}`}>LT</a>
+            <a href={getLocalePath('lt', Astro.url.pathname)} class={`nav-link ${lang === 'lt' ? 'active' : ''}`}>LT</a>
             <span class="lang-separator">|</span>
-            <a href="/en" class={`nav-link ${lang === 'en' ? 'active' : ''}`}>EN</a>
+            <a href={getLocalePath('en', Astro.url.pathname)} class={`nav-link ${lang === 'en' ? 'active' : ''}`}>EN</a>
             <span class="lang-separator">|</span>
-            <a href="/ru" class={`nav-link ${lang === 'ru' ? 'active' : ''}`}>RU</a>
+            <a href={getLocalePath('ru', Astro.url.pathname)} class={`nav-link ${lang === 'ru' ? 'active' : ''}`}>RU</a>
             </div>
             
             <!-- Contact Button -->
-            <a href="/contact" class="button-secondary-light">
+            <a href={getLocalePath(lang, PAGES.CONTACT)} class="button-secondary-light">
             {t('nav.contact.button')}
             </a>
         </div>

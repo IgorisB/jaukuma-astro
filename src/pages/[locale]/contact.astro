@@ -1,8 +1,9 @@
 ---
 import PageContact from '../../components/pages/page.contact.astro';
-import { getLangFromUrl } from '../../lib/utils';
+import { getLangFromUrl, getStaticPaths } from '../../lib/utils';
 
 const lang = getLangFromUrl(Astro.url);
+export { getStaticPaths };
 ---
 
 <PageContact locale={lang} />

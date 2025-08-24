@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../../lib/utils';
-import { languages, SOCIAL_MEDIA, CONTACT } from '../../lib/constants';
+import { languages, SOCIAL_MEDIA, CONTACT, PAGES } from '../../lib/constants';
 import { getLangFromUrl, getLocalePath } from '../../lib/utils';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
@@ -19,7 +19,7 @@ const currentLang = getLangFromUrl(Astro.url);
         </button>
 
         <!-- Logo -->
-        <a href={lang === 'en' ? '/' : `/${lang}`} class="logo-mobile">
+        <a href={getLocalePath(lang, '/')} class="logo-mobile">
             <img src="/images/jaukuma-logo-mobile.svg" alt="Jaukuma" class="logo-image-mobile" />
         </a>
 
@@ -68,30 +68,30 @@ const currentLang = getLangFromUrl(Astro.url);
                     <!-- Services Submenu -->
                     <div class="submenu" id="servicesSubmenu">
                         <div class="submenu-item">
-                            <a href="#" class="submenu-link">{t('nav.services.bouquets')}</a>
+                            <a href={getLocalePath(lang, PAGES.SERVICES.BOUQUETS)} class="submenu-link">{t('nav.services.bouquets')}</a>
                             <div class="submenu-divider"></div>
                         </div>
                         <div class="submenu-item">
-                            <a href="#" class="submenu-link">{t('nav.services.decoration')}</a>
+                            <a href={getLocalePath(lang, PAGES.SERVICES.DECORATION)} class="submenu-link">{t('nav.services.decoration')}</a>
                             <div class="submenu-divider"></div>
                         </div>
                         <div class="submenu-item">
-                            <a href="#" class="submenu-link">{t('nav.services.plants')}</a>
+                            <a href={getLocalePath(lang, PAGES.SERVICES.PLANTS)} class="submenu-link">{t('nav.services.plants')}</a>
                             <div class="submenu-divider"></div>
                         </div>
                         <div class="submenu-item">
-                            <a href="#" class="submenu-link">{t('nav.services.events')}</a>
+                            <a href={getLocalePath(lang, PAGES.SERVICES.EVENTS)} class="submenu-link">{t('nav.services.events')}</a>
                             <div class="submenu-divider"></div>
                         </div>
                         <div class="submenu-item">
-                            <a href="#" class="submenu-link">{t('nav.services.subscription')}</a>
+                            <a href={getLocalePath(lang, PAGES.SERVICES.SUBSCRIPTION)} class="submenu-link">{t('nav.services.subscription')}</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Regular Menu Items -->
-                <a href="/about" class="menu-item-link">{t('nav.about')}</a>
-                <a href="/contact" class="menu-item-link">{t('nav.contact')}</a>
+                <a href={getLocalePath(lang, PAGES.ABOUT)} class="menu-item-link">{t('nav.about')}</a>
+                <a href={getLocalePath(lang, PAGES.CONTACT)} class="menu-item-link">{t('nav.contact')}</a>
             </div>
 
             <!-- Menu Footer -->

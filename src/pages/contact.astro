@@ -1,5 +1,8 @@
 ---
 import PageContact from '../components/pages/page.contact.astro';
+import { useTranslationsFromUrl, getLangFromUrl } from '../lib/utils';
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
-<PageContact />
+<PageContact locale={lang} />

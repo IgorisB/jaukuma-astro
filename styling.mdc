@@ -1,0 +1,389 @@
+# Project structure
+
+## 📁 Directory Structure
+
+### Pages (`src/pages/`)
+- **Root pages** (`src/pages/`) and **localized pages** (`src/pages/[locale]/`) **MUST** have identical structure
+- **MUST** support multiple languages (en, lt, ru)
+- **MUST NOT** contain any HTML or CSS code directly
+- **MUST** include corresponding `page.*` component that defines the actual page structure
+- **Example structure**:
+  ```
+  src/pages/
+  ├── index.astro          # Root index page
+  ├── about.astro          # Root about page
+  ├── 404.astro           # Root 404 page
+  └── [locale]/
+      ├── index.astro      # Localized index page
+      ├── about.astro      # Localized about page
+      └── 404.astro       # Localized 404 page
+  ```
+
+### Components (`src/components/`)
+Components are organized into 3 hierarchical types:
+
+#### 1. Page Components (`src/components/pages/`)
+- **Naming**: `page.{page-name}.{desktop|tablet|mobile}.astro` (device suffix optional)
+- **Purpose**: Define complete page structure and layout
+- **Responsibility**:
+  - Contain the entire page structure
+  - Use shared sections and controls
+  - Handle responsive layout logic
+  - Manage page-specific data and state
+- **Example**: `page.index.astro`, `page.about.desktop.astro`, `page.contact.tablet.astro`
+
+#### 2. Section Components (`src/components/sections/`)
+- **Naming**: `section.{section-name}.{desktop|tablet|mobile}.astro` (device suffix optional)
+- **Purpose**: Large individual blocks that make up pages
+- **Responsibility**:
+  - Define major page sections (header, hero, footer, etc.)
+  - Include and compose shared controls
+  - Handle section-specific layout and styling
+  - Manage section-specific data
+- **Example**: `section.hero.astro`, `section.footer.desktop.astro`, `section.navbar.mobile.astro`
+
+#### 3. Control Components (`src/components/controls/`)
+- **Naming**: `control.{control-name}.{desktop|tablet|mobile}.astro` (device suffix optional)
+- **Purpose**: Reusable UI elements shared across pages and sections
+- **Responsibility**:
+  - Define individual UI controls (buttons, forms, navigation, etc.)
+  - Handle interactive states and behavior
+  - Maintain consistent styling across usage
+  - Focus on single responsibility
+- **Example**: `control.button.astro`, `control.navbar.desktop.astro`, `control.menu.mobile.astro`
+
+## 🔄 Component Hierarchy
+
+```
+Page Component
+├── Section Components
+│   ├── Control Components
+│   └── Control Components
+├── Section Components
+│   └── Control Components
+└── Section Components
+    └── Control Components
+```
+
+## 📱 Responsive Design Strategy
+
+### Device-Specific Components
+- **Desktop**: `{component-name}.desktop.astro` - Full-featured layout
+- **Tablet**: `{component-name}.tablet.astro` - Optimized for medium screens
+- **Mobile**: `{component-name}.mobile.astro` - Simplified for small screens
+
+### When to Use Device-Specific Components
+- **USE** when there's a **strong separation** needed between device layouts
+- **AVOID** when responsive CSS can handle the differences
+- **CONSIDER** for complex layouts that require different component structures
+- **DEFAULT**: If no device suffix is specified, component applies to all devices
+
+### Fallback Strategy
+- If device-specific component doesn't exist, use the next available:
+  - Mobile → Tablet → Desktop
+  - If no device-specific version exists, use the base component (without suffix)
+  - Default to desktop version if no responsive variants exist
+
+## 🎯 Component Development Guidelines
+
+### 1. Page Components
+- **MUST** be the entry point for page structure
+- **MUST** compose sections in logical order
+- **SHOULD** handle page-level data fetching
+- **SHOULD** manage responsive component selection
+
+### 2. Section Components
+- **MUST** be self-contained and reusable
+- **MUST** include appropriate controls
+- **SHOULD** handle section-specific data
+- **SHOULD** maintain consistent spacing and layout
+
+### 3. Control Components
+- **MUST** be highly reusable across different contexts
+- **MUST** accept props for customization
+- **SHOULD** handle their own interactive states
+- **SHOULD** maintain consistent styling
+
+## 🔧 Implementation Rules
+
+### File Naming Conventions
+- **Use** kebab-case for component names: `page.about-us.astro`
+- **Use** descriptive names that clearly indicate purpose
+- **Include** device suffix only when needed: `.desktop`, `.tablet`, `.mobile`
+- **Base components** (without suffix) apply to all devices
+- **Device-specific components** override base components when they exist
+
+### Import and Usage
+```astro
+---
+// Page component example
+import SectionHero from '../sections/section.hero.desktop.astro';
+import ControlNavbar from '../controls/control.navbar.desktop.astro';
+---
+
+<html>
+  <head>...</head>
+  <body>
+    <ControlNavbar />
+    <SectionHero />
+    <!-- Other sections -->
+  </body>
+</html>
+```
+
+### Data Flow
+- **Pages** handle page-level data and pass to sections
+- **Sections** handle section-level data and pass to controls
+- **Controls** handle their own internal state and data
+
+## 🌐 Localization Support
+
+### Page Structure Consistency
+- **Root pages** and **localized pages** must have identical structure
+- **Component usage** must be consistent across all language variants
+- **Data passing** must support multiple languages
+
+### Component Localization
+- **Sections** and **controls** must support i18n data
+- **Props** should accept localized content
+- **Fallbacks** should be provided for missing translations
+
+### Rich Text Support
+- **SUPPORT** HTML formatting in locale files: `<strong>`, `<em>`, `<b>`, `<i>`
+- **USE** `set:html` directive for rich text content to preserve HTML formatting
+- **IMPLEMENT** semantic HTML tags for proper accessibility
+- **TRANSLATE** Figma text formatting (bold, italic) to appropriate HTML tags
+- **MAINTAIN** consistent formatting across all language variants
+- **EXAMPLE**:
+  ```json
+  "section.about.mission": "Our <strong>mission</strong> – to create..."
+  "section.about.philosophy": "Our <strong>philosophy</strong> – we believe..."
+  ```
+
+### Language-Aware Routing
+- **ALL** navigation links **MUST** use the `getLocalePath()` function
+- **NEVER** use hardcoded paths like `/about`, `/contact`, `/services/*`
+- **ALWAYS** import and use `PAGES` constants from `src/lib/constants.ts`
+- **ENSURE** proper language switching by using `getLocalePath(lang, path)` for current language
+- **IMPLEMENT** language switcher links using `getLocalePath(code, Astro.url.pathname)`
+- **EXAMPLE**:
+  ```astro
+  ---
+  import { getLocalePath } from '../../lib/utils';
+  import { PAGES } from '../../lib/constants';
+  const lang = Astro.props.locale;
+  ---
+  
+  <!-- Correct: Language-aware routing -->
+  <a href={getLocalePath(lang, PAGES.ABOUT)}>About</a>
+  <a href={getLocalePath(lang, PAGES.CONTACT)}>Contact</a>
+  
+  <!-- Language switcher -->
+  <a href={getLocalePath('en', Astro.url.pathname)}>EN</a>
+  <a href={getLocalePath('lt', Astro.url.pathname)}>LT</a>
+  <a href={getLocalePath('ru', Astro.url.pathname)}>RU</a>
+  ```
+
+---
+
+# Style, CSS, and Branding Rules
+description:
+globs:
+alwaysApply: false
+---
+
+## 🎨 Brand Identity
+
+### Color Palette
+- **Primary**: `#333F48` (Dark blue-gray) - Main brand color for headings, important elements
+- **Secondary**: `#D6D2C4` (Light beige) - Background color, subtle accents
+- **Accent Colors**:
+  - Rust Red: `#A45248` - Call-to-action buttons, highlights
+  - Steel Blue: `#166886` - Links, interactive elements
+  - Sage Green: `#6A7866` - Success states, nature-related content
+- **Auxiliary Colors**: Cream, Peach, Mint, Sky, Tan - For subtle variations and backgrounds
+
+### Typography
+- **Headings**: 'Playfair Display' serif font family
+- **Body Text**: 'Source Sans Pro' sans-serif font family
+- **Font Weights**: 400 (normal), 500 (medium), 600 (semibold), 700 (bold)
+- **Line Heights**: 1.2 for headings, 1.6 for body text
+
+## 📐 CSS Architecture Rules
+
+### 1. Global CSS (`src/styles/global.css`)
+- **MUST** contain only global styles that apply to all sections and controls
+- **MUST NOT** define section or control-specific styles
+- **MUST** include:
+  - CSS custom properties (color variables, breakpoints)
+  - Global reset and base styles
+  - Typography fundamentals
+  - Utility classes for responsive design
+  - Container classes for consistent layout
+
+### 2. Component-Specific Styles
+- **EVERY** section, page, or control in `src/components/` **MUST** have its own specific styles
+- Component styles should be co-located with the component or in a dedicated styles directory
+- Use scoped styles or CSS modules to prevent style conflicts
+- Follow the naming convention: `component-name.css` or `ComponentName.module.css`
+
+### 3. Units and Measurements
+- **PREFER** `rem` units for all measurements (font-size, padding, margin, width, height)
+- **USE** `px` only for:
+  - Elements requiring precise, fixed sizes (borders, shadows)
+  - Media query breakpoints
+  - When user specifically requests pixel values
+- **AVOID** `em` units unless dealing with relative sizing within a component
+
+### 4. Responsive Design
+- **Breakpoints** (defined in CSS custom properties):
+  - XS: 376px
+  - SM: 640px
+  - MD: 768px
+  - LG: 1024px
+  - XL: 1280px
+  - 2XL: 1536px
+- **Use** utility classes for responsive visibility: `.hidden-xs`, `.visible-sm`, etc.
+- Desktop is between LG and 2XL
+- Tablet is between MD and LG
+- Mobile is till MD
+
+## 🧹 Code Quality Standards
+
+### 1. Clean and Minimal CSS
+- **DON'T** create unused CSS rules or definitions
+- **ONLY** define styles that are actively used
+- **EXCEPTION**: Define default values when required for browser compatibility
+- **REMOVE** dead code and unused selectors regularly
+
+### 2. Browser Compatibility
+- **SUPPORT** all modern browsers (Chrome, Firefox, Safari, Edge)
+- **USE** CSS custom properties with fallbacks for older browsers
+- **TEST** on multiple browsers and devices
+- **AVOID** experimental CSS features without proper fallbacks
+
+### 3. Performance
+- **MINIMIZE** CSS bundle size
+- **USE** efficient selectors (avoid deep nesting)
+- **PREFER** CSS custom properties over repeated values
+- **CONSIDER** critical CSS for above-the-fold content
+
+## 🏗️ Layout and Structure
+
+### 1. Container System
+- **USE** `.container` class for consistent page width
+- **MAX-WIDTH**: 1536px (2XL breakpoint)
+- **MIN-WIDTH**: 376px (XS breakpoint)
+- **CENTER** content with `margin: 0 auto`
+- **INCLUDE** subtle shadow effects for visual depth
+
+### 2. Grid and Flexbox
+- **PREFER** CSS Grid for two-dimensional layouts
+- **USE** Flexbox for one-dimensional layouts (navigation, button groups)
+- **AVOID** float-based layouts
+- **ENSURE** responsive behavior with appropriate breakpoints
+
+## 🎯 Component Styling Guidelines
+
+### 1. Section Components (`src/components/sections/`)
+- Each section should have its own CSS file
+- Use semantic class names: `.hero-section`, `.footer-section`
+- Maintain consistent spacing and typography hierarchy
+- Ensure responsive behavior across all breakpoints
+
+### 2. Control Components (`src/components/controls/`)
+- Focus on interactive states (hover, focus, active)
+- Maintain consistent button and form styling
+- Ensure accessibility with proper focus indicators
+- Use appropriate color contrast ratios
+
+### 3. Page Components (`src/components/pages/`)
+- Define page-specific layouts and spacing
+- Maintain consistent content width and margins
+- Ensure proper heading hierarchy
+- Optimize for content readability
+
+## 🔧 CSS Custom Properties Usage
+
+### 1. Color Variables
+```css
+/* Use semantic color names */
+--color-main-primary: #333F48;
+--color-main-secondary: #D6D2C4;
+--color-additional-red: #A45248;
+```
+
+### 2. Spacing Variables
+```css
+/* Define consistent spacing scale */
+--spacing-xs: 0.25rem;
+--spacing-sm: 0.5rem;
+--spacing-md: 1rem;
+--spacing-lg: 1.5rem;
+--spacing-xl: 2rem;
+```
+
+### 3. Breakpoint Variables
+```css
+/* Use defined breakpoints consistently */
+--breakpoint-sm: 640px;
+--breakpoint-md: 768px;
+--breakpoint-lg: 1024px;
+```
+
+## 📱 Accessibility Standards
+
+### 1. Color Contrast
+- **MINIMUM** contrast ratio: 4.5:1 for normal text
+- **MINIMUM** contrast ratio: 3:1 for large text
+- **TEST** all color combinations for accessibility
+
+### 2. Rich Text and Typography
+- **SUPPORT** HTML tags in locale files: `<strong>`, `<em>`, `<b>`, `<i>`
+- **USE** `set:html` directive for rich text content to preserve formatting
+- **ENSURE** semantic meaning: `<strong>` for importance, `<em>` for emphasis
+- **MAINTAIN** accessibility when using rich text (screen readers handle HTML tags)
+- **AVOID** overuse of formatting - prioritize readability over decoration
+
+### 3. Focus Management
+- **VISIBLE** focus indicators on all interactive elements
+- **CONSISTENT** focus styling across components
+- **AVOID** removing focus outlines without alternatives
+
+### 4. Typography
+- **MINIMUM** font size: 1rem (16px) for body text
+- **ENSURE** sufficient line height for readability
+- **AVOID** all-caps text for long content
+
+## 🚀 Best Practices
+
+### 1. Naming Conventions
+- **USE** kebab-case for CSS class names: `.hero-section`
+- **USE** BEM methodology for complex components: `.card__title--large`
+- **AVOID** generic names like `.container`, `.wrapper` without context
+
+### 2. Organization
+- **GROUP** related styles together
+- **COMMENT** complex CSS rules
+- **ORDER** properties consistently: layout → typography → visual → interactive
+
+### 3. Maintenance
+- **REVIEW** and refactor CSS regularly
+- **REMOVE** unused styles during development
+- **DOCUMENT** complex CSS solutions
+- **TEST** changes across different screen sizes
+
+## 🔍 Validation Checklist
+
+Before committing CSS changes, ensure:
+- [ ] No unused CSS rules
+- [ ] All measurements use appropriate units (rem preferred)
+- [ ] Component-specific styles are properly scoped
+- [ ] Responsive design works on all breakpoints
+- [ ] Browser compatibility is maintained
+- [ ] Accessibility standards are met
+- [ ] Performance impact is minimal
+- [ ] Code follows naming conventions
+- [ ] All navigation links use `getLocalePath()` function
+- [ ] No hardcoded paths in navigation components
+- [ ] Language switcher links work correctly across all locales
