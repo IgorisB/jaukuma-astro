@@ -19,9 +19,9 @@ const currentLang = getLangFromUrl(Astro.url);
         </button>
 
         <!-- Logo -->
-        <div class="logo-mobile">
+        <a href={lang === 'en' ? '/' : `/${lang}`} class="logo-mobile">
             <img src="/images/jaukuma-logo-mobile.svg" alt="Jaukuma" class="logo-image-mobile" />
-        </div>
+        </a>
 
         <!-- Phone Icon -->
         <a href={`tel:${CONTACT.PHONE}`} class="phone-link" aria-label="Call us">
@@ -169,6 +169,7 @@ const currentLang = getLangFromUrl(Astro.url);
         display: flex;
         justify-content: center;
         align-items: center;
+        text-decoration: none;
     }
 
     .logo-image-mobile {

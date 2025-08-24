@@ -7,6 +7,4 @@ const t = useTranslationsFromUrl(Astro.url);
 export { getStaticPaths };
 ---
 
-<Layout title={t('page.about.title')} locale={lang}>
-	<PageAboutBody locale={lang} />
-</Layout>
+<PageAboutBody locale={lang} />

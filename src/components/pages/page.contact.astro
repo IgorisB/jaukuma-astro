@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionContactHero from '../sections/section.contact-hero.astro';
+import SectionContact from '../sections/section.contact.astro';
+import SectionFooter from '../sections/section.footer.astro';
+import { getLangFromUrl } from '../../lib/utils';
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<Layout title="Contact" description="Get in touch with Jaukuma" locale={lang}>
+  <main class="container">
+    <SectionContactHero locale={lang} />
+  </main>
+</Layout>

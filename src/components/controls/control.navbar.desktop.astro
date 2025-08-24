@@ -1,17 +1,17 @@
 ---
-import { useTranslations } from '../../lib/utils';
+import { useTranslations, getLocalePath } from '../../lib/utils';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
 ---
 <nav class="nav-bar hidden-md">
     <div class="nav-container">
         <!-- Logo -->
-        <div class="logo hidden-lg">
-            <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" class="logo-image" />
-        </div>
-        <div class="logo visible-lg">
-          <img src="/images/jaukuma-logo-square.svg" alt="Jaukuma" class="logo-image" />
-      </div>
+      <a href={getLocalePath(lang, '/')} class="logo-link hidden-lg">
+          <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" class="logo-image" />
+      </a>
+      <a href={getLocalePath(lang, '/')} class="logo-link visible-lg">
+        <img src="/images/jaukuma-logo-square.svg" alt="Jaukuma" class="logo-image" />
+      </a>
 
         <!-- Navigation Menu -->
         <div class="nav-menu">
@@ -76,8 +76,9 @@ const t = useTranslations(lang);
     gap: 53px;
   }
 
-  .logo {
+  .logo-link {
     flex-shrink: 0;
+    text-decoration: none;
   }
 
   .logo-image {

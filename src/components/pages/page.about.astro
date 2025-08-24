@@ -1,9 +1,12 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
-<main class="container">
-    <h1>{t('page.about.title')}</h1>
-    <p>{t('page.about.description')}</p>
-</main>
+<Layout title={t('page.about.title')} locale={lang}>
+    <main class="container">
+        <h1>{t('page.about.title')}</h1>
+        <p>{t('page.about.description')}</p>
+    </main>
+</Layout>

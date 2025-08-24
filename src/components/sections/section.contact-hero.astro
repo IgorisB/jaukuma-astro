@@ -1,0 +1,104 @@
+---
+import ControlNavbarDesktop from '../controls/control.navbar.desktop.astro';
+import ControlNavbarMobile from '../controls/control.navbar.mobile.astro';
+import { useTranslations, getLangFromUrl } from '../../lib/utils';
+const lang = Astro.props.locale || getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="contact-hero-section">
+  <!-- Navigation Bar -->
+  <ControlNavbarDesktop locale={lang} />
+  <ControlNavbarMobile locale={lang} />
+  
+  <!-- Hero Content -->
+  <div class="contact-hero-content">
+      <h1 class="contact-title color-white" set:html={t('section.contact-hero.title')}></h1>
+      <p class="contact-description color-white" set:html={t('section.contact-hero.description')}></p>
+  </div>
+</section>
+
+<style>
+  .contact-hero-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgba(50, 62, 72, 0.6), rgba(50, 62, 72, 0.6)), 
+                url('/images/contact-hero-background.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 2.25rem 9rem 9rem 9rem;
+    gap: 9rem;
+    height: 36.9375rem; /* 591px from Figma */
+  }
+
+  /* Hero Content */
+  .contact-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    gap: 2.5rem;
+    text-align: center;
+    max-width: 27.375rem; /* 438px from Figma */
+  }
+
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 5.3125rem; /* 85px from Figma */
+    line-height: 1;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: left;
+  }
+
+  .contact-description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem; /* 14px from Figma */
+    line-height: 1.257;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: left;
+    max-width: 27.25rem; /* 436px from Figma */
+  }
+
+  /* Media queries */
+  @media (min-width: 1024px) {
+    .contact-hero-section {
+      padding: 2.25rem 9rem 9rem 9rem;
+    }
+  } 
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .contact-hero-section {
+      padding: 1.5rem 3rem;
+      height: 30rem;
+    }
+    
+    .contact-title {
+      font-size: 4rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-hero-section {
+      padding: 0.75rem 1.5rem 1.5rem 1.5rem;
+      height: 25rem;
+      gap: 4rem;
+    }
+    
+    .contact-title {
+      font-size: 3rem;
+      text-align: center;
+    }
+    
+    .contact-description {
+      text-align: center;
+    }
+  }
+</style>

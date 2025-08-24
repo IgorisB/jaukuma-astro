@@ -5,6 +5,5 @@ import { useTranslationsFromUrl, getLangFromUrl } from '../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 ---
-<Layout title={t('page.index.title')} locale={lang}>
-	<PageIndexBody locale={lang} />
-</Layout>
+
+<PageIndexBody locale={lang} />
