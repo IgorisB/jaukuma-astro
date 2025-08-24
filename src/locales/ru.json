@@ -53,6 +53,10 @@
   "section.why.stats.recommendation": "99%",
   "section.why.stats.recommendation.label": "клиентов рекомендуют нас другим",
   
+  "section.contact.title": "Свяжитесь с нами",
+  "section.contact.description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't.",
+  "section.contact.button": "СВЯЗАТЬСЯ",
+  
   "nav.services": "Услуги",
   "nav.services.bouquets": "Букеты и композиции из цветов",
   "nav.services.decoration": "Декор интерьера и экстерьера",

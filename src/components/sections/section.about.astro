@@ -45,7 +45,7 @@ const galleryItems = [
         <p set:html={t('section.about.philosophy')}></p>
         <p set:html={t('section.about.promise')}></p>
       </div>
-      <a href="/about" class="button-secondary">{t('section.about.button')}</a>
+      <a href="/about" class="button-primary-dark">{t('section.about.button')}</a>
     </div>
 
     <!-- Image gallery slider -->
@@ -122,31 +122,6 @@ const galleryItems = [
     margin: 0;
   }
 
-  .button-secondary {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    padding: 0.9375rem 3.75rem;
-    height: 3.375rem;
-    background:  var(--color-main-primary);
-    color: #FFFFFF;
-    text-decoration: none;
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.333;
-    text-transform: uppercase;
-    border-radius: 0;
-    transition: background-color 0.3s ease;
-    align-self: flex-start;
-  }
-
-  .button-secondary:hover {
-    background:  var(--color-additional-green);
-  }
-
-
 
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
@@ -193,9 +168,5 @@ const galleryItems = [
       font-size: 1rem;
     }
 
-    .button-secondary {
-      align-self: center;
-      width: 100%;
-    }
   }
 </style>

@@ -1,0 +1,171 @@
+---
+import { useTranslations } from '../../lib/utils';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="contact-section">
+  <div class="contact-section__background">
+    <img 
+      src="/images/contact-background.jpg" 
+      alt="Side view of girl holding bouquet with various spring flowers" 
+      class="contact-section__background-image"
+    />
+    <div class="contact-section__overlay"></div>
+  </div>
+  
+  <div class="contact-section__container">
+    <div class="contact-section__content">
+      <h2 class="contact-section__title" set:html={t('section.contact.title')}></h2>
+      <p class="contact-section__description">{t('section.contact.description')}</p>
+      <a href="/contact" class="button-primary-light">{t('section.contact.button')}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    position: relative;
+    height: 32.9375rem; /* 527px */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-section__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .contact-section__background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .contact-section__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 62, 72, 0.5); /* #323E48 with 50% opacity */
+    z-index: 2;
+  }
+
+  .contact-section__container {
+    position: relative;
+    z-index: 3;
+    max-width: var(--max-page-width);
+    margin: 0 auto;
+    padding: 0 9rem;
+    width: 100%;
+  }
+
+  .contact-section__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 35.125rem; /* 562px */
+    margin: 0 auto;
+    gap: 1.5rem;
+  }
+
+  .contact-section__title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 4.42rem; /* 70.726px */
+    line-height: 1.33;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
+  }
+
+  .contact-section__description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.26;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
+    max-width: 35.125rem; /* 562px */
+  }
+
+  .contact-section__button {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem; /* 16px */
+    line-height: 1.33;
+    color: var(--color-main-primary);
+    background-color: #FFFFFF;
+    border: none;
+    padding: 0.9375rem 3.75rem; /* 15px 60px */
+    border-radius: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    min-width: 13.8125rem; /* 221px */
+    height: 3.375rem; /* 54px */
+  }
+
+  .contact-section__button:hover {
+    background-color: var(--color-main-secondary);
+    transform: translateY(-2px);
+  }
+
+  .contact-section__button:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .contact-section {
+      height: 25rem;
+      padding: 2rem 0;
+    }
+
+    .contact-section__container {
+      padding: 0 1.5rem;
+    }
+
+    .contact-section__content {
+      gap: 1rem;
+      max-width: 100%;
+    }
+
+    .contact-section__title {
+      font-size: 2.5rem;
+    }
+
+    .contact-section__description {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-section {
+      height: 20rem;
+    }
+
+    .contact-section__title {
+      font-size: 2rem;
+    }
+
+    .contact-section__description {
+      font-size: 0.875rem;
+    }
+  }
+</style>

@@ -53,6 +53,10 @@
   "section.why.stats.recommendation": "99%",
   "section.why.stats.recommendation.label": "clients recommend us to others",
   
+  "section.contact.title": "Contact us",
+  "section.contact.description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't.",
+  "section.contact.button": "CONTACT US",
+  
   "nav.services": "Services",
   "nav.services.bouquets": "Flower bouquets and compositions",
   "nav.services.decoration": "Interior, exterior decoration",

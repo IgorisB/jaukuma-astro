@@ -4,6 +4,7 @@ import HeroSection from '../sections/section.hero.astro';
 import AboutSection from '../sections/section.about.astro';
 import ServicesSection from '../sections/section.services.astro';
 import WhySection from '../sections/section.why.astro';
+import ContactSection from '../sections/section.contact.astro';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
 ---
@@ -12,4 +13,5 @@ const t = useTranslations(lang);
     <AboutSection />
     <ServicesSection locale={lang} />
     <WhySection locale={lang} />
+    <ContactSection locale={lang} />
 </main>
