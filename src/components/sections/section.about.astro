@@ -153,11 +153,12 @@ const galleryItems = [
 
     .about-content {
       flex-direction: column;
+      gap: 3rem;
     }
 
     .about-info {
       max-width: 100%;
-      padding: 0 4rem 0 0rem;
+      padding: 0 8rem 0 8rem;
     }
     .button-secondary {
       align-self: center;
@@ -167,7 +168,7 @@ const galleryItems = [
   /* Mobile Layout */
   @media (max-width: 767px) {
     .about-section {
-      padding: 5rem 0;
+      padding: 2rem 0;
     }
 
     .spacer {
@@ -176,14 +177,15 @@ const galleryItems = [
 
     .about-content {
       flex-direction: column;
+      align-items: center;
       gap: 3rem;
-      padding: 0 1.5rem;
+      padding: 0 0rem;
     }
 
     .about-info {
-      padding: 0;
-      align-items: center;
-      text-align: center;
+      max-width: 100%;
+      min-width: 100%;
+      padding: 0 2rem 0 2rem;
     }
 
     .about-title {

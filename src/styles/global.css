@@ -37,7 +37,6 @@
 html,
 body {
   margin: 0;
-  padding: 1rem 0;
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-main-secondary);
@@ -94,8 +93,8 @@ p, span, div, a, li, button, input, textarea, select {
   min-width: var(--min-page-width);
   margin: 0 auto;
   box-shadow: 
-    -10px 0 20px rgba(0, 0, 0, 0.1),
-    10px 0 20px rgba(0, 0, 0, 0.1);
+    -10px 0 20px rgba(0, 0, 0, 0.2),
+    10px 0 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Texts styles */
@@ -155,6 +154,18 @@ p, span, div, a, li, button, input, textarea, select {
 }
 
 /* Media queries */
+
+
+@media (min-width: 1537px) {
+  html, body {
+    padding: 1rem 0;
+  }
+  .container {
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
+  }
+}
+
 @media (min-width: 1024px) {
   .main-title { font-size: 5rem; }
   .accent-title { font-size: 6rem; }

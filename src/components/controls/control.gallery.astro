@@ -238,12 +238,6 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
 
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {
-    .navigation {
-      position: absolute;
-      right: 4rem;
-      top: 0;
-      z-index: 100;
-    }
 
     .gallery {
       gap: 1.25rem;
@@ -260,31 +254,5 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
       display: none;
     }
 
-    .gallery {
-      gap: 0.5rem;
-    }
-
-    .gallery-item {
-      width: 10rem;
-    }
-
-    .image-container {
-      height: 14rem;
-      border-radius: 5rem 5rem 0 0;
-    }
-
-    .gallery-image {
-      border-radius: 5rem 5rem 0 0;
-    }
-
-    .image-title {
-      font-size: 0.875rem;
-      color: rgba(50, 62, 72, 0.8);
-    }
-
-    .image-description {
-      font-size: 0.875rem;
-      color: rgba(50, 62, 72, 0.8);
-    }
   }
 </style>
