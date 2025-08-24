@@ -1,0 +1,200 @@
+---
+import { useTranslations } from '../../lib/utils';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="why-section">
+  <div class="why-section__background-pattern">
+    <img src="/images/decorative-spacer.svg" alt="Decorative background pattern" />
+  </div>
+  <div class="why-section__container">
+    <div class="why-section__content">
+      <div class="why-section__info">
+        <h2 class="why-section__title" set:html={t('section.why.title')}></h2>
+        <p class="why-section__description">{t('section.why.description')}</p>
+      </div>
+      
+      <div class="why-section__stats">
+        <div class="why-section__stat-card">
+          <div class="why-section__stat-number">{t('section.why.stats.experience')}</div>
+          <div class="why-section__stat-label">{t('section.why.stats.experience.label')}</div>
+        </div>
+        
+        <div class="why-section__stat-card">
+          <div class="why-section__stat-number">{t('section.why.stats.clients')}</div>
+          <div class="why-section__stat-label">{t('section.why.stats.clients.label')}</div>
+        </div>
+        
+        <div class="why-section__stat-card">
+          <div class="why-section__stat-number">{t('section.why.stats.recommendation')}</div>
+          <div class="why-section__stat-label">{t('section.why.stats.recommendation.label')}</div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</section>
+
+<style>
+  .why-section {
+    padding: 9rem 0;
+    background-color: var(--color-main-secondary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-section__container {
+    max-width: var(--max-page-width);
+    margin: 0 auto;
+    padding: 0 9rem;
+    position: relative;
+  }
+
+  .why-section__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .why-section__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 34.75rem;
+  }
+
+  .why-section__title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 3.625rem;
+    line-height: 1.33;
+    color: var(--color-main-primary);
+    margin: 0;
+  }
+
+  .why-section__description {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.26;
+    color: var(--color-main-primary);
+    margin: 0;
+  }
+
+  .why-section__stats {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .why-section__stat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3125rem;
+    padding: 1.875rem;
+    background-color: var(--color-main-primary);
+    border-radius: 9.375rem 9.375rem 0 0;
+    width: 10.99rem;
+    height: 8.31rem;
+  }
+
+  .why-section__stat-number {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.33;
+    color: #FFFFFF;
+    text-align: center;
+  }
+
+  .why-section__stat-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.33;
+    color: #FFFFFF;
+    text-align: center;
+    max-width: 8.81rem;
+  }
+
+  .why-section__background-pattern {
+    position: absolute;
+    left: -3rem;
+    top: -1rem;
+    z-index: 1;
+  }
+
+  .why-section__background-pattern img {
+    width: 22.19rem;
+    opacity: 0.8;
+  }
+
+
+  @media (max-width: 768px) {
+    .why-section {
+      padding: 3rem 0;
+    }
+
+    .why-section__container {
+      padding: 0 0 0 1.5rem;
+    }
+
+    .why-section__content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+      min-width: 0;
+    }
+
+    .why-section__info {
+      text-align: left;
+      width: 50%;
+      min-width: 0;
+      flex-shrink: 1;
+    }
+
+    .why-section__title {
+      font-size: 2.5rem;
+    }
+
+    .why-section__description {
+      font-size: 1rem;
+    }
+
+    .why-section__stats {
+      flex-direction: column;
+      gap: 0.625rem;
+      align-items: flex-end;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+
+    .why-section__stat-card {
+      width: 10rem;
+      height: 7.375rem;
+      padding: 1.25rem;
+      border-radius: 1.25rem 0 0 1.25rem;
+    }
+
+    .why-section__stat-number {
+      font-size: 2rem;
+    }
+
+    .why-section__stat-label {
+      font-size: 0.875rem;
+    }
+  }
+</style>
