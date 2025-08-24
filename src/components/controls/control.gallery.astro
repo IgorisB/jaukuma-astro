@@ -56,10 +56,11 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
 
   .navigation {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: right;
     width: 100%;
     position: relative;
+    padding-right: 2rem;
+    gap: 1rem;
     top: 0;
     max-width: 100%;
     box-sizing: border-box;
@@ -82,12 +83,14 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
     opacity: 0.8;
   }
 
-  /* Hover states for navigation arrows */
-  .nav-arrow.nav-prev:hover .nav-arrow-img {
+  /* Hover and active states for navigation arrows */
+  .nav-arrow.nav-prev:hover .nav-arrow-img,
+  .nav-arrow.nav-prev:active .nav-arrow-img {
     content: url('/images/nav-arrow-left-hover.svg');
   }
 
-  .nav-arrow.nav-next:hover .nav-arrow-img {
+  .nav-arrow.nav-next:hover .nav-arrow-img,
+  .nav-arrow.nav-next:active .nav-arrow-img {
     content: url('/images/nav-arrow-right-hover.svg');
   }
 
@@ -97,7 +100,6 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
     justify-content: left;
     align-items: center;
     align-self: stretch;
-    padding-top: 4rem;
   }
 
   .gallery-item {
