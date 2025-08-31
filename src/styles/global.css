@@ -403,6 +403,37 @@ p, span, div, a, li, button, input, textarea, select {
 .hidden-xl { display: none; }
 .hidden-2xl { display: none; }
 
+/* Sticky Header Z-Index Override - Ensure nothing appears above it */
+@media (max-width: 768px) {
+  .sticky-header-mobile {
+    z-index: 999999 !important;
+    position: fixed !important;
+  }
+  
+  /* Force all other positioned elements below sticky header on mobile */
+  .about-section,
+  .about-content, 
+  .spacer,
+  .gallery-control,
+  .navigation,
+  .gallery-container,
+  .gallery,
+  .gallery-item,
+  .image-container,
+  .parallax-content,
+  .hero-content,
+  .page-hero-content,
+  .nav-bar-mobile,
+  .mobile-menu-overlay {
+    z-index: auto !important;
+  }
+  
+  /* Specific override for mobile menu overlay */
+  .mobile-menu-overlay {
+    z-index: 99999 !important;
+  }
+}
+
 @media (min-width: 376px) {
   .hidden-xs { display: block; }
   .visible-xs { display: none; }

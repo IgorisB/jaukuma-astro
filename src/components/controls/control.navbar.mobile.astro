@@ -519,16 +519,36 @@ const currentLang = getLangFromUrl(Astro.url);
         // Toggle mobile menu
         function toggleMobileMenu() {
             if (mobileMenuOverlay) {
-                mobileMenuOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+                const isOpening = !mobileMenuOverlay.classList.contains('active');
                 
-                // Prevent body scroll on mobile when menu is open
-                if (mobileMenuOverlay.classList.contains('active')) {
+                if (isOpening) {
+                    // Store current scroll position before opening menu
+                    const scrollY = window.scrollY;
+                    document.body.dataset.scrollY = scrollY.toString();
+                    
+                    // Open menu and prevent body scroll
+                    mobileMenuOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                     document.body.style.position = 'fixed';
+                    document.body.style.top = `-${scrollY}px`;
                     document.body.style.width = '100%';
                 } else {
+                    // Close menu and restore scroll position
+                    const scrollY = document.body.dataset.scrollY;
+                    
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
                     document.body.style.position = '';
+                    document.body.style.top = '';
                     document.body.style.width = '';
+                    
+                    // Restore scroll position without triggering scroll events
+                    if (scrollY) {
+                        requestAnimationFrame(() => {
+                            window.scrollTo(0, parseInt(scrollY));
+                            delete document.body.dataset.scrollY;
+                        });
+                    }
                 }
             }
         }

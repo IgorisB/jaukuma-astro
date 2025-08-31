@@ -1,0 +1,357 @@
+---
+import { useTranslations } from '../../lib/utils';
+import { CONTACT } from '../../lib/constants';
+import { getLangFromUrl, getLocalePath } from '../../lib/utils';
+
+const lang = Astro.props.locale || getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<!-- Sticky Mobile Header -->
+<header class="sticky-header-mobile" id="stickyHeaderMobile">
+    <div class="sticky-header-container">
+        <!-- Menu Button -->
+        <button class="sticky-menu-toggle" aria-label={t('nav.menu')} id="stickyMenuToggle">
+            <div class="sticky-hamburger">
+                <span class="sticky-hamburger-line"></span>
+                <span class="sticky-hamburger-line"></span>
+                <span class="sticky-hamburger-line"></span>
+            </div>
+        </button>
+
+        <!-- Logo -->
+        <a href={getLocalePath(lang, '/')} class="sticky-logo">
+            <img src="/images/jaukuma-logo-mobile.svg" alt={t('nav.logo.alt') || 'Jaukuma'} class="sticky-logo-image" />
+        </a>
+
+        <!-- Phone Icon -->
+        <a href={`tel:${CONTACT.PHONE}`} class="sticky-phone-link" aria-label={t('nav.phone') || 'Call us'}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="sticky-phone-icon">
+                <path d="M18.308 14.213l-3.539-1.772c-.297-.148-.66-.056-.86.217l-1.16 1.585c-1.803-.804-3.272-2.273-4.076-4.076l1.585-1.16c.273-.2.365-.563.217-.86L8.703 4.608c-.161-.321-.54-.449-.86-.292L4.304 5.77c-.304.149-.489.459-.489.79 0 8.284 6.716 15 15 15 .331 0 .641-.185.79-.489l1.454-3.539c.157-.32.029-.699-.292-.86z" fill="currentColor"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<style>
+    /* Sticky Mobile Header */
+    .sticky-header-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999999; /* Ensure it's above all other elements */
+        background: #323E48;
+        border-radius: 0 0 30px 30px;
+        padding: 24px;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        will-change: transform;
+        /* Only show on mobile */
+        display: none;
+        box-shadow: 0 4px 20px rgba(50, 62, 72, 0.3);
+        /* Force new stacking context */
+        isolation: isolate;
+        /* Ensure it's above transformed elements */
+        transform-style: preserve-3d;
+    }
+
+    .sticky-header-mobile.visible {
+        transform: translateY(0);
+    }
+
+    /* Hide sticky header when mobile menu is open */
+    .sticky-header-mobile.menu-open {
+        transform: translateY(-100%) !important;
+    }
+
+    .sticky-header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Menu Button */
+    .sticky-menu-toggle {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: auto;
+        transition: opacity 0.3s ease;
+    }
+
+    .sticky-menu-toggle:hover {
+        opacity: 0.8;
+    }
+
+    .sticky-hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .sticky-hamburger-line {
+        width: 100%;
+        height: 3px;
+        background-color: #FFFFFF;
+        border-radius: 1px;
+        transition: all 0.3s ease;
+        transform: translate3d(0, 0, 0); /* Hardware acceleration */
+    }
+
+    .sticky-menu-toggle:hover .sticky-hamburger-line {
+        background-color: #D6D2C4;
+    }
+
+    /* Logo */
+    .sticky-logo {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .sticky-logo:hover {
+        opacity: 0.9;
+    }
+
+    .sticky-logo-image {
+        height: 53.23px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* Phone Icon */
+    .sticky-phone-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+        color: #FFFFFF;
+    }
+
+    .sticky-phone-link:hover {
+        opacity: 0.8;
+        color: #D6D2C4;
+    }
+
+    .sticky-phone-icon {
+        width: 19.89px;
+        height: 19.93px;
+    }
+
+    /* Mobile Only */
+    @media (max-width: 768px) {
+        .sticky-header-mobile {
+            display: block;
+        }
+    }
+
+    /* Performance optimizations */
+    @supports (transform: translate3d(0, 0, 0)) {
+        .sticky-header-mobile {
+            transform: translate3d(0, -100%, 0);
+        }
+        
+        .sticky-header-mobile.visible {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    /* Ensure sticky header is always on top */
+    .sticky-header-mobile {
+        z-index: 999999 !important;
+        position: fixed !important;
+    }
+    
+    /* Mobile-specific overrides for problematic elements */
+    @media (max-width: 768px) {
+        .sticky-header-mobile {
+            z-index: 2147483647 !important; /* Maximum z-index value */
+        }
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+        .sticky-header-mobile {
+            transition: none;
+        }
+        
+        .sticky-hamburger-line {
+            transition: none;
+        }
+    }
+
+    /* Smaller mobile screens */
+    @media (max-width: 640px) {
+        .sticky-header-mobile {
+            padding: 16px 20px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .sticky-logo-image {
+            height: 40px;
+        }
+        
+        .sticky-menu-toggle {
+            width: 20px;
+        }
+        
+        .sticky-hamburger {
+            gap: 4px;
+        }
+        
+        .sticky-hamburger-line {
+            height: 2px;
+        }
+        
+        .sticky-phone-icon {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    /* Very small screens */
+    @media (max-width: 480px) {
+        .sticky-header-mobile {
+            padding: 12px 16px;
+            border-radius: 0 0 16px 16px;
+        }
+        
+        .sticky-logo-image {
+            height: 36px;
+        }
+    }
+
+    /* Landscape mobile orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+        .sticky-header-mobile {
+            padding: 12px 20px;
+        }
+        
+        .sticky-logo-image {
+            height: 36px;
+        }
+    }
+</style>
+
+<script>
+    // Sticky header scroll behavior
+    document.addEventListener('DOMContentLoaded', function() {
+        const stickyHeader = document.getElementById('stickyHeaderMobile');
+        const stickyMenuToggle = document.getElementById('stickyMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        
+        // Check if we're on mobile
+        const isMobile = () => window.innerWidth <= 768;
+        
+        if (!stickyHeader || !isMobile()) {
+            return;
+        }
+
+        // Alternative scroll-based approach for better reliability
+        let lastScrollY = window.scrollY;
+        let isVisible = false;
+        
+        function handleScroll() {
+            if (!stickyHeader) return;
+            
+            const currentScrollY = window.scrollY;
+            
+            // Show header when scrolling down past 100px
+            if (currentScrollY > 100 && !isVisible) {
+                stickyHeader.classList.add('visible');
+                isVisible = true;
+            } 
+            // Hide header when scrolling back up to top (within 50px)
+            else if (currentScrollY < 50 && isVisible) {
+                stickyHeader.classList.remove('visible');
+                isVisible = false;
+            }
+            
+            lastScrollY = currentScrollY;
+        }
+        
+        // Throttle scroll events for better performance
+        let scrollTimeout: number | undefined;
+        function throttledScroll() {
+            if (!scrollTimeout) {
+                scrollTimeout = window.setTimeout(() => {
+                    handleScroll();
+                    scrollTimeout = undefined;
+                }, 16); // ~60fps
+            }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', throttledScroll, { passive: true });
+        
+        // Initial check
+        handleScroll();
+
+        // Connect sticky menu button to existing mobile menu
+        if (stickyMenuToggle) {
+            stickyMenuToggle.addEventListener('click', function() {
+                // Trigger the existing mobile menu toggle
+                const existingMenuToggle = document.getElementById('menuToggle');
+                if (existingMenuToggle) {
+                    existingMenuToggle.click();
+                }
+            });
+        }
+
+        // Monitor mobile menu state to hide/show sticky header
+        if (mobileMenuOverlay) {
+            // Use MutationObserver to watch for class changes on mobile menu
+            const menuObserver = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (mobileMenuOverlay.classList.contains('active')) {
+                            stickyHeader.classList.add('menu-open');
+                        } else {
+                            stickyHeader.classList.remove('menu-open');
+                        }
+                    }
+                });
+            });
+            
+            menuObserver.observe(mobileMenuOverlay, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        } else {
+            // Mobile menu overlay not found - continue without menu integration
+        }
+
+        // Cleanup scroll listener on page unload
+        window.addEventListener('beforeunload', function() {
+            window.removeEventListener('scroll', throttledScroll);
+        });
+
+        // Handle resize events
+        window.addEventListener('resize', function() {
+            if (!isMobile()) {
+                stickyHeader.classList.remove('visible');
+                isVisible = false;
+                window.removeEventListener('scroll', throttledScroll);
+            } else {
+                window.addEventListener('scroll', throttledScroll, { passive: true });
+                handleScroll();
+            }
+        });
+    });
+</script>

@@ -1,6 +1,7 @@
 ---
 import ControlNavbarDesktop from '../controls/control.navbar.desktop.astro';
 import ControlNavbarMobile from '../controls/control.navbar.mobile.astro';
+import ControlStickyHeaderMobile from '../controls/control.sticky-header.mobile.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -15,6 +16,9 @@ const t = useTranslations(lang);
     <!-- Navigation Bar -->
     <ControlNavbarDesktop locale={lang} />
     <ControlNavbarMobile locale={lang} />
+    
+    <!-- Sticky Mobile Header -->
+    <ControlStickyHeaderMobile locale={lang} />
     
     <!-- Hero Content -->
     <div class="hero-content">
