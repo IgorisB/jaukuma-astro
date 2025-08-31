@@ -78,8 +78,8 @@ export { COLORS, CSS_COLOR_VARS } from './colors.js';
 
 // Social media URLs
 export const SOCIAL_MEDIA = {
-    INSTAGRAM: 'https://instagram.com/jaukuma',
-    FACEBOOK: 'https://facebook.com/jaukuma',
+    INSTAGRAM: 'https://www.instagram.com/jaukuma',
+    FACEBOOK: 'https://www.facebook.com/studija.jaukuma',
 } as const;
 
 // Contact information

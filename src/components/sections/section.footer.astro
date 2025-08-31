@@ -1,5 +1,5 @@
 ---
-import { useTranslations, getLangFromUrl } from '../../lib/utils';
+import { useTranslations, getLangFromUrl, getLocalePath } from '../../lib/utils';
 import { SOCIAL_MEDIA, CONTACT } from '../../lib/constants';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -8,7 +8,9 @@ const t = useTranslations(lang);
 <footer class="footer container">
   <div class="footer-menu">
     <div class="hidden-lg">
-      <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" width="174" />
+      <a href={getLocalePath(lang, '/')} class="footer-logo-link">
+        <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" width="174" />
+      </a>
     </div>
     
     <div class="footer-services-submenu">
@@ -83,6 +85,17 @@ const t = useTranslations(lang);
     width: 100%;
     padding: 0 0 1rem 0;
     flex-wrap: wrap;
+  }
+
+  /* Footer Logo Link */
+  .footer-logo-link {
+    display: inline-block;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+  }
+
+  .footer-logo-link:hover {
+    opacity: 0.9;
   }
 
   /* Services Submenu */
