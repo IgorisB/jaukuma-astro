@@ -25,7 +25,7 @@ const t = useTranslations(lang);
         <p class="main-title color-white" set:html={t('section.hero.slogan')}></p>
         <h1 class="hidden">{t('section.hero.title')}</h1>
         <p class="description color-white" set:html={t('section.hero.description')}></p>
-        <a href="/services" class="button-primary-light">
+        <a href="#services" class="button-primary-light">
           {t('section.hero.button')}
         </a>
     </div>
@@ -65,12 +65,34 @@ const t = useTranslations(lang);
     }
   }
   
-  // Initialize smooth scroll for down button
+  // Initialize smooth scroll for all anchor links
   function initSmoothScroll() {
+    // Handle scroll down button
     const scrollDownButton = document.querySelector('.scroll-down');
     
     if (scrollDownButton) {
       scrollDownButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const offsetTop = targetElement.offsetTop;
+          const headerOffset = 80; // Account for sticky header
+          
+          window.scrollTo({
+            top: offsetTop - headerOffset,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+    
+    // Handle hero button
+    const heroButton = document.querySelector('.hero-content .button-primary-light');
+    
+    if (heroButton) {
+      heroButton.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);

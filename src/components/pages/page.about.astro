@@ -1,18 +1,15 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import { useTranslations, getLangFromUrl } from '../../lib/utils';
 import SectionPageHero from '../sections/section.page-hero.astro';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title={t('page.contact.title')} description={t('page.contact.description')} locale={lang}>
-    <main class="container">
-      <SectionPageHero 
-        backgroundImage="/images/aboutus-hero-background.jpg"
-        title={t('section.aboutus-hero.title')}
-        description={t('section.aboutus-hero.description')}
-        locale={lang} 
-      />
-    </main>
-  </Layout>
+<main class="container">
+  <SectionPageHero 
+    backgroundImage="/images/aboutus-hero-background.jpg"
+    title={t('section.aboutus-hero.title')}
+    description={t('section.aboutus-hero.description')}
+    locale={lang} 
+  />
+</main>

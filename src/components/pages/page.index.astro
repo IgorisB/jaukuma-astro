@@ -1,5 +1,4 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../lib/utils';
 import HeroSection from '../sections/section.hero.astro';
 import AboutSection from '../sections/section.about.astro';
@@ -9,12 +8,11 @@ import ContactSection from '../sections/section.contact.astro';
 const lang = Astro.props.locale 
 const t = useTranslations(lang);
 ---
-<Layout title={t('page.index.title')} locale={lang}>
-    <main class="container">
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection locale={lang} />
-        <WhySection locale={lang} />
-        <ContactSection locale={lang} />
-    </main>
-</Layout>
+
+<main class="container">
+    <HeroSection />
+    <AboutSection />
+    <ServicesSection locale={lang} />
+    <WhySection locale={lang} />
+    <ContactSection locale={lang} />
+</main>
