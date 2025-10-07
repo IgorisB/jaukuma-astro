@@ -8,7 +8,7 @@
     "binding": "ASSETS"
   },
   "vars": {
-    "PROD_SITE": "https://www.jaukuma.lt"
+    "PROD_SITE": "www.jaukuma.lt"
   },
   "observability": {
     "enabled": true

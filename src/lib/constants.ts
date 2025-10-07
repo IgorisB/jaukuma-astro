@@ -1,7 +1,8 @@
 // Global application constants
 
 // I18n configuration
-export const hostname = process.env.PROD_SITE || 'test.com';
+// Extract hostname without protocol if present
+const rawHostname = process.env.PROD_SITE || 'test.com';
 
 // Allow override of languages via environment variable (comma-separated codes)
 const envLangs = process.env.LANGUAGES;
