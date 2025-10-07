@@ -7,22 +7,22 @@ const t = useTranslations(lang);
 // Gallery data
 const galleryItems = [
   {
-    imageRef: "/images/placeholder-1.svg",
+    imageRef: "/images/AboutUs-1.jpg",
     imageTitle: "Lorem Ipsum",
     imageDescription: "All the Lorem Ipsum generators on the Internet"
   },
   {
-    imageRef: "/images/placeholder-2.svg",
+    imageRef: "/images/AboutUs-2.jpg",
     imageTitle: "Lorem Ipsum",
     imageDescription: "All the Lorem Ipsum generators on the Internet"
   },
   {
-    imageRef: "/images/placeholder-3.svg",
+    imageRef: "/images/AboutUs-3.jpg",
     imageTitle: "Lorem Ipsum",
     imageDescription: "All the Lorem Ipsum generators on the Internet"
   },
   {
-    imageRef: "/images/placeholder-4.svg",
+    imageRef: "/images/AboutUs-4.jpg",
     imageTitle: "Lorem Ipsum",
     imageDescription: "All the Lorem Ipsum generators on the Internet"
   }
@@ -45,7 +45,7 @@ const galleryItems = [
         <p set:html={t('section.about.philosophy')}></p>
         <p set:html={t('section.about.promise')}></p>
       </div>
-      <a href="/about" class="button-primary-dark">{t('section.about.button')}</a>
+      <a href="/about" class="button-primary-dark hidden">{t('section.about.button')}</a>
     </div>
 
     <!-- Image gallery slider -->
@@ -122,6 +122,9 @@ const galleryItems = [
     margin: 0;
   }
 
+  .hidden {
+    display: none;
+  }
 
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {

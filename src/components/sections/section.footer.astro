@@ -16,11 +16,11 @@ const t = useTranslations(lang);
     <div class="footer-services-submenu">
       <h3 class="submenu-title">{t('section.footer.services.title')}</h3>
       <ul class="submenu-list">
-        <li><a href="#bouquets">{t('section.footer.services.bouquets')}</a></li>
-        <li><a href="#decoration">{t('section.footer.services.decoration')}</a></li>
-        <li><a href="#plants">{t('section.footer.services.plants')}</a></li>
-        <li><a href="#events">{t('section.footer.services.events')}</a></li>
-        <li><a href="#subscription">{t('section.footer.services.subscription')}</a></li>
+        <li><span>{t('section.footer.services.bouquets')}</span></li>
+        <li><span>{t('section.footer.services.decoration')}</span></li>
+        <li><span>{t('section.footer.services.plants')}</span></li>
+        <li><span>{t('section.footer.services.events')}</span></li>
+        <li><span>{t('section.footer.services.subscription')}</span></li>
       </ul>
     </div>
     
@@ -29,19 +29,20 @@ const t = useTranslations(lang);
         <h3 class="submenu-title">{t('section.footer.contact.title')}</h3>
                  <ul class="submenu-list">
            <li><a href={`tel:${CONTACT.PHONE}`}>{t('section.footer.contact.phone')}</a></li>
-           <li>{t('section.footer.contact.address1')}</li>
-           <li>{t('section.footer.contact.address2')}</li>
+           <li><a href="https://maps.app.goo.gl/zSE68o8uiVocDfRA7" target="_blank" rel="noopener noreferrer">{t('section.footer.contact.address1')}</a></li>
+           <li><a href="https://maps.app.goo.gl/uRcTPd2rH8BM4sMR6" target="_blank" rel="noopener noreferrer">{t('section.footer.contact.address2')}</a></li>
+           <li><a href="https://maps.app.goo.gl/fVB1y5DGnxBmvDbH9" target="_blank" rel="noopener noreferrer">{t('section.footer.contact.address3')}</a></li>
          </ul>
       </div>
-      
+   <!-- temporary disabled
       <div class="company-info">
         <h3 class="submenu-title">{t('section.footer.company.title')}</h3>
         <ul class="submenu-list">
-          <li><a href="/about">{t('section.footer.company.about')}</a></li>
+          <li><a href={getLocalePath(lang, '/#about')}>{t('section.footer.company.about')}</a></li>
           <li><a href="/privacy">{t('section.footer.company.privacy')}</a></li>
         </ul>
       </div>
-    </div>
+    </div> -->   
   </div>
 
   
@@ -193,6 +194,13 @@ const t = useTranslations(lang);
 
   .submenu-list a:hover {
     opacity: 0.8;
+  }
+
+  .submenu-list span {
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.26;
   }
 
   /* Copyright and Social Icons (Always Visible) */

@@ -4,7 +4,10 @@ import PageAboutBody from '../components/pages/page.about.astro';
 import { useTranslationsFromUrl, getLangFromUrl } from '../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
+const title = t('page.about.title');
+const description = t('page.about.description');
 ---
 
-<PageAboutBody locale={lang} />
-
+<Layout title={title} description={description} locale={lang}>
+  <PageAboutBody locale={lang} />
+</Layout>

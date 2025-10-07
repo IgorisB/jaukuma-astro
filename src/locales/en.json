@@ -19,6 +19,7 @@
   "section.footer.contact.phone": "+370 668 21177",
   "section.footer.contact.address1": "Bitėnų g. 1C-81, Pilaitė",
   "section.footer.contact.address2": "PC Šilas, Bajorai",
+  "section.footer.contact.address3": "PC Šilas, Zujūnai",
   "section.footer.company.title": "Jaukuma",
   "section.footer.company.about": "About us",
   "section.footer.company.privacy": "Privacy policy",
@@ -29,10 +30,10 @@
   "section.hero.button": "Explore Portfolio",
   
   "section.about.title": "About <em>us</em>",
-  "section.about.mission": "Our <strong>mission</strong> – to create handcrafted flower compositions that not only decorate important events but also fill them with pleasant emotions.",
-  "section.about.philosophy": "Our <strong>philosophy</strong> – we believe that true beauty lies in attention to detail. Therefore, every bouquet or composition at \"<em>Jaukuma</em>\" is carefully thought out, meeting the client's wishes and the spirit of the celebration.",
-  "section.about.promise": "Our <strong>promise</strong> – to always use the <strong>freshest</strong>, <strong>highest quality</strong> flowers and create unique designs that reflect both the client's individuality and \"<em>Jaukuma's</em>\" creative style.",
-  "section.about.button": "Learn more about us",
+  "section.about.mission": "In the Lithuanian language, <em>jaukuma</em> means a feeling of warmth, comfort and simple joy. This emotion is the heart of our activity.",
+  "section.about.philosophy": "We believe that flowers are not just products, but also personal expressions, mood creators and a source of happiness.",
+  "section.about.promise": "Our <strong>mission</strong> – to offer luxury that carries jaukuma: elegant, modern flower experiences that always remain warm, personal and accessible.",
+  "section.about.button": "More about us",
   
   "section.services.title": "Florist <em>services</em>",
   "section.services.bouquets.title": "Flower bouquets and compositions",
@@ -48,7 +49,7 @@
   "section.services.button": "Services",
   
   "section.why.title": "Why <em>Jaukuma</em>?",
-  "section.why.description": "",
+  "section.why.description": "Not just flowers – we create emotions, atmosphere and trust.",
   "section.why.stats.experience": "10+",
   "section.why.stats.experience.label": "years of experience",
   "section.why.stats.clients": "20",
@@ -57,7 +58,7 @@
   "section.why.stats.recommendation.label": "clients recommend us to others",
   
   "section.contact.title": "Contact us",
-  "section.contact.description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't.",
+  "section.contact.description": "Have an idea or upcoming event? Write to us - we'll suggest several options and budgets within 1-2 business days.",
   "section.contact.button": "CONTACT US",
   
   "section.contact-hero.title": "Contact us",

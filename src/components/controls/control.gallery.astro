@@ -35,8 +35,8 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
           <div class="image-container">
             <img src={item.imageRef} alt={item.imageTitle} class="gallery-image" />
           </div>
-          <h3 class="image-title">{item.imageTitle}</h3>
-          <p class="image-description">{item.imageDescription}</p>
+          <h3 class="image-title hidden">{item.imageTitle}</h3>
+          <p class="image-description hidden">{item.imageDescription}</p>
         </div>
       ))}
     </div>
@@ -234,7 +234,9 @@ const { items, showNavigation = true, class: className = '' } = Astro.props;
     margin: 0;
   }
 
-
+  .hidden {
+    display: none;
+  }
 
   /* Tablet Layout */
   @media (min-width: 768px) and (max-width: 1023px) {

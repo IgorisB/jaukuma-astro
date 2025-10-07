@@ -9,7 +9,7 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<section class="contact-section">
+<section id="contact" class="contact-section">
   <div class="contact-section__background">
     <img 
       src="/images/contact-background.jpg" 
@@ -23,7 +23,7 @@ const t = useTranslations(locale);
     <div class="contact-section__content">
       <h2 class="contact-section__title" set:html={t('section.contact.title')}></h2>
       <p class="contact-section__description">{t('section.contact.description')}</p>
-      <a href="/contact" class="button-primary-light">{t('section.contact.button')}</a>
+      <a href="mailto:studija@jaukuma.lt" class="button-primary-light">{t('section.contact.button')}</a>
     </div>
   </div>
 </section>

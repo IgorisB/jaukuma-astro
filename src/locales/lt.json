@@ -19,6 +19,7 @@
   "section.footer.contact.phone": "+370 668 21177",
   "section.footer.contact.address1": "Bitėnų g. 1C-81, Pilaitė",
   "section.footer.contact.address2": "PC Šilas, Bajorai",
+  "section.footer.contact.address3": "PC Šilas, Zujūnai",
   "section.footer.company.title": "Jaukuma",
   "section.footer.company.about": "Apie mus",
   "section.footer.company.privacy": "Privatumo politika",
@@ -26,12 +27,12 @@
   "section.hero.slogan": "Švelni <em>prabanga</em>, gimstanti iš meilės <em>gėlėms</em>",
   "section.hero.title": "Jaukuma - pradinis puslapis",
   "section.hero.description": "Profesionali floristika renginiams, biurams ir namams – patikimas partneris ypatingoms progoms.",
-  "section.hero.button": "Pažinkite mūsų kūrybą",
+  "section.hero.button": "Mūsų paslaugos",
   
   "section.about.title": "Apie <em>mus</em>",
-  "section.about.mission": "Mūsų <strong>misija</strong> – kurti rankų darbo gėlių kompozicijas, kurios ne tik puošia svarbius įvykius, bet ir pripildo juos malonių emocijų.",
-  "section.about.philosophy": "Mūsų <strong>filosofija</strong> – tikime, kad tikrasis grožis slypi dėmesyje detalėms. Todėl kiekviena puokštė ar kompozicija \"<em>Jaukumoje</em>\" yra kruopščiai apgalvota, atitinkanti kliento norus ir šventės dvasią.",
-  "section.about.promise": "Mūsų <strong>pažadas</strong> – visada naudoti <strong>šviežiausias</strong>, <strong>aukščiausios kokybės</strong> gėles ir kurti unikalius dizainus, atspindinčius tiek kliento individualumą, tiek \"<em>Jaukumos</em>\" kūrybinį stilių.",
+  "section.about.mission": "Lietuvių kalboje <em>jaukuma</em> reiškia šilumos, komforto ir paprasto džiaugsmo jausmą. Būtent ši emocija yra mūsų veiklos šerdis.",
+  "section.about.philosophy": "Tikime, kad gėlės – tai ne prekė, bet asmeninės išraiškos, nuotaikos kūrėjos bei laimės šaltinis.",
+  "section.about.promise": "Mūsų <strong>misija</strong> – pasiūlyti prabangą, kuri neša jaukumą: elegantiškas, modernias gėlių patirtis, kurios visada išlieka šiltos, asmeniškos ir prieinamos.",
   "section.about.button": "Daugiau apie mus",
   
   "section.services.title": "Floristo <em>paslaugos</em>",
@@ -57,7 +58,7 @@
   "section.why.stats.recommendation.label": "klientų mus rekomenduoja kitiems",
   
   "section.contact.title": "Susisiekime",
-  "section.contact.description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't.",
+  "section.contact.description": "Turite idėją ar artėjančią šventę? Parašykite – pasiūlysime kelis variantus ir biudžetus per 1–2 darbo dienas.",
   "section.contact.button": "SUSISIEKIME",
   
   "section.contact-hero.title": "Kontaktai",

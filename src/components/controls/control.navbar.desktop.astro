@@ -16,36 +16,9 @@ const t = useTranslations(lang);
 
         <!-- Navigation Menu -->
         <div class="nav-menu">
-            <div class="nav-item dropdown">
-                <span class="nav-link">{t('nav.services')}</span>
-                <svg class="dropdown-icon" width="16" height="8" viewBox="0 0 16 8" fill="none">
-                    <path d="M1 1L8 7L15 1" stroke="white" stroke-width="0.833333" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <!-- Submenu -->
-                <div class="submenu">
-                    <div class="submenu-item">
-                        <a href={getLocalePath(lang, PAGES.SERVICES.BOUQUETS)} class="submenu-link">{t('nav.services.bouquets')}</a>
-                        <div class="submenu-separator"></div>
-                    </div>
-                    <div class="submenu-item">
-                        <a href={getLocalePath(lang, PAGES.SERVICES.DECORATION)} class="submenu-link">{t('nav.services.decoration')}</a>
-                        <div class="submenu-separator"></div>
-                    </div>
-                    <div class="submenu-item">
-                        <a href={getLocalePath(lang, PAGES.SERVICES.PLANTS)} class="submenu-link">{t('nav.services.plants')}</a>
-                        <div class="submenu-separator"></div>
-                    </div>
-                    <div class="submenu-item">
-                        <a href={getLocalePath(lang, PAGES.SERVICES.EVENTS)} class="submenu-link">{t('nav.services.events')}</a>
-                        <div class="submenu-separator"></div>
-                    </div>
-                    <div class="submenu-item">
-                        <a href={getLocalePath(lang, PAGES.SERVICES.SUBSCRIPTION)} class="submenu-link">{t('nav.services.subscription')}</a>
-                    </div>
-                </div>
-            </div>
-            <a href={getLocalePath(lang, PAGES.ABOUT)} class="nav-link">{t('nav.about')}</a>
-            <a href={getLocalePath(lang, PAGES.CONTACT)} class="nav-link">{t('nav.contact')}</a>
+            <a href={getLocalePath(lang, '/#services')} class="nav-link">{t('nav.services')}</a>
+            <a href={getLocalePath(lang, '/#about')} class="nav-link">{t('nav.about')}</a>
+            <a href={getLocalePath(lang, '/#contact')} class="nav-link">{t('nav.contact')}</a>
             
             <!-- Language Switcher -->
             <div class="language-switcher">

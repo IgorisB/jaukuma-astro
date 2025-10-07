@@ -1,9 +1,14 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import PageIndexBody from '../../components/pages/page.index.astro';
-import { useTranslationsFromUrl, getLangFromUrl, getStaticPaths } from '../../lib/utils';
+import { useTranslationsFromUrl, getStaticPaths, getLangFromUrl } from '../../lib/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 export { getStaticPaths };
+const title = t('page.index.title');
+const description = t('page.index.description');
 ---
 
-<PageIndexBody locale={lang} />
+<Layout title={title} description={description} locale={lang}>
+  <PageIndexBody locale={lang} />
+</Layout>

@@ -1,9 +1,15 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import PageContact from '../../components/pages/page.contact.astro';
 import { getLangFromUrl, getStaticPaths } from '../../lib/utils';
-
 const lang = getLangFromUrl(Astro.url);
 export { getStaticPaths };
+const { useTranslations } = await import('../../lib/utils.ts');
+const t = useTranslations(lang);
+const title = t('page.contact.title');
+const description = t('page.contact.description');
 ---
 
-<PageContact locale={lang} />
+<Layout title={title} description={description} locale={lang}>
+  <PageContact locale={lang} />
+</Layout>

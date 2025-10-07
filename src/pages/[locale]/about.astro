@@ -5,6 +5,10 @@ import { useTranslationsFromUrl, getStaticPaths, getLangFromUrl } from '../../li
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 export { getStaticPaths };
+const title = t('page.about.title');
+const description = t('page.about.description');
 ---
 
-<PageAboutBody locale={lang} />
+<Layout title={title} description={description} locale={lang}>
+  <PageAboutBody locale={lang} />
+</Layout>

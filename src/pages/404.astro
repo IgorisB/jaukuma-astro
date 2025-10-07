@@ -4,9 +4,11 @@ import { getLangFromUrl, useTranslations } from '../lib/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const title = "404 - Page Not Found";
+const description = t('page.404.description');
 ---
 
-<Layout title="404 - Page Not Found" locale={lang}>
+<Layout title={title} description={description} locale={lang}>
   <div class="error-page">
     <!-- 404 Content -->
     <div class="error-content">
@@ -73,7 +75,7 @@ const t = useTranslations(lang);
   }
 
   .error-description {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans Pro', serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.5;
@@ -153,4 +155,4 @@ const t = useTranslations(lang);
       max-width: 250px;
     }
   }
-</style> 
+</style>
