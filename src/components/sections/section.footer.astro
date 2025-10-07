@@ -162,11 +162,59 @@ const t = useTranslations(lang);
     .footer {
       padding: 2.5rem 3rem;
     }
+    
+    /* Adjust layout for tablets */
+    .footer-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .footer-services-submenu,
+    .footer-info-submenu {
+      align-items: center;
+      text-align: center;
+    }
+    
+    .contacts,
+    .company-info {
+      padding: 0;
+    }
   }
 
   @media (max-width: 768px) {
-    .footer-menu  {
+    /* Remove the rule that was hiding the footer menu */
+    .footer {
+      padding: 2rem 1.5rem;
+    }
+    
+    .footer-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    /* Hide services submenu on mobile */
+    .footer-services-submenu {
       display: none;
+    }
+    
+    .footer-info-submenu {
+      align-items: center;
+      text-align: center;
+    }
+    
+    .contacts,
+    .company-info {
+      padding: 0;
+    }
+    
+    .submenu-title {
+      font-size: 1.125rem;
+    }
+    
+    .submenu-list li {
+      font-size: 0.875rem;
     }
   }
 
