@@ -30,7 +30,7 @@ const t = useTranslations(lang);
             </div>
             
             <!-- Contact Button -->
-            <a href="#contact" class="button-secondary-light" data-scroll-to="contact">
+            <a href={getLocalePath(lang, '/#contact')}  class="button-secondary-light">
             {t('nav.contact.button')}
             </a>
         </div>
