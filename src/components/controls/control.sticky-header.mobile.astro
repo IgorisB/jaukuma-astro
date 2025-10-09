@@ -26,9 +26,7 @@ const t = useTranslations(lang);
 
         <!-- Phone Icon -->
         <a href={`tel:${CONTACT.PHONE}`} class="sticky-phone-link" aria-label={t('nav.phone') || 'Call us'}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="sticky-phone-icon">
-                <path d="M18.308 14.213l-3.539-1.772c-.297-.148-.66-.056-.86.217l-1.16 1.585c-1.803-.804-3.272-2.273-4.076-4.076l1.585-1.16c.273-.2.365-.563.217-.86L8.703 4.608c-.161-.321-.54-.449-.86-.292L4.304 5.77c-.304.149-.489.459-.489.79 0 8.284 6.716 15 15 15 .331 0 .641-.185.79-.489l1.454-3.539c.157-.32.029-.699-.292-.86z" fill="currentColor"/>
-            </svg>
+            <img src="/images/phone-icon.svg" alt="Phone" class="sticky-phone-icon" />
         </a>
     </div>
 </header>
@@ -41,7 +39,7 @@ const t = useTranslations(lang);
         left: 0;
         right: 0;
         z-index: 999999; /* Ensure it's above all other elements */
-        background: #323E48;
+        background: rgba(50, 62, 72, 0.95); /* #323E48 with 95% opacity */
         border-radius: 0 0 30px 30px;
         padding: 24px;
         transform: translateY(-100%);
@@ -138,20 +136,22 @@ const t = useTranslations(lang);
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 2px;
+        padding: 0.125rem; /* 2px */
         text-decoration: none;
         transition: opacity 0.3s ease;
-        color: var(--color-light);
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: auto;
     }
 
     .sticky-phone-link:hover {
         opacity: 0.8;
-        color: #D6D2C4;
     }
 
     .sticky-phone-icon {
-        width: 19.89px;
-        height: 19.93px;
+        width: 1.243125rem; /* 19.89px */
+        height: 1.245625rem; /* 19.93px */
+        filter: brightness(0) invert(1); /* Make icon white */
     }
 
     /* Mobile Only */
