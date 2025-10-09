@@ -29,7 +29,7 @@ const t = useTranslations(lang);
           {t('section.hero.button')}
         </a>
     </div>
-    <a href="#about" class="scroll-down">
+    <a href="#about-video" class="scroll-down">
       <img src="/images/down-arrow-circle.svg" alt="Scroll Down" />
     </a>
   </div>
@@ -84,6 +84,9 @@ const t = useTranslations(lang);
             top: offsetTop - headerOffset,
             behavior: 'smooth'
           });
+        } else {
+          // Fallback: try to find element by name or other means
+          console.warn('Could not find element with id:', targetId);
         }
       });
     }
@@ -126,14 +129,42 @@ const t = useTranslations(lang);
     initParallax();
     initSmoothScroll();
   });
+  
+  // Ensure scroll down button works even if there are conflicts
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('.scroll-down');
+    if (target) {
+      e.preventDefault();
+      const targetId = target.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const offsetTop = targetElement.offsetTop;
+        const headerOffset = 80; // Account for sticky header
+        
+        window.scrollTo({
+          top: offsetTop - headerOffset,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback: try standard anchor scrolling
+        console.warn('Could not find element with id:', targetId);
+        window.location.hash = targetId;
+      }
+    }
+  });
 </script>
+
+<script is:inline>
+  import '../../scripts/parallax.ts';
+</script>
+
 <style>
   .hero-section {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: var(--color-light);
     padding: 2.25rem 9rem 9rem 9rem;
     gap: 9rem;
     /* Remove background styles - now handled by parallax-background */

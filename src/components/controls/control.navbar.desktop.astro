@@ -17,7 +17,7 @@ const t = useTranslations(lang);
         <!-- Navigation Menu -->
         <div class="nav-menu">
             <a href={getLocalePath(lang, '/#services')} class="nav-link">{t('nav.services')}</a>
-            <a href={getLocalePath(lang, '/#about')} class="nav-link">{t('nav.about')}</a>
+            <a href={getLocalePath(lang, '/#about-video')} class="nav-link">{t('nav.about')}</a>
             <a href={getLocalePath(lang, '/#contact')} class="nav-link">{t('nav.contact')}</a>
             
             <!-- Language Switcher -->
@@ -30,7 +30,7 @@ const t = useTranslations(lang);
             </div>
             
             <!-- Contact Button -->
-            <a href={getLocalePath(lang, PAGES.CONTACT)} class="button-secondary-light">
+            <a href="#contact" class="button-secondary-light" data-scroll-to="contact">
             {t('nav.contact.button')}
             </a>
         </div>
@@ -56,7 +56,7 @@ const t = useTranslations(lang);
   }
 
   .logo-image {
-    height: 6rem;
+    height: 9rem; /* Increased by 50% from 6rem */
     object-fit: fill;
   }
 
@@ -85,7 +85,7 @@ const t = useTranslations(lang);
     font-size: 14px;
     line-height: 1.33;
     text-transform: uppercase;
-    color: white;
+    color: var(--color-light);
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.3s ease;
@@ -139,7 +139,7 @@ const t = useTranslations(lang);
     font-size: 0.875rem;
     line-height: 1.33;
     text-transform: uppercase;
-    color: white;
+    color: var(--color-light);
     text-decoration: none;
     padding: 0.5rem 0;
     transition: opacity 0.3s ease;

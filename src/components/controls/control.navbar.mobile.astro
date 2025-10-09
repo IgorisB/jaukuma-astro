@@ -60,8 +60,8 @@ const currentLang = getLangFromUrl(Astro.url);
                 <a href={getLocalePath(lang, '/#services')} class="menu-item-link" data-scroll-to="services">{t('nav.services')}</a>
                 
                 <!-- Regular Menu Items -->
-                <a href={getLocalePath(lang, '/#about')} class="menu-item-link" data-scroll-to="about">{t('nav.about')}</a>
-                <a href={getLocalePath(lang, '/#contact')} class="menu-item-link" data-scroll-to="contact">{t('nav.contact')}</a>
+                <a href={getLocalePath(lang, '/#about-video')} class="menu-item-link" data-scroll-to="about-video">{t('nav.about')}</a>
+                <a href="#contact" class="menu-item-link" data-scroll-to="contact">{t('nav.contact')}</a>
             </div>
 
             <!-- Menu Footer -->
@@ -75,6 +75,11 @@ const currentLang = getLangFromUrl(Astro.url);
                         <img src="/images/facebook-icon.svg" alt="Facebook" class="social-icon-image" />
                     </a>
                 </div>
+
+                <!-- Contact Button -->
+                <a href="#contact" class="button-secondary-light" data-scroll-to="contact">
+                    {t('nav.contact.button')}
+                </a>
 
                 <!-- Logo -->
                 <div class="menu-logo">
@@ -143,7 +148,7 @@ const currentLang = getLangFromUrl(Astro.url);
     }
 
     .logo-image-mobile {
-        height: 3.326875rem; /* 53.23px */
+        height: 4.9903125rem; /* Increased by 50% from 3.326875rem (79.845px) */
         width: auto;
         object-fit: contain;
     }
@@ -237,7 +242,7 @@ const currentLang = getLangFromUrl(Astro.url);
         font-size: 1.5rem; /* 24px */
         line-height: 1.333;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: var(--color-light);
         text-decoration: none;
         transition: color 0.3s ease;
     }
@@ -282,13 +287,13 @@ const currentLang = getLangFromUrl(Astro.url);
         font-size: 1.5rem; /* 24px */
         line-height: 1.333;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: var(--color-light);
         text-align: left;
     }
 
     .expand-icon {
         transition: transform 0.3s ease;
-        color: #FFFFFF;
+        color: var(--color-light);
     }
 
     .menu-item.expanded .expand-icon {
@@ -324,7 +329,7 @@ const currentLang = getLangFromUrl(Astro.url);
         font-size: 1rem; /* 16px */
         line-height: 1.333;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: var(--color-light);
         text-decoration: none;
         transition: color 0.3s ease;
     }
@@ -345,7 +350,7 @@ const currentLang = getLangFromUrl(Astro.url);
         font-size: 1.5rem; /* 24px */
         line-height: 1.333;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: var(--color-light);
         text-decoration: none;
         transition: color 0.3s ease;
     }
@@ -395,9 +400,18 @@ const currentLang = getLangFromUrl(Astro.url);
     }
 
     .menu-logo-image {
-        width: 8.3275rem; /* 133.24px */
-        height: 3.326875rem; /* 53.23px */
+        width: 12.49125rem; /* Increased by 50% from 8.3275rem (199.86px) */
+        height: 4.9903125rem; /* Increased by 50% from 3.326875rem (79.845px) */
         object-fit: contain;
+    }
+
+    /* Menu Footer Contact Button */
+    .menu-footer .button-secondary-light {
+        align-self: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        height: auto;
+        min-width: auto;
     }
 
     /* Responsive adjustments */
@@ -408,7 +422,7 @@ const currentLang = getLangFromUrl(Astro.url);
         }
 
         .logo-image-mobile {
-            height: 2.5rem;
+            height: 3.75rem; /* Increased by 50% from 2.5rem */
         }
 
         .hamburger-line {
@@ -429,8 +443,13 @@ const currentLang = getLangFromUrl(Astro.url);
         }
 
         .menu-logo-image {
-            width: 6rem;
-            height: 2.5rem;
+            width: 9rem; /* Increased by 50% from 6rem */
+            height: 3.75rem; /* Increased by 50% from 2.5rem */
+        }
+
+        .menu-footer .button-secondary-light {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
         }
     }
 
@@ -456,6 +475,11 @@ const currentLang = getLangFromUrl(Astro.url);
         .menu-item-text,
         .menu-item-link {
             font-size: 1.25rem;
+        }
+        
+        .menu-footer .button-secondary-light {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.7rem;
         }
     }
 </style>

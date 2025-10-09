@@ -47,7 +47,7 @@ const lang = Astro.props.locale || getLangFromUrl(Astro.url);
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: var(--color-light);
     padding: 2.25rem 9rem 9rem 9rem;
     gap: 9rem;
     height: 36.9375rem; /* 591px from Figma */
@@ -81,7 +81,7 @@ const lang = Astro.props.locale || getLangFromUrl(Astro.url);
     font-weight: 400;
     font-size: 5.3125rem; /* 85px from Figma */
     line-height: 1;
-    color: #FFFFFF;
+    color: var(--color-light);
     margin: 0;
     text-align: left;
   }
@@ -91,7 +91,7 @@ const lang = Astro.props.locale || getLangFromUrl(Astro.url);
     font-weight: 400;
     font-size: 0.875rem; /* 14px from Figma */
     line-height: 1.257;
-    color: #FFFFFF;
+    color: var(--color-light);
     margin: 0;
     text-align: left;
     max-width: 27.25rem; /* 436px from Figma */

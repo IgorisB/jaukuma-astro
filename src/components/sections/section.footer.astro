@@ -9,7 +9,7 @@ const t = useTranslations(lang);
   <div class="footer-menu">
     <div class="hidden-lg">
       <a href={getLocalePath(lang, '/')} class="footer-logo-link">
-        <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" width="174" />
+        <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" width="261" />
       </a>
     </div>
     
@@ -71,8 +71,8 @@ const t = useTranslations(lang);
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background-color: var(--color-aux-tan);
-    color: white;
+    background-color: var(--color-main-primary-light);
+    color: var(--color-light);
     width: 100%;
     padding: 2.5rem 9rem;
   }
@@ -127,7 +127,7 @@ const t = useTranslations(lang);
     font-weight: 400;
     line-height: 1.33;
     margin: 0;
-    color: white;
+    color: var(--color-light);
   }
 
   @media (min-width: 1536px) {
@@ -231,11 +231,11 @@ const t = useTranslations(lang);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     line-height: 1.26;
-    color: white;
+    color: var(--color-light);
   }
 
   .submenu-list a {
-    color: white;
+    color: var(--color-light);
     text-decoration: none;
     transition: opacity 0.3s ease;
   }
@@ -245,7 +245,7 @@ const t = useTranslations(lang);
   }
 
   .submenu-list span {
-    color: white;
+    color: var(--color-light);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     line-height: 1.26;
@@ -295,6 +295,6 @@ const t = useTranslations(lang);
     letter-spacing: 0.01em;
     text-align: center;
     margin: 0;
-    color: white;
+    color: var(--color-light);
   }
 </style>

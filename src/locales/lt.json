@@ -24,13 +24,13 @@
   "section.footer.company.about": "Apie mus",
   "section.footer.company.privacy": "Privatumo politika",
 
-  "section.hero.slogan": "Švelni <em>prabanga</em>, gimstanti iš meilės <em>gėlėms</em>",
+  "section.hero.slogan": "Švelni prabanga, gimstanti iš meilės gėlėms",
   "section.hero.title": "Jaukuma - pradinis puslapis",
   "section.hero.description": "Profesionali floristika renginiams, biurams ir namams – patikimas partneris ypatingoms progoms.",
   "section.hero.button": "Mūsų paslaugos",
   
   "section.about.title": "Apie <em>mus</em>",
-  "section.about.mission": "Lietuvių kalboje <em>jaukuma</em> reiškia šilumos, komforto ir paprasto džiaugsmo jausmą. Būtent ši emocija yra mūsų veiklos šerdis.",
+  "section.about.mission": "Lietuvių kalboje <strong>jaukuma</strong> reiškia šilumos, komforto ir paprasto džiaugsmo jausmą. Būtent ši emocija yra mūsų veiklos šerdis.",
   "section.about.philosophy": "Tikime, kad gėlės – tai ne prekė, bet asmeninės išraiškos, nuotaikos kūrėjos bei laimės šaltinis.",
   "section.about.promise": "Mūsų <strong>misija</strong> – pasiūlyti prabangą, kuri neša jaukumą: elegantiškas, modernias gėlių patirtis, kurios visada išlieka šiltos, asmeniškos ir prieinamos.",
   "section.about.button": "Daugiau apie mus",
@@ -45,10 +45,10 @@
   "section.services.events.title": "Renginių ir švenčių dekoravimas",
   "section.services.events.description": "Pilnas floristinis dizainas vestuvėms, įmonių renginiams ir ypatingoms šventėms.",
   "section.services.subscription.title": "Gėlių prenumerata",
-  "section.services.subscription.description": "Reguliarus gėlių pristatymo servisas namams ir verslui, atnešantis šviežius žiedus pagal jums tinkantį grafiką.",
+  "section.services.subscription.description": "Reguliarus gėlių pristatymo paslauga namams ir verslui, atnešantis šviežius žiedus pagal jums tinkantį grafiką.",
   "section.services.button": "Paslaugos",
   
-  "section.why.title": "Kodėl <em>Jaukuma</em>?",
+  "section.why.title": "Kodėl Jaukuma",
   "section.why.description": "Ne tik gėlės – mes kuriame emocijas, atmosferą ir pasitikėjimą.",
   "section.why.stats.experience": "10+",
   "section.why.stats.experience.label": "metų patirtis",

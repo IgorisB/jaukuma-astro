@@ -74,9 +74,6 @@ export const PAGE_SIZES = {
     min: BREAKPOINTS.xs,
 } as const;
 
-// Export color constants
-export { COLORS, CSS_COLOR_VARS } from './colors.js';
-
 // Social media URLs
 export const SOCIAL_MEDIA = {
     INSTAGRAM: 'https://www.instagram.com/jaukuma',

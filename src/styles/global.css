@@ -2,19 +2,26 @@
 :root {
   /* Main colors */
   --color-main-primary: #333F48;    /* Dark blue-gray */
+  --color-main-primary-light: #4A5A66; /* Lighter shade of primary */
+  --color-main-primary-dark: #1A2229;  /* Darker shade of primary */
   --color-main-secondary: #D6D2C4;  /* Light beige */
-  
+  --color-main-secondary-light: #EBE9E0; /* Lighter shade of secondary */
+  --color-main-secondary-dark: #BFB9A9;  /* Darker shade of secondary */
+
   /* Additional colors */
   --color-additional-red: #A45248;   /* Rust red */
   --color-additional-blue: #166886;  /* Steel blue */
   --color-additional-green: #6A7866; /* Sage green */
-  
+
   /* Auxiliary colors */
   --color-aux-cream: #EFDBB2;        /* Light cream */
   --color-aux-peach: #EACBBB;        /* Peach */
   --color-aux-mint: #BFCEC2;         /* Mint green */
   --color-aux-sky: #B9C9CC;          /* Sky blue */
   --color-aux-tan: #BAA58D;          /* Tan */
+
+  /* Lighter grade of secondary color */
+  --color-light: #F3F1E8; /* Lighter shade of #D6D2C4 */
 
   /* Breakpoint configuration */
   --breakpoint-xs: 376px;
@@ -166,7 +173,7 @@ p, span, div, a, li, button, input, textarea, select {
   padding: 0.9375rem 3.75rem;
   height: 3.375rem;
   background:  var(--color-main-primary);
-  color: #FFFFFF;
+  color: var(--color-light);
   text-decoration: none;
   font-family: 'Playfair Display', serif;
   font-weight: 600;
@@ -232,7 +239,7 @@ p, span, div, a, li, button, input, textarea, select {
   text-transform: uppercase;
   color: #323E48;
   text-decoration: none;
-  background: white;
+  background: var(--color-light);
   padding: 1rem 5rem;
   text-align: center;
   transition: all 0.3s ease;
@@ -240,7 +247,7 @@ p, span, div, a, li, button, input, textarea, select {
 
 .button-primary-light:hover {
   background: #323E48;
-  color: white;
+  color: var(--color-light);
 }
 
 .button-primary-dark {
@@ -249,7 +256,7 @@ p, span, div, a, li, button, input, textarea, select {
   font-size: 1rem;
   line-height: 1.33;
   text-transform: uppercase;
-  color: white;
+  color: var(--color-light);
   text-decoration: none;
   background: #323E48;;
   padding: 1rem 5rem;
@@ -259,7 +266,7 @@ p, span, div, a, li, button, input, textarea, select {
 
 .button-primary-dark:hover {
   background: var(--color-additional-green);
-  color: white;
+  color: var(--color-light);
 }
 
 .button-secondary-light {
@@ -268,15 +275,15 @@ p, span, div, a, li, button, input, textarea, select {
   font-size: 14px;
   line-height: 1.33;
   text-transform: uppercase;
-  color: white;
+  color: var(--color-light);
   text-decoration: none;
   padding: .75rem 3rem;
-  border: 1px solid white;
+  border: 1px solid var(--color-light);
   transition: all 0.3s ease;
 }
 
 .button-secondary-light:hover {
-  background: white;
+  background: var(--color-light);
   color: var(--color-main-primary);
 }
 
@@ -365,8 +372,20 @@ p, span, div, a, li, button, input, textarea, select {
 .color-primary {
   color: var(--color-main-primary);
 }
+.color-primary-light {
+  color: var(--color-main-primary-light);
+}
+.color-primary-dark {
+  color: var(--color-main-primary-dark);
+}
 .color-secondary {
   color: var(--color-main-secondary);
+}
+.color-secondary-light {
+  color: var(--color-main-secondary-light);
+}
+.color-secondary-dark {
+  color: var(--color-main-secondary-dark);
 }
 .color-additional-red {
   color: var(--color-additional-red);
@@ -393,7 +412,7 @@ p, span, div, a, li, button, input, textarea, select {
   color: var(--color-aux-tan);
 }
 .color-white {
-  color: white;
+  color: var(--color-light);
 }
 .color-black {
   color: black;
@@ -467,4 +486,4 @@ p, span, div, a, li, button, input, textarea, select {
 @media (min-width: 1536px) {
   .hidden-2xl { display: block; }
   .visible-2xl { display: none; }
-} 
+}
