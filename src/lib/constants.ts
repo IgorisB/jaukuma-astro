@@ -13,7 +13,7 @@ if (envLangs) {
    languages = ['lt', 'en', 'ru'];
 }
 
-export { languages };
+export { languages, hostname };
 
 // Import locales directly without await
 import lt from '../locales/lt.json';
