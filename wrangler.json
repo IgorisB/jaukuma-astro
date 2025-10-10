@@ -2,13 +2,14 @@
   "name": "jaukuma-astro",
   "compatibility_date": "2025-04-01",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "./dist/_worker.js/index.js",
+  "main": "./dist/_worker.js",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
   },
   "vars": {
-    "HOSTNAME": "www.jaukuma.lt"
+    "HOSTNAME": "www.jaukuma.lt",
+    "ROBOTS": "Allow"
   },
   "routes": [
     "www.jaukuma.lt/*", 
@@ -19,7 +20,8 @@
   "env": {
     "development": {
       "vars": {
-        "HOSTNAME": "dev.jaukuma.lt"
+        "HOSTNAME": "dev.jaukuma.lt",
+        "ROBOTS": "Disallow"
       },
       "routes": [
         "dev.jaukuma.lt/*", 

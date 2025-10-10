@@ -2,7 +2,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import cloudflare from "@astrojs/cloudflare";
+// Removed cloudflare adapter for static generation
 import { hostname, languages, defaultLang } from "./src/lib/constants.ts";
 
 // Determine if we're in development mode
@@ -14,16 +14,12 @@ const siteUrl = process.env.HOSTNAME ? `https://${process.env.HOSTNAME}` : `http
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
-  output: 'static', // Ensure server-side execution for middleware
+  output: 'static', // Changed from 'server' to 'static' for static site generation
   integrations: [mdx(), sitemap()],
   i18n: {
     defaultLocale: defaultLang,
     locales: languages,
     // You can add fallback or routing options here if needed
   },
-  adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
-  }),
+  // Removed adapter configuration for static generation
 });

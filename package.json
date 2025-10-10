@@ -28,7 +28,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "build:dev": "cross-env HOSTNAME=dev.jaukuma.lt astro build",
+    "build:dev": "astro build --mode development",
     "cf-typegen": "wrangler types",
     "check": "astro build && tsc && wrangler deploy --dry-run",
     "deploy": "wrangler deploy",
