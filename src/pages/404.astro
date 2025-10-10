@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Page404Body from '../components/pages/page.404.astro';
 import { useTranslationsFromUrl, getLangFromUrl } from '../lib/utils';
-
+export const prerender = false;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
 const title = "404 - Page Not Found";
