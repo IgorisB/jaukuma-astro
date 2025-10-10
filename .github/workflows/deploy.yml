@@ -38,7 +38,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist
+          command: pages deploy ./dist --branch main
           projectName: jaukuma-astro
           wranglerVersion: '4.42.2'
 
@@ -68,11 +68,11 @@ jobs:
           HOSTNAME: dev.jaukuma.lt
           ROBOTS: Disallow
 
-      - name: Deploy to Cloudflare Pages (Development)
+      - name: Deploy to Cloudflare Pages (Preview)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./dist
+          command: pages deploy ./dist --branch dev
           projectName: jaukuma-astro
           wranglerVersion: '4.42.2'
