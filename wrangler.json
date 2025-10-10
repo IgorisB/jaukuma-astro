@@ -11,7 +11,8 @@
     "HOSTNAME": "www.jaukuma.lt"
   },
   "routes": [
-     "www.jaukuma.lt/*", 
+    "www.jaukuma.lt/*", 
+    "jaukuma.lt/*",
     { "pattern": "www.jaukuma.lt", "custom_domain": true },
     { "pattern": "jaukuma.lt", "custom_domain": true }
   ],

@@ -4,6 +4,7 @@ import Page404Body from '../../components/pages/page.404.astro';
 import { useTranslationsFromUrl, getLangFromUrl, getStaticPaths } from '../../lib/utils';
 
 export { getStaticPaths };
+export const prerender = false;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslationsFromUrl(Astro.url);
