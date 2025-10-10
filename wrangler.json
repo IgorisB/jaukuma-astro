@@ -11,6 +11,7 @@
     "PROD_SITE": "www.jaukuma.lt"
   },
   "routes": [
+    "jaukuma.lt/*",
     "www.jaukuma.lt/*"
   ],
   "env": {
