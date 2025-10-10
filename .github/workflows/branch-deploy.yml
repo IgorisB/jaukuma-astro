@@ -36,7 +36,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
-          wranglerVersion: '4.16.1'
+          wranglerVersion: '4.42.2'
 
       - name: Deploy to Development (dev branch)
         if: github.ref == 'refs/heads/dev'
@@ -46,4 +46,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
           environment: development
-          wranglerVersion: '4.16.1'
+          wranglerVersion: '4.42.2'
