@@ -5,7 +5,7 @@ export const GET: APIRoute = ({ request }) => {
   console.log(`ROBOTS: ${import.meta.env.ROBOTS}`);
   
   const robotsTxt = `User-agent: *
-${import.meta.env.ROBOTS}: /
+${import.meta.env.ROBOTS || 'Disallow'}: /
 Sitemap: https://www.jaukuma.lt/sitemap-index.xml`;
 
   return new Response(robotsTxt, {

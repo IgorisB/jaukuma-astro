@@ -30,7 +30,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          PROD_SITE: www.jaukuma.lt
+          HOSTNAME: www.jaukuma.lt
+          ROBOTS: Allow
 
       - name: Deploy to Cloudflare Workers (Production)
         uses: cloudflare/wrangler-action@v4
@@ -62,6 +63,9 @@ jobs:
 
       - name: Build for Development
         run: npm run build:dev
+        env:
+          HOSTNAME: dev.jaukuma.lt
+          ROBOTS: Disallow
 
       - name: Deploy to Cloudflare Workers (Development)
         uses: cloudflare/wrangler-action@v3
