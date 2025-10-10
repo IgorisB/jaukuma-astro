@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import cloudflare from "@astrojs/cloudflare";
 import { hostname, languages, defaultLang } from "./src/lib/constants.ts";
 
 // Determine if we're in development mode
@@ -16,5 +17,9 @@ export default defineConfig({
     locales: languages,
     // You can add fallback or routing options here if needed
   },
-  output: 'static'
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });

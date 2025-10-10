@@ -11,8 +11,8 @@
     "HOSTNAME": "www.jaukuma.lt"
   },
   "routes": [
-    { "pattern": "www.jaukuma.lt/*", "custom_domain": true },
-    { "pattern": "jaukuma.lt/*", "custom_domain": false }
+    { "pattern": "www.jaukuma.lt", "custom_domain": true },
+    { "pattern": "jaukuma.lt", "custom_domain": true }
   ],
   "env": {
     "development": {
@@ -20,7 +20,7 @@
         "HOSTNAME": "dev.jaukuma.lt"
       },
       "routes": [
-        { "pattern": "dev.jaukuma.lt/*", "custom_domain": true }
+        { "pattern": "dev.jaukuma.lt", "custom_domain": true }
       ]
     }
   },
