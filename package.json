@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "wrangler": "4.16.1"
+    "wrangler": "4.42.2"
   },
   "scripts": {
     "astro": "astro",
