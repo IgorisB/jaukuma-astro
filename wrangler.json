@@ -10,11 +10,18 @@
   "vars": {
     "PROD_SITE": "www.jaukuma.lt"
   },
+  "routes": [
+    "jaukuma.lt/*",
+    "www.jaukuma.lt/*"
+  ],
   "env": {
     "development": {
       "vars": {
         "PROD_SITE": "dev.jaukuma.lt"
-      }
+      },
+      "routes": [
+        "dev.jaukuma.lt/*"
+      ]
     }
   },
   "observability": {

@@ -22,11 +22,13 @@
     "typescript": "5.8.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "wrangler": "4.16.1"
   },
   "scripts": {
     "astro": "astro",
     "build": "astro build",
+    "build:dev": "cross-env PROD_SITE=dev.jaukuma.lt astro build",
     "cf-typegen": "wrangler types",
     "check": "astro build && tsc && wrangler deploy --dry-run",
     "deploy": "wrangler deploy",

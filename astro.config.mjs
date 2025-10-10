@@ -5,6 +5,9 @@ import sitemap from "@astrojs/sitemap";
 import cloudflare from "@astrojs/cloudflare";
 import { hostname, languages, defaultLang } from "./src/lib/constants.ts";
 
+// Determine if we're in development mode
+const isDev = process.env.NODE_ENV === 'development' || process.env.PROD_SITE?.includes('dev');
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://" + hostname,

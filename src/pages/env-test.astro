@@ -1,0 +1,19 @@
+---
+// This page is for testing environment variables
+const { hostname } = await import('../lib/constants.ts');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environment Test</title>
+</head>
+<body>
+    <h1>Environment Test</h1>
+    <p>Current hostname: {hostname}</p>
+    <p>Environment: {import.meta.env.DEV ? 'Development' : 'Production'}</p>
+    <p>PROD_SITE env var: {import.meta.env.PROD_SITE || 'Not set'}</p>
+</body>
+</html>
