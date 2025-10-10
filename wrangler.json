@@ -11,8 +11,8 @@
     "PROD_SITE": "www.jaukuma.lt"
   },
   "routes": [
-    { "pattern": "jaukuma.lt/*", "zone_id": "d9ea705d63e6bfcf871820808c860a69" },
-    { "pattern": "www.jaukuma.lt/*", "zone_id": "d9ea705d63e6bfcf871820808c860a69" }
+    "jaukuma.lt/*",
+    "www.jaukuma.lt/*"
   ],
   "env": {
     "development": {
@@ -20,7 +20,7 @@
         "PROD_SITE": "dev.jaukuma.lt"
       },
       "routes": [
-        { "pattern": "dev.jaukuma.lt/*", "zone_id": "d9ea705d63e6bfcf871820808c860a69" }
+        "dev.jaukuma.lt/*"
       ]
     }
   },
