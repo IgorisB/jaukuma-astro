@@ -1,0 +1,19 @@
+---
+// Simple test page to check if the worker is responding
+import { hostname } from '../lib/constants';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Test</title>
+</head>
+<body>
+    <h1>Worker Test Page</h1>
+    <p>If you can see this page, the worker is working correctly.</p>
+    <p>Hostname: {hostname}</p>
+    <p>Time: {new Date().toISOString()}</p>
+</body>
+</html>

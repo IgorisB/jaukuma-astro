@@ -2,7 +2,7 @@
 
 // I18n configuration
 // Extract hostname without protocol if present
-const hostname = process.env.PROD_SITE || 'test.com';
+const hostname = process.env.PROD_SITE || 'www.jaukuma.lt';
 
 // Allow override of languages via environment variable (comma-separated codes)
 const envLangs = process.env.LANGUAGES;

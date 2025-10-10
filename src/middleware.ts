@@ -5,11 +5,9 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Only run this middleware on the server side
   if (import.meta.env.SSR) {
     const host = context.request.headers.get('host');
-    console.log(`Request received for host: ${host}`);
     
     // In production, redirect non-www to www
     if (host === 'jaukuma.lt') {
-      console.log('Redirecting jaukuma.lt to www.jaukuma.lt');
       const url = new URL(context.request.url);
       url.hostname = 'www.jaukuma.lt';
       return context.redirect(url.toString(), 301);
