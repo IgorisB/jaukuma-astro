@@ -8,9 +8,12 @@ import { hostname, languages, defaultLang } from "./src/lib/constants.ts";
 // Determine if we're in development mode
 const isDev = process.env.NODE_ENV === 'development' || process.env.HOSTNAME?.includes('dev');
 
+// Set site URL based on environment
+const siteUrl = isDev ? `https://${process.env.HOSTNAME || 'dev.jaukuma.lt'}` : `https://${hostname}`;
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://" + hostname,
+  site: siteUrl,
   integrations: [mdx(), sitemap()],
   i18n: {
     defaultLocale: defaultLang,

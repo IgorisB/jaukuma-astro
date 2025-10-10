@@ -44,6 +44,26 @@ function getDefaultLang(): string {
 
 export const defaultLang = getDefaultLang();
 
+// Helper to determine if we're in development mode
+export function isDevelopment(hostname?: string): boolean {
+  if (typeof window !== 'undefined') {
+    // Client-side check
+    return window.location.hostname.includes('dev') || 
+           window.location.hostname === 'localhost' ||
+           window.location.hostname === '127.0.0.1';
+  }
+  
+  // Server-side check
+  return process.env.NODE_ENV === 'development' || 
+         (hostname ? hostname.includes('dev') : false) ||
+         (process.env.HOSTNAME ? process.env.HOSTNAME.includes('dev') : false);
+}
+
+// Helper to get robots meta tag content
+export function getRobotsMetaContent(currentHostname?: string): string {
+  return isDevelopment(currentHostname) ? 'noindex, nofollow' : 'index, follow';
+}
+
 // Pages routes for url paths
 export const PAGES = {
     HOME: '',
