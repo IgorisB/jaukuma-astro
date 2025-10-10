@@ -29,21 +29,22 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Production (main branch)
+      - name: Deploy to Cloudflare Pages (Production - main branch)
         if: github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+          command: pages deploy ./dist
+          projectName: jaukuma-astro
           wranglerVersion: '4.42.2'
 
-      - name: Deploy to Development (dev branch)
+      - name: Deploy to Cloudflare Pages (Development - dev branch)
         if: github.ref == 'refs/heads/dev'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
-          environment: development
+          command: pages deploy ./dist
+          projectName: jaukuma-astro
           wranglerVersion: '4.42.2'

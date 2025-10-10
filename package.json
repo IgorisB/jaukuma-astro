@@ -4,7 +4,7 @@
   "cloudflare": {
     "label": "Astro Framework Starter",
     "products": [
-      "Workers"
+      "Pages"
     ],
     "categories": [],
     "icon_urls": [
@@ -14,7 +14,6 @@
     "publish": true
   },
   "dependencies": {
-    "@astrojs/cloudflare": "12.5.0",
     "@astrojs/mdx": "4.2.4",
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.3.0",
@@ -30,12 +29,12 @@
     "build": "astro build",
     "build:dev": "astro build --mode development",
     "cf-typegen": "wrangler types",
-    "check": "astro build && tsc && wrangler deploy --dry-run",
-    "deploy": "wrangler deploy",
-    "deploy:dev": "wrangler deploy --env development",
-    "deploy:prod": "wrangler deploy",
+    "check": "astro build && tsc",
+    "deploy": "wrangler pages deploy ./dist",
+    "deploy:dev": "wrangler pages deploy ./dist --branch dev",
+    "deploy:prod": "wrangler pages deploy ./dist",
     "dev": "cross-env NODE_ENV=development astro dev",
-    "preview": "astro build && wrangler dev"
+    "preview": "astro build && wrangler pages dev ./dist"
   },
   "type": "module"
 }

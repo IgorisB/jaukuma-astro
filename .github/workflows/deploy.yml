@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Workers
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -33,12 +33,13 @@ jobs:
           HOSTNAME: www.jaukuma.lt
           ROBOTS: Allow
 
-      - name: Deploy to Cloudflare Workers (Production)
+      - name: Deploy to Cloudflare Pages (Production)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+          command: pages deploy ./dist
+          projectName: jaukuma-astro
           wranglerVersion: '4.42.2'
 
   deploy-dev:
@@ -67,11 +68,11 @@ jobs:
           HOSTNAME: dev.jaukuma.lt
           ROBOTS: Disallow
 
-      - name: Deploy to Cloudflare Workers (Development)
+      - name: Deploy to Cloudflare Pages (Development)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
-          environment: development
+          command: pages deploy ./dist
+          projectName: jaukuma-astro
           wranglerVersion: '4.42.2'
