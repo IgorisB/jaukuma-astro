@@ -1,6 +1,5 @@
 // Global application constants
 
-// I18n configuration
 // Extract hostname without protocol if present
 const hostname = process.env.HOSTNAME || 'test.com';
 
@@ -54,9 +53,9 @@ export function isDevelopment(hostname?: string): boolean {
   }
   
   // Server-side check
+  const hostToCheck = hostname || process.env.HOSTNAME;
   return process.env.NODE_ENV === 'development' || 
-         (hostname ? hostname.includes('dev') : false) ||
-         (process.env.HOSTNAME ? process.env.HOSTNAME.includes('dev') : false);
+         (hostToCheck ? hostToCheck.includes('dev') : false);
 }
 
 // Helper to get robots meta tag content

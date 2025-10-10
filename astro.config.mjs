@@ -9,7 +9,7 @@ import { hostname, languages, defaultLang } from "./src/lib/constants.ts";
 const isDev = process.env.NODE_ENV === 'development' || process.env.HOSTNAME?.includes('dev');
 
 // Set site URL based on environment
-const siteUrl = isDev ? `https://${process.env.HOSTNAME || 'dev.jaukuma.lt'}` : `https://${hostname}`;
+const siteUrl = process.env.HOSTNAME ? `https://${process.env.HOSTNAME}` : `https://${hostname}`;
 
 // https://astro.build/config
 export default defineConfig({
