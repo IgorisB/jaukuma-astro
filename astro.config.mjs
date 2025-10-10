@@ -14,7 +14,7 @@ const siteUrl = process.env.HOSTNAME ? `https://${process.env.HOSTNAME}` : `http
 // https://astro.build/config
 export default defineConfig({
   site: siteUrl,
-  output: 'server', // Ensure server-side execution for middleware
+  output: 'static', // Ensure server-side execution for middleware
   integrations: [mdx(), sitemap()],
   i18n: {
     defaultLocale: defaultLang,
