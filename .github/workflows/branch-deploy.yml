@@ -31,19 +31,19 @@ jobs:
 
       - name: Deploy to Production (main branch)
         if: github.ref == 'refs/heads/main'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
-          wranglerVersion: '4.42.2'
+          wranglerVersion: '4.16.1'
 
       - name: Deploy to Development (dev branch)
         if: github.ref == 'refs/heads/dev'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
           environment: development
-          wranglerVersion: '4.42.2'
+          wranglerVersion: '4.16.1'
