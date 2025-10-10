@@ -8,18 +8,19 @@
     "binding": "ASSETS"
   },
   "vars": {
-    "PROD_SITE": "www.jaukuma.lt"
+    "HOSTNAME": "www.jaukuma.lt"
   },
   "routes": [
-    "www.jaukuma.lt/*"
+    { "pattern": "www.jaukuma.lt/*", "custom_domain": true },
+    { "pattern": "jaukuma.lt/*", "custom_domain": false }
   ],
   "env": {
     "development": {
       "vars": {
-        "PROD_SITE": "dev.jaukuma.lt"
+        "HOSTNAME": "dev.jaukuma.lt"
       },
       "routes": [
-        "dev.jaukuma.lt/*"
+        { "pattern": "dev.jaukuma.lt/*", "custom_domain": true }
       ]
     }
   },
