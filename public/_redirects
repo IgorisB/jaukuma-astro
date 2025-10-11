@@ -1,0 +1,4 @@
+# Handle locale-specific 404 pages
+/en/* /en/404/ 404
+/ru/* /ru/404/ 404
+/lt/* /lt/404/ 404
