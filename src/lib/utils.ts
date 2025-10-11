@@ -1,6 +1,6 @@
 // General utility functions
 
-import { languages, locales, hostname, defaultLang } from './constants';
+import { languages, locales, hostname } from './constants';
 
 // Language and internationalization utilities
 export function getLangFromUrl(url: URL) {
@@ -8,7 +8,7 @@ export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
   if (lang in locales) return lang as keyof typeof locales;
   // Default
-  return defaultLang;
+  return getDefaultLang();
 }
 
 export function useTranslationsFromUrl(url: URL) {
@@ -18,7 +18,7 @@ export function useTranslationsFromUrl(url: URL) {
 
 export function useTranslations(lang: string) {
   return function t(key: string) {
-    return key in locales[lang] ? (locales[lang])[key] : locales[defaultLang][key];
+    return key in locales[lang] ? (locales[lang])[key] : locales[getDefaultLang()][key];
   };
 }
 
@@ -36,6 +36,7 @@ export function getLocalePath(code: string, path: string) {
     segments.shift();
   }
   const newPath = segments.join('/');
+  const defaultLang = getDefaultLang();
   if (code === defaultLang) {
     return newPath ? `/${newPath}` : '/';
   } else {
@@ -43,7 +44,7 @@ export function getLocalePath(code: string, path: string) {
   }
 }
 
-// Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'en'
+// Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'lt'
 export function getDefaultLang(): string {
   if (process.env.DEFAULT_LANG && languages.includes(process.env.DEFAULT_LANG)) {
     return process.env.DEFAULT_LANG;

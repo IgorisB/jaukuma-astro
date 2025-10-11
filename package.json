@@ -22,19 +22,15 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "wrangler": "4.42.2"
+    "serve": "^14.2.5"
   },
   "scripts": {
     "astro": "astro",
     "build": "astro build",
     "build:dev": "astro build --mode development",
-    "cf-typegen": "wrangler types",
     "check": "astro build && tsc",
-    "deploy": "wrangler pages deploy ./dist",
-    "deploy:dev": "wrangler pages deploy ./dist --branch dev",
-    "deploy:prod": "wrangler pages deploy ./dist --branch main",
-    "dev": "cross-env NODE_ENV=development astro dev",
-    "preview": "astro build && wrangler pages dev ./dist"
+    "dev": "cross-env MODE=development astro dev",
+    "preview": "astro build && npx serve dist"
   },
   "type": "module"
 }

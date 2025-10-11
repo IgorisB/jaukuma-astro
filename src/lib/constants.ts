@@ -25,43 +25,10 @@ export const locales: Record<string, any> = {
   'ru': ru,
 } as const; 
 
-// Helper functions
+// Computed constants
+export const defaultLang = languages[0]; // Simple fallback, more complex logic moved to utils
 
-// Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'lt'
-function getDefaultLang(): string {
-  if (process.env.DEFAULT_LANG && languages.includes(process.env.DEFAULT_LANG)) {
-    return process.env.DEFAULT_LANG;
-  }
-  if (hostname) {
-    const tld = hostname.split('.').pop();
-    if (tld && languages.includes(tld)) {
-      return tld;
-    }
-  }
-  return languages[0];
-}
-
-export const defaultLang = getDefaultLang();
-
-// Helper to determine if we're in development mode
-export function isDevelopment(hostname?: string): boolean {
-  if (typeof window !== 'undefined') {
-    // Client-side check
-    return window.location.hostname.includes('dev') || 
-           window.location.hostname === 'localhost' ||
-           window.location.hostname === '127.0.0.1';
-  }
-  
-  // Server-side check
-  const hostToCheck = hostname || process.env.HOSTNAME;
-  return process.env.NODE_ENV === 'development' || 
-         (hostToCheck ? hostToCheck.includes('dev') : false);
-}
-
-// Helper to get robots meta tag content
-export function getRobotsMetaContent(currentHostname?: string): string {
-  return isDevelopment(currentHostname) ? 'noindex, nofollow' : 'index, follow';
-}
+export const isDevelopment = (process.env.MODE == 'development');
 
 // Pages routes for url paths
 export const PAGES = {

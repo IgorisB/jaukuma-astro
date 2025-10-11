@@ -1,15 +1,14 @@
 import { defineMiddleware } from 'astro/middleware';
+import { isDevelopment } from  './lib/constants.ts';
 
-// Simplified middleware that doesn't access request headers
+// Middleware for static site to add noindex header for development environments
 export const onRequest = defineMiddleware(async (context, next) => {
-  // Handle development environment without accessing request headers
-  const isDev = context.url.hostname.includes('dev');
-  
   const response = await next();
-  
+  console.log("IsDevelopment:", isDevelopment);
   // Add noindex header for development environments
-  if (isDev) {
-    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  // Using the helper function which works in both server and static contexts
+  if (isDevelopment) {
+    response.headers.set('X-Robots-Tag','noindex, nofollow');
   }
   
   return response;
