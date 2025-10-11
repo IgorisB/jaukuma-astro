@@ -1,8 +1,7 @@
 // Global application constants
 
-// I18n configuration
 // Extract hostname without protocol if present
-const hostname = process.env.PROD_SITE || 'www.jaukuma.lt';
+const hostname = process.env.HOSTNAME || 'test.com';
 
 // Allow override of languages via environment variable (comma-separated codes)
 const envLangs = process.env.LANGUAGES;
@@ -43,6 +42,26 @@ function getDefaultLang(): string {
 }
 
 export const defaultLang = getDefaultLang();
+
+// Helper to determine if we're in development mode
+export function isDevelopment(hostname?: string): boolean {
+  if (typeof window !== 'undefined') {
+    // Client-side check
+    return window.location.hostname.includes('dev') || 
+           window.location.hostname === 'localhost' ||
+           window.location.hostname === '127.0.0.1';
+  }
+  
+  // Server-side check
+  const hostToCheck = hostname || process.env.HOSTNAME;
+  return process.env.NODE_ENV === 'development' || 
+         (hostToCheck ? hostToCheck.includes('dev') : false);
+}
+
+// Helper to get robots meta tag content
+export function getRobotsMetaContent(currentHostname?: string): string {
+  return isDevelopment(currentHostname) ? 'noindex, nofollow' : 'index, follow';
+}
 
 // Pages routes for url paths
 export const PAGES = {
