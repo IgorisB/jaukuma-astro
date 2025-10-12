@@ -43,11 +43,7 @@ const t = useTranslations(lang);
         border-radius: 0 0 30px 30px;
         padding: 24px;
         transform: translateY(-100%);
-        -ms-transform: translateY(-100%); /* IE and Edge compatibility */
-        -webkit-transform: translateY(-100%); /* Safari compatibility */
         transition: transform 0.3s ease-in-out;
-        -webkit-transition: -webkit-transform 0.3s ease-in-out; /* Safari compatibility */
-        -ms-transition: -ms-transform 0.3s ease-in-out; /* IE and Edge compatibility */
         will-change: transform;
         /* Only show on mobile */
         display: none;
@@ -56,23 +52,15 @@ const t = useTranslations(lang);
         isolation: isolate;
         /* Ensure it's above transformed elements */
         transform-style: preserve-3d;
-        /* Add backface visibility for Edge */
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        -ms-backface-visibility: hidden;
     }
 
     .sticky-header-mobile.visible {
         transform: translateY(0);
-        -ms-transform: translateY(0); /* IE and Edge compatibility */
-        -webkit-transform: translateY(0); /* Safari compatibility */
     }
 
     /* Hide sticky header when mobile menu is open */
     .sticky-header-mobile.menu-open {
         transform: translateY(-100%) !important;
-        -ms-transform: translateY(-100%) !important; /* IE and Edge compatibility */
-        -webkit-transform: translateY(-100%) !important; /* Safari compatibility */
     }
 
     .sticky-header-container {
@@ -177,14 +165,10 @@ const t = useTranslations(lang);
     @supports (transform: translate3d(0, 0, 0)) {
         .sticky-header-mobile {
             transform: translate3d(0, -100%, 0);
-            -webkit-transform: translate3d(0, -100%, 0); /* Safari compatibility */
-            -ms-transform: translate3d(0, -100%, 0); /* IE and Edge compatibility */
         }
         
         .sticky-header-mobile.visible {
             transform: translate3d(0, 0, 0);
-            -webkit-transform: translate3d(0, 0, 0); /* Safari compatibility */
-            -ms-transform: translate3d(0, 0, 0); /* IE and Edge compatibility */
         }
     }
 
@@ -198,10 +182,6 @@ const t = useTranslations(lang);
     @media (max-width: 768px) {
         .sticky-header-mobile {
             z-index: 2147483647 !important; /* Maximum z-index value */
-            /* Add Edge-specific positioning */
-            position: -webkit-sticky;
-            position: sticky;
-            position: fixed;
         }
     }
 
@@ -283,66 +263,42 @@ const t = useTranslations(lang);
             return;
         }
 
-        // Feature detection for Edge browser
-        const isEdge = /Edge\/\d+/.test(navigator.userAgent);
-        
-        // Scroll threshold values
-        const SHOW_THRESHOLD = 100;
-        const HIDE_THRESHOLD = 50;
-        
-        // Track scroll state
+        // Alternative scroll-based approach for better reliability
         let lastScrollY = window.scrollY;
         let isVisible = false;
-        let ticking = false; // For requestAnimationFrame optimization
         
         function handleScroll() {
             if (!stickyHeader) return;
             
             const currentScrollY = window.scrollY;
-            const scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
             
-            // Show header when scrolling down past threshold
-            if (scrollDirection === 'down' && currentScrollY > SHOW_THRESHOLD && !isVisible) {
+            // Show header when scrolling down past 100px
+            if (currentScrollY > 100 && !isVisible) {
                 stickyHeader.classList.add('visible');
                 isVisible = true;
             } 
-            // Hide header when scrolling up and near top
-            else if (scrollDirection === 'up' && currentScrollY < HIDE_THRESHOLD && isVisible) {
+            // Hide header when scrolling back up to top (within 50px)
+            else if (currentScrollY < 50 && isVisible) {
                 stickyHeader.classList.remove('visible');
                 isVisible = false;
             }
-            // Special case for Edge: handle small scroll changes
-            else if (isEdge && Math.abs(currentScrollY - lastScrollY) > 10) {
-                // Force update for Edge browser which might miss scroll events
-                if (currentScrollY > SHOW_THRESHOLD && !isVisible) {
-                    stickyHeader.classList.add('visible');
-                    isVisible = true;
-                } else if (currentScrollY < HIDE_THRESHOLD && isVisible) {
-                    stickyHeader.classList.remove('visible');
-                    isVisible = false;
-                }
-            }
             
             lastScrollY = currentScrollY;
-            ticking = false;
         }
         
-        // Use requestAnimationFrame for better scroll performance
-        function updateScroll() {
-            if (!ticking) {
-                requestAnimationFrame(handleScroll);
-                ticking = true;
+        // Throttle scroll events for better performance
+        let scrollTimeout: number | undefined;
+        function throttledScroll() {
+            if (!scrollTimeout) {
+                scrollTimeout = window.setTimeout(() => {
+                    handleScroll();
+                    scrollTimeout = undefined;
+                }, 16); // ~60fps
             }
         }
 
         // Add scroll event listener
-        // For Edge browser, we might need to handle it differently
-        if (isEdge) {
-            // Edge sometimes needs more responsive scroll handling
-            window.addEventListener('scroll', updateScroll);
-        } else {
-            window.addEventListener('scroll', updateScroll, { passive: true });
-        }
+        window.addEventListener('scroll', throttledScroll, { passive: true });
         
         // Initial check
         handleScroll();
@@ -383,7 +339,7 @@ const t = useTranslations(lang);
 
         // Cleanup scroll listener on page unload
         window.addEventListener('beforeunload', function() {
-            window.removeEventListener('scroll', updateScroll);
+            window.removeEventListener('scroll', throttledScroll);
         });
 
         // Handle resize events
@@ -391,9 +347,9 @@ const t = useTranslations(lang);
             if (!isMobile()) {
                 stickyHeader.classList.remove('visible');
                 isVisible = false;
-                window.removeEventListener('scroll', updateScroll);
+                window.removeEventListener('scroll', throttledScroll);
             } else {
-                window.addEventListener('scroll', updateScroll, { passive: true });
+                window.addEventListener('scroll', throttledScroll, { passive: true });
                 handleScroll();
             }
         });
