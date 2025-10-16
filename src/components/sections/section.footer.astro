@@ -66,239 +66,90 @@ const t = useTranslations(lang);
 <style>
   /* Common Footer Styles */
   .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background-color: var(--color-main-primary-light);
-    color: var(--color-light);
-    width: 100%;
-    padding: 2.5rem 9rem;
+    @apply flex flex-col items-center justify-center gap-2 bg-primary-light text-light w-full;
+    @apply p-8 px-6 md:p-10 md:px-12 lg:p-10 lg:px-36;
   }
-
 
   /* Footer Menu Styles */
   .footer-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    padding: 0 0 1rem 0;
-    flex-wrap: wrap;
+    @apply flex justify-between items-start w-full pb-4 flex-wrap;
+    @apply flex-col items-center gap-8 md:flex-col md:items-center md:gap-8;
   }
 
   /* Footer Logo Link */
   .footer-logo-link {
-    display: inline-block;
-    transition: opacity 0.3s ease;
-    text-decoration: none;
-  }
-
-  .footer-logo-link:hover {
-    opacity: 0.9;
+    @apply inline-block transition-opacity duration-300 no-underline hover:opacity-90;
   }
 
   /* Services Submenu */
   .footer-services-submenu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    padding: 0 1rem 1rem;
+    @apply flex flex-col gap-2.5 px-4 pb-4;
+    @apply hidden md:flex md:items-center md:text-center md:px-0;
   }
 
   /* Info Submenu */
   .footer-info-submenu {
-    display: flex;
-    gap: 1rem;
+    @apply flex gap-4 items-center text-center md:items-center md:text-center;
   }
 
   .contacts,
   .company-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-    padding: 0 1rem;
+    @apply flex flex-col gap-2.5 px-4 md:px-0;
   }
 
   /* Typography */
   .submenu-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
+    @apply font-serif font-normal m-0 text-light;
+    @apply text-lg md:text-xl lg:text-lg;
     line-height: 1.33;
-    margin: 0;
-    color: var(--color-light);
   }
 
-  .copyright{
-    padding-top: 1rem;
+  .copyright {
+    @apply pt-4 flex flex-col justify-center items-center w-full gap-2.5;
+  }
+
+  .submenu-list {
+    @apply list-none p-0 m-0 flex flex-col gap-2.5;
+  }
+
+  .submenu-list li {
+    @apply font-sans font-normal text-light;
+    @apply text-sm md:text-base lg:text-sm;
+    line-height: 1.26;
+  }
+
+  .submenu-list a {
+    @apply text-light no-underline transition-opacity duration-300 hover:opacity-80;
+  }
+
+  .submenu-list span {
+    @apply text-light font-sans font-normal;
+    line-height: 1.26;
+  }
+
+  /* Copyright and Social Icons */
+  .social-icons {
+    @apply flex justify-center items-center w-full gap-4;
+  }
+
+  .social-icons a {
+    @apply flex items-center justify-center transition-opacity duration-300 hover:opacity-80;
+  }
+
+  .footer-info {
+    @apply flex justify-center items-center w-full gap-2;
+  }
+
+  .copyright-text {
+    @apply font-sans font-normal text-center m-0 text-light;
+    @apply text-sm md:text-base lg:text-sm;
+    line-height: 1.26;
+    letter-spacing: 0.01em;
   }
 
   @media (min-width: 1536px) {
     .footer {
-      border-radius: 0 0 0.5rem 0.5rem;
-      overflow: hidden;
+      @apply rounded-b-lg overflow-hidden;
     }
-  }
-
-  @media (min-width: 1024px) {
-    .submenu-title {
-      font-size: 1.125rem;
-    }
-    .submenu-list li {
-      font-size: 0.875rem;
-    }
-    .copyright-text {
-      font-size: 0.875rem;
-    }
-  }
-
-  @media (max-width: 1023px) {
-    .submenu-title {
-      font-size: 1.25rem;
-    }
-    .submenu-list li {
-      font-size: 1rem;
-    }
-    .copyright-text {
-      font-size: 1rem;
-    }
-    .footer {
-      padding: 2.5rem 3rem;
-    }
-    
-    /* Adjust layout for tablets */
-    .footer-menu {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-    
-    .footer-services-submenu,
-    .footer-info-submenu {
-      align-items: center;
-      text-align: center;
-    }
-    
-    .contacts,
-    .company-info {
-      padding: 0;
-    }
-  }
-
-  @media (max-width: 768px) {
-    /* Remove the rule that was hiding the footer menu */
-    .footer {
-      padding: 2rem 1.5rem;
-    }
-    
-    .footer-menu {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-    
-    /* Hide services submenu on mobile */
-    .footer-services-submenu {
-      display: none;
-    }
-    
-    .footer-info-submenu {
-      align-items: center;
-      text-align: center;
-    }
-    
-    .contacts,
-    .company-info {
-      padding: 0;
-    }
-    
-    .submenu-title {
-      font-size: 1.125rem;
-    }
-    
-    .submenu-list li {
-      font-size: 0.875rem;
-    }
-  }
-
-  .submenu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.625rem;
-  }
-
-  .submenu-list li {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    line-height: 1.26;
-    color: var(--color-light);
-  }
-
-  .submenu-list a {
-    color: var(--color-light);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .submenu-list a:hover {
-    opacity: 0.8;
-  }
-
-  .submenu-list span {
-    color: var(--color-light);
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    line-height: 1.26;
-  }
-
-  /* Copyright and Social Icons (Always Visible) */
-  .copyright {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 0.625rem;
-  }
-
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-  }
-
-  .social-icons a:hover {
-    opacity: 0.8;
-  }
-
-  .footer-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .copyright-text {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    line-height: 1.26;
-    letter-spacing: 0.01em;
-    text-align: center;
-    margin: 0;
-    color: var(--color-light);
   }
 </style>
