@@ -3,31 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  /* CSS Custom Properties for legacy component support */
+  /* CSS Custom Properties */
   :root {
-    /* Main colors */
-    --color-main-primary: #333F48;
-    --color-main-primary-light: #4A5A66;
-    --color-main-primary-dark: #1A2229;
-    --color-main-secondary: #D6D2C4;
-    --color-main-secondary-light: #EBE9E0;
-    --color-main-secondary-dark: #BFB9A9;
-
-    /* Additional colors */
-    --color-additional-red: #A45248;
-    --color-additional-blue: #166886;
-    --color-additional-green: #6A7866;
-
-    /* Auxiliary colors */
-    --color-aux-cream: #EFDBB2;
-    --color-aux-peach: #EACBBB;
-    --color-aux-mint: #BFCEC2;
-    --color-aux-sky: #B9C9CC;
-    --color-aux-tan: #BAA58D;
-
-    /* Light color */
-    --color-light: #F3F1E8;
-
     /* Page constraints */
     --max-page-width: 1536px;
     --min-page-width: 376px;
