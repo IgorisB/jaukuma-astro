@@ -3,6 +3,36 @@
 @tailwind utilities;
 
 @layer base {
+  /* CSS Custom Properties for legacy component support */
+  :root {
+    /* Main colors */
+    --color-main-primary: #333F48;
+    --color-main-primary-light: #4A5A66;
+    --color-main-primary-dark: #1A2229;
+    --color-main-secondary: #D6D2C4;
+    --color-main-secondary-light: #EBE9E0;
+    --color-main-secondary-dark: #BFB9A9;
+
+    /* Additional colors */
+    --color-additional-red: #A45248;
+    --color-additional-blue: #166886;
+    --color-additional-green: #6A7866;
+
+    /* Auxiliary colors */
+    --color-aux-cream: #EFDBB2;
+    --color-aux-peach: #EACBBB;
+    --color-aux-mint: #BFCEC2;
+    --color-aux-sky: #B9C9CC;
+    --color-aux-tan: #BAA58D;
+
+    /* Light color */
+    --color-light: #F3F1E8;
+
+    /* Page constraints */
+    --max-page-width: 1536px;
+    --min-page-width: 376px;
+  }
+
   /* Box sizing reset */
   * {
     box-sizing: border-box;
@@ -102,21 +132,18 @@
   }
 
   .button-primary-light {
-    @apply font-serif font-semibold text-base uppercase no-underline text-center transition-all duration-300;
+    @apply font-serif font-semibold text-base uppercase no-underline text-center transition-all duration-300 bg-light;
     color: #323E48;
-    background: var(--tw-colors-light);
     padding: 1rem 5rem;
     line-height: 1.33;
   }
 
   .button-primary-light:hover {
-    background: #323E48;
-    color: var(--tw-colors-light);
+    @apply bg-[#323E48] text-light;
   }
 
   .button-primary-dark {
-    @apply font-serif font-semibold text-base uppercase text-light no-underline text-center transition-all duration-300;
-    background: #323E48;
+    @apply font-serif font-semibold text-base uppercase text-light no-underline text-center transition-all duration-300 bg-[#323E48];
     padding: 1rem 5rem;
     line-height: 1.33;
   }
@@ -126,11 +153,10 @@
   }
 
   .button-secondary-light {
-    @apply font-serif font-semibold text-light no-underline uppercase transition-all duration-300;
+    @apply font-serif font-semibold text-light no-underline uppercase transition-all duration-300 border border-light;
     font-size: 14px;
     line-height: 1.33;
     padding: 0.75rem 3rem;
-    border: 1px solid var(--tw-colors-light);
   }
 
   .button-secondary-light:hover {
