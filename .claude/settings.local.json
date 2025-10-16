@@ -5,7 +5,8 @@
       "Bash(powershell -Command \"Get-ChildItem Env:Path | Select-Object -ExpandProperty Value\")",
       "Bash(powershell -Command \"$env:Path -split '';'' | Where-Object { $_-match ''\"\"'' }\")",
       "Bash(powershell:*)",
-      "Bash(cmd /c \"echo %Path%\")"
+      "Bash(cmd /c \"echo %Path%\")",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

@@ -7,7 +7,7 @@ const t = useTranslations(lang);
 
 <footer class="footer container">
   <div class="footer-menu">
-    <div class="hidden-lg">
+    <div class="footer-logo">
       <a href={getLocalePath(lang, '/')} class="footer-logo-link">
         <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" width="261" />
       </a>
@@ -73,23 +73,31 @@ const t = useTranslations(lang);
   /* Footer Menu Styles */
   .footer-menu {
     @apply flex justify-between items-start w-full pb-4 flex-wrap;
-    @apply flex-col items-center gap-8 md:flex-col md:items-center md:gap-8;
+    @apply flex-col items-center gap-8 md:flex-col md:items-center md:gap-8 lg:flex-row lg:items-start lg:gap-12;
   }
 
-  /* Footer Logo Link */
+  /* Footer Logo */
+  .footer-logo {
+    @apply flex justify-center lg:justify-start;
+  }
+
   .footer-logo-link {
     @apply inline-block transition-opacity duration-300 no-underline hover:opacity-90;
+  }
+
+  .footer-logo-link img {
+    @apply w-52 h-auto lg:w-64;
   }
 
   /* Services Submenu */
   .footer-services-submenu {
     @apply flex flex-col gap-2.5 px-4 pb-4;
-    @apply hidden md:flex md:items-center md:text-center md:px-0;
+    @apply hidden md:flex md:items-center md:text-center md:px-0 lg:items-start lg:text-left;
   }
 
   /* Info Submenu */
   .footer-info-submenu {
-    @apply flex gap-4 items-center text-center md:items-center md:text-center;
+    @apply flex gap-4 items-center text-center md:items-center md:text-center lg:items-start lg:text-left;
   }
 
   .contacts,
