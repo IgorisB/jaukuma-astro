@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"$env:Path\")",
+      "Bash(powershell -Command \"Get-ChildItem Env:Path | Select-Object -ExpandProperty Value\")",
+      "Bash(powershell -Command \"$env:Path -split '';'' | Where-Object { $_-match ''\"\"'' }\")",
+      "Bash(powershell:*)",
+      "Bash(cmd /c \"echo %Path%\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
