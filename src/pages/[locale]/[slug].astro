@@ -1,0 +1,48 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MarkdownLayout from "../../layouts/MarkdownLayout.astro";
+import { getDefaultLang } from "../../lib/utils";
+import { languages } from "../../lib/constants";
+
+export async function getStaticPaths() {
+    const defaultLang = getDefaultLang();
+    // Get all non-default language pages
+    const nonDefaultLangs = languages.filter((lang) => lang !== defaultLang);
+
+    const allPages = await getCollection(
+        "pages",
+        ({ data }: CollectionEntry<"pages">): boolean => {
+            return nonDefaultLangs.includes(data.locale) && !data.draft;
+        },
+    );
+
+    return allPages.map((page: CollectionEntry<"pages">) => {
+        // Extract slug without language prefix (e.g., "en/slug" -> "slug")
+        const slug = page.slug.split("/").pop() || page.slug;
+        return {
+            params: {
+                locale: page.data.locale,
+                slug: slug,
+            },
+            props: { page },
+        };
+    });
+}
+
+interface Props {
+    page: CollectionEntry<"pages">;
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+const { title, description, locale, publishDate } = page.data;
+---
+
+<MarkdownLayout
+    title={title}
+    description={description}
+    locale={locale}
+    publishDate={publishDate}
+>
+    <Content />
+</MarkdownLayout>
