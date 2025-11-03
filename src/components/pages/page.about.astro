@@ -1,15 +1,15 @@
 ---
-import { useTranslations, getLangFromUrl } from '../../lib/utils';
-import SectionPageHero from '../sections/section.page-hero.astro';
+import { useTranslations, getLangFromUrl } from "../../lib/utils";
+import SectionPageHero from "../sections/section.page-hero.astro";
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <main class="container">
-  <SectionPageHero 
-    backgroundImage="/images/aboutus-hero-background.jpg"
-    title={t('section.aboutus-hero.title')}
-    description={t('section.aboutus-hero.description')}
-    locale={lang} 
-  />
+    <SectionPageHero
+        backgroundImage="/images/aboutus-hero-background.webp"
+        title={t("section.aboutus-hero.title")}
+        description={t("section.aboutus-hero.description")}
+        locale={lang}
+    />
 </main>
