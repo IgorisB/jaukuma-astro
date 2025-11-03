@@ -1,22 +1,22 @@
 ---
-import { hostname, languages, defaultLang } from '../lib/constants.ts';
+import { hostname, languages, defaultLang } from "../lib/constants.ts";
 
 interface Props {
-  title: string;
-  description: string;
-  pathname: string;
-  locale: string;
-  image?: string;
-  type?: string;
+    title: string;
+    description: string;
+    pathname: string;
+    locale: string;
+    image?: string;
+    type?: string;
 }
 
-const { 
-  title, 
-  description, 
-  pathname, 
-  locale, 
-  image = '/images/og-default.jpg',
-  type = 'website'
+const {
+    title,
+    description,
+    pathname,
+    locale,
+    image = "/images/og-default.webp",
+    type = "website",
 } = Astro.props;
 
 const url = `https://${hostname}${pathname}`;
@@ -24,26 +24,28 @@ const imageUrl = `https://${hostname}${image}`;
 
 // Map language codes to OpenGraph locale format
 const localeMap: Record<string, string> = {
-  'en': 'en_US',
-  'lt': 'lt_LT',
-  'ru': 'ru_RU'
+    en: "en_US",
+    lt: "lt_LT",
+    ru: "ru_RU",
 };
 
-const ogLocale = localeMap[locale] || 'en_US';
+const ogLocale = localeMap[locale] || "en_US";
 
 // Generate hreflang URLs
 const generateHreflangUrl = (lang: string) => {
-  // Remove existing locale from pathname if present
-  const pathWithoutLocale = pathname.replace(/^\/(lt|en|ru)\//, '/');
-  const pathWithoutLeadingSlash = pathWithoutLocale.startsWith('/') ? pathWithoutLocale.slice(1) : pathWithoutLocale;
-  
-  // For default language, use root path
-  if (lang === defaultLang) {
-    return `https://${hostname}/${pathWithoutLeadingSlash}`;
-  }
-  
-  // For other languages, add locale prefix
-  return `https://${hostname}/${lang}/${pathWithoutLeadingSlash}`;
+    // Remove existing locale from pathname if present
+    const pathWithoutLocale = pathname.replace(/^\/(lt|en|ru)\//, "/");
+    const pathWithoutLeadingSlash = pathWithoutLocale.startsWith("/")
+        ? pathWithoutLocale.slice(1)
+        : pathWithoutLocale;
+
+    // For default language, use root path
+    if (lang === defaultLang) {
+        return `https://${hostname}/${pathWithoutLeadingSlash}`;
+    }
+
+    // For other languages, add locale prefix
+    return `https://${hostname}/${lang}/${pathWithoutLeadingSlash}`;
 };
 ---
 
@@ -69,12 +71,16 @@ const generateHreflangUrl = (lang: string) => {
 
 <!-- Hreflang tags for internationalization -->
 {
-  languages.map((lang) => (
-    <link 
-      rel="alternate" 
-      hreflang={lang} 
-      href={generateHreflangUrl(lang)} 
-    />
-  ))
+    languages.map((lang) => (
+        <link
+            rel="alternate"
+            hreflang={lang}
+            href={generateHreflangUrl(lang)}
+        />
+    ))
 }
-<link rel="alternate" hreflang="x-default" href={generateHreflangUrl(defaultLang)} />
+<link
+    rel="alternate"
+    hreflang="x-default"
+    href={generateHreflangUrl(defaultLang)}
+/>
