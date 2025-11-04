@@ -2,7 +2,7 @@
 import { useTranslations } from '../../lib/utils';
 import { languages, SOCIAL_MEDIA, CONTACT, PAGES } from '../../lib/constants';
 import { getLangFromUrl, getLocalePath } from '../../lib/utils';
-const lang = Astro.props.locale 
+const lang = Astro.props.locale
 const t = useTranslations(lang);
 const currentLang = getLangFromUrl(Astro.url);
 ---
@@ -39,12 +39,12 @@ const currentLang = getLangFromUrl(Astro.url);
                         <path d="M1 1L17 17M17 1L1 17" stroke="#D7D2C5" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </button>
-                
+
                 <!-- Language Switcher -->
                 <div class="language-switcher">
                     {languages.map((code) => (
-                        <a 
-                            href={getLocalePath(code, Astro.url.pathname)} 
+                        <a
+                            href={getLocalePath(code, Astro.url.pathname)}
                             class={`lang-link ${currentLang === code ? 'active' : ''}`}
                             aria-current={currentLang === code ? 'page' : undefined}
                         >
@@ -57,11 +57,11 @@ const currentLang = getLangFromUrl(Astro.url);
             <!-- Menu Items -->
             <div class="menu-items">
                 <!-- Services Menu Item -->
-                <a href={getLocalePath(lang, '/#services')} class="menu-item-link" data-scroll-to="services">{t('nav.services')}</a>
-                
+                <a href={getLocalePath(lang, '/#services')} class="menu-item-link">{t('nav.services')}</a>
+
                 <!-- Regular Menu Items -->
-                <a href={getLocalePath(lang, '/#about-video')} class="menu-item-link" data-scroll-to="about-video">{t('nav.about')}</a>
-                <a href="#contact" class="menu-item-link" data-scroll-to="contact">{t('nav.contact')}</a>
+                <a href={getLocalePath(lang, '/#about-video')} class="menu-item-link">{t('nav.about')}</a>
+                <a href={getLocalePath(lang, '/#contact')} class="menu-item-link">{t('nav.contact')}</a>
             </div>
 
             <!-- Menu Footer -->
@@ -77,7 +77,7 @@ const currentLang = getLangFromUrl(Astro.url);
                 </div>
 
                 <!-- Contact Button -->
-                <a href="#contact" class="button-secondary-light" data-scroll-to="contact">
+                <a href={getLocalePath(lang, '/#contact')} class="button-secondary-light">
                     {t('nav.contact.button')}
                 </a>
 
@@ -466,17 +466,17 @@ const currentLang = getLangFromUrl(Astro.url);
         .mobile-menu-content {
             padding: 0.5rem 1rem;
         }
-        
+
         .menu-items {
             gap: 0.75rem;
             padding: 0.75rem 0;
         }
-        
+
         .menu-item-text,
         .menu-item-link {
             font-size: 1.25rem;
         }
-        
+
         .menu-footer .button-secondary-light {
             padding: 0.3rem 0.6rem;
             font-size: 0.7rem;
@@ -514,12 +514,12 @@ const currentLang = getLangFromUrl(Astro.url);
         function toggleMobileMenu() {
             if (mobileMenuOverlay) {
                 const isOpening = !mobileMenuOverlay.classList.contains('active');
-                
+
                 if (isOpening) {
                     // Store current scroll position before opening menu
                     const scrollY = window.scrollY;
                     document.body.dataset.scrollY = scrollY.toString();
-                    
+
                     // Open menu and prevent body scroll
                     mobileMenuOverlay.classList.add('active');
                     document.body.style.overflow = 'hidden';
@@ -529,13 +529,13 @@ const currentLang = getLangFromUrl(Astro.url);
                 } else {
                     // Close menu and restore scroll position
                     const scrollY = document.body.dataset.scrollY;
-                    
+
                     mobileMenuOverlay.classList.remove('active');
                     document.body.style.overflow = '';
                     document.body.style.position = '';
                     document.body.style.top = '';
                     document.body.style.width = '';
-                    
+
                     // Restore scroll position without triggering scroll events
                     if (scrollY) {
                         requestAnimationFrame(() => {
@@ -561,12 +561,12 @@ const currentLang = getLangFromUrl(Astro.url);
             if (targetElement) {
                 // Close mobile menu first
                 toggleMobileMenu();
-                
+
                 // Wait a bit for menu to close, then scroll
                 setTimeout(() => {
                     const offsetTop = targetElement.offsetTop;
                     const headerOffset = 80; // Account for sticky header
-                    
+
                     window.scrollTo({
                         top: offsetTop - headerOffset,
                         behavior: 'smooth'
