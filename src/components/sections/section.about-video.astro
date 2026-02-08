@@ -1,5 +1,6 @@
 ---
-import { useTranslations, getLangFromUrl } from '../../lib/utils';
+import { useTranslations, getLangFromUrl, getLocalePath } from '../../lib/utils';
+import { PAGES } from '../../lib/constants';
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -20,7 +21,7 @@ const t = useTranslations(lang);
         <p set:html={t('section.about.philosophy')}></p>
         <p set:html={t('section.about.promise')}></p>
       </div>
-      <a href="/about" class="button-primary-dark hidden">{t('section.about.button')}</a>
+      <a href={getLocalePath(lang, PAGES.ABOUT)} class="button-primary-dark hidden">{t('section.about.button')}</a>
     </div>
 
     <!-- YouTube Video Embed -->

@@ -1,5 +1,6 @@
 ---
-import { useTranslations, getLangFromUrl } from "../../lib/utils";
+import { useTranslations, getLangFromUrl, getLocalePath } from "../../lib/utils";
+import { PAGES } from "../../lib/constants";
 import GalleryControl from "../controls/control.gallery.astro";
 const lang = Astro.props.locale || getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -50,7 +51,7 @@ const galleryItems = [
                 <p set:html={t("section.about.philosophy")} />
                 <p set:html={t("section.about.promise")} />
             </div>
-            <a href="/about" class="button-primary-dark hidden"
+            <a href={getLocalePath(lang, PAGES.ABOUT)} class="button-primary-dark hidden"
                 >{t("section.about.button")}</a
             >
         </div>

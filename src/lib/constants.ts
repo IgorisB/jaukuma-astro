@@ -50,6 +50,13 @@ export const PAGES = {
   },
 } as const;
 
+// Locale-aware page slugs for pages with translated URLs
+// Maps canonical page key → locale-specific slug
+export const PAGE_SLUGS: Record<string, Record<string, string>> = {
+  [PAGES.ABOUT]: { lt: "apie-mus", en: "about", ru: "about" },
+  [PAGES.CONTACT]: { lt: "kontaktai", en: "contact", ru: "contact" },
+};
+
 // Breakpoint configuration
 export const BREAKPOINTS = {
   xs: 376,
