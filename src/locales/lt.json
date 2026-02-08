@@ -63,7 +63,37 @@
   "section.contact.button": "SUSISIEKIME",
   
   "section.contact-hero.title": "Kontaktai",
-  "section.contact-hero.description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+  "section.contact-hero.description": "Susisiekite su mumis bet kuriuo patogiu būdu arba aplankykite vieną iš mūsų parduotuvių Vilniuje.",
+
+  "section.contact-info.title": "Susisiekite su mumis",
+  "section.contact-info.phone": "Telefonas",
+  "section.contact-info.email": "El. paštas",
+  "section.contact-info.messenger": "Facebook Messenger",
+
+  "section.contact-map.title": "Mūsų parduotuvės",
+  "section.contact-map.use-location": "Rasti artimiausią",
+  "section.contact-map.nearest": "Artimiausia parduotuvė",
+  "section.contact-map.error": "Nepavyko nustatyti jūsų buvimo vietos",
+
+  "section.store-cards.title": "Mūsų vietos",
+  "section.store-cards.hours": "Darbo laikas",
+  "section.store-cards.directions": "Kaip nuvykti",
+
+  "location.pilaite.name": "Jaukuma Pilaitė",
+  "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Vilnius",
+  "location.pilaite.hours": "I–V: 8:00–20:00, VI: 9:00–18:00, VII: 10:00–16:00",
+
+  "location.silas-bajorai.name": "Jaukuma PC Šilas Bukiškis",
+  "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
+  "location.silas-bajorai.hours": "I–VII: 8:00–21:00",
+
+  "location.silas-zujunai.name": "Jaukuma PC Šilas Zujūnai",
+  "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Vilnius",
+  "location.silas-zujunai.hours": "I–VII: 8:00–21:00",
+
+  "location.silas-giruliai.name": "Jaukuma PC Šilas Giruliai",
+  "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Vilnius",
+  "location.silas-giruliai.hours": "I–VII: 8:00–21:00",
   
   "section.aboutus-hero.title": "Apie <em>mus</em>",
   "section.aboutus-hero.description": "Mūsų misija – kurti rankų darbo gėlių kompozicijas, kurios ne tik puošia svarbius įvykius, bet ir pripildo juos malonių emocijų.",

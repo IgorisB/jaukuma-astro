@@ -1,0 +1,244 @@
+---
+import { useTranslations } from "../../lib/utils";
+import { LOCATIONS } from "../../lib/constants";
+
+interface Props {
+    locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="store-cards" class="store-cards">
+    <div class="store-cards__container">
+        <h2 class="store-cards__title section-title">
+            {t("section.store-cards.title")}
+        </h2>
+        <div class="store-cards__grid">
+            {LOCATIONS.map((location) => (
+                <div class="store-card" data-location-id={location.id}>
+                    <div class="store-card__image-wrapper">
+                        <img
+                            src={location.image}
+                            alt={t(`location.${location.id}.name`)}
+                            class="store-card__image"
+                            loading="lazy"
+                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                        />
+                        <div class="store-card__image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="store-card__content">
+                        <h3 class="store-card__name item-title">
+                            {t(`location.${location.id}.name`)}
+                        </h3>
+                        <address class="store-card__address">
+                            {t(`location.${location.id}.address`)}
+                        </address>
+                        <a href={`tel:${location.phone}`} class="store-card__phone">
+                            +370 668 21177
+                        </a>
+                        <div class="store-card__hours">
+                            <span class="store-card__hours-label">{t("section.store-cards.hours")}</span>
+                            <span class="store-card__hours-value">{t(`location.${location.id}.hours`)}</span>
+                        </div>
+                        <a
+                            href={location.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="store-card__directions button-secondary"
+                        >
+                            {t("section.store-cards.directions")}
+                        </a>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .store-cards {
+        background-color: var(--color-light);
+        padding: 5rem 2rem;
+    }
+
+    .store-cards__container {
+        max-width: var(--max-page-width);
+        margin: 0 auto;
+    }
+
+    .store-cards__title {
+        text-align: center;
+        margin: 0 0 3rem;
+        color: var(--color-main-primary);
+    }
+
+    .store-cards__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+
+    .store-card {
+        background-color: #fff;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .store-card:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .store-card.store-card--active {
+        border: 2px solid var(--color-additional-green);
+    }
+
+    .store-card__image-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background-color: var(--color-main-secondary);
+    }
+
+    .store-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .store-card__image-placeholder {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-main-secondary);
+    }
+
+    .store-card__image-placeholder svg {
+        width: 3rem;
+        height: 3rem;
+        color: var(--color-main-primary);
+        opacity: 0.4;
+    }
+
+    .store-card__content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        flex: 1;
+    }
+
+    .store-card__name {
+        margin: 0;
+        color: var(--color-main-primary);
+    }
+
+    .store-card__address {
+        font-family: "Source Sans Pro", sans-serif;
+        font-style: normal;
+        font-size: 0.9375rem;
+        line-height: 1.5;
+        color: var(--color-main-primary);
+    }
+
+    .store-card__phone {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.9375rem;
+        color: var(--color-additional-blue);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .store-card__phone:hover {
+        color: var(--color-main-primary);
+    }
+
+    .store-card__hours {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .store-card__hours-label {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        color: var(--color-main-primary);
+    }
+
+    .store-card__hours-value {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: var(--color-main-primary);
+        opacity: 0.8;
+    }
+
+    .store-card__directions {
+        margin-top: auto;
+        text-align: center;
+        font-size: 0.875rem;
+    }
+
+    @media (max-width: 1024px) {
+        .store-cards__grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .store-cards {
+            padding: 3rem 1.5rem;
+        }
+
+        .store-cards__grid {
+            grid-template-columns: 1fr;
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.store-card').forEach((card) => {
+        card.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.closest('a')) return;
+
+            const locationId = (card as HTMLElement).dataset.locationId;
+            if (locationId) {
+                window.dispatchEvent(new CustomEvent('highlight-location', { detail: { locationId } }));
+            }
+        });
+    });
+
+    window.addEventListener('highlight-card', ((e: CustomEvent) => {
+        const { locationId } = e.detail;
+        document.querySelectorAll('.store-card').forEach((card) => {
+            card.classList.toggle('store-card--active', (card as HTMLElement).dataset.locationId === locationId);
+        });
+
+        const activeCard = document.querySelector(`[data-location-id="${locationId}"]`);
+        if (activeCard) {
+            activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }) as EventListener);
+</script>
