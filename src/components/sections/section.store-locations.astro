@@ -84,7 +84,7 @@ const locationsData = LOCATIONS.map((loc) => ({
                             </a>
                             <div class="store-location-card__hours">
                                 <span class="store-location-card__hours-label">{t("section.store-cards.hours")}</span>
-                                <span class="store-location-card__hours-value">{t(`location.${location.id}.hours`)}</span>
+                                <span class="store-location-card__hours-value" set:html={t(`location.${location.id}.hours`)} />
                             </div>
                             <a
                                 href={location.googleMapsUrl}
