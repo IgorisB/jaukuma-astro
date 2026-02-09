@@ -10,7 +10,8 @@
       "Bash(npm run check:*)",
       "Bash(xxd:*)",
       "Bash(dir:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(npm run build:dev:*)"
     ],
     "deny": [],
     "ask": []
