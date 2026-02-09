@@ -20,6 +20,7 @@ const locationsData = LOCATIONS.map((loc) => ({
     lng: loc.coordinates.lng,
     name: t(`location.${loc.id}.name`),
     address: t(`location.${loc.id}.address`),
+    hours: t(`location.${loc.id}.hours`),
     directionsUrl: loc.googleMapsUrl,
     directionsLabel,
 }));

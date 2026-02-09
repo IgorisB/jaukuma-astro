@@ -4,6 +4,7 @@ interface LocationData {
   lng: number;
   name: string;
   address: string;
+  hours: string;
   directionsUrl: string;
   directionsLabel: string;
 }
@@ -43,17 +44,25 @@ function openInfoWindow(
   if (!template) return;
 
   const content = template.content.cloneNode(true) as DocumentFragment;
-  const nameEl = content.querySelector('[data-field="name"]');
   const addressEl = content.querySelector('[data-field="address"]');
+  const hoursEl = content.querySelector('[data-field="hours"]');
   const directionsEl = content.querySelector('[data-field="directions"]') as HTMLAnchorElement | null;
 
-  if (nameEl) nameEl.textContent = location.name;
   if (addressEl) addressEl.textContent = location.address;
+  if (hoursEl) hoursEl.innerHTML = location.hours;
   if (directionsEl) {
     directionsEl.href = location.directionsUrl;
     directionsEl.textContent = location.directionsLabel;
   }
 
+  const headerEl = document.createElement("span");
+  headerEl.textContent = location.name;
+  headerEl.style.fontFamily = "'Playfair Display', serif";
+  headerEl.style.fontSize = "1rem";
+  headerEl.style.fontWeight = "700";
+  headerEl.style.color = "#333F48";
+
+  infoWindow.setHeaderContent(headerEl);
   infoWindow.setContent(content.firstElementChild as HTMLElement);
   infoWindow.open(map, marker);
   panToMarkerWithOffset(marker);
