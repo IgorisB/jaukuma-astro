@@ -82,6 +82,7 @@ export const SOCIAL_MEDIA = {
 // Contact information
 export const CONTACT = {
   PHONE: "+37066821177",
+  PHONE_DISPLAY: "+370 668 21177",
   EMAIL: "studija@jaukuma.lt",
   MESSENGER: "https://m.me/studija.jaukuma",
 } as const;
@@ -122,6 +123,6 @@ export const LOCATIONS: Location[] = [
     coordinates: { lat: 54.73782, lng: 25.21829 },
     googleMapsUrl: "https://maps.app.goo.gl/2d2CCnVAAS2DZpBZ7",
     phone: "+37066821177",
-    image: "/images/store-silas-giruliai.webp",
+    image: "/images/store-silas-perkunkiemis.webp",
   },
 ] as const;

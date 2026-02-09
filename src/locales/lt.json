@@ -75,7 +75,6 @@
   "section.contact-map.nearest": "Artimiausia parduotuvė",
   "section.contact-map.error": "Nepavyko nustatyti jūsų buvimo vietos",
 
-  "section.store-cards.title": "Mūsų vietos",
   "section.store-cards.hours": "Darbo laikas",
   "section.store-cards.directions": "Kaip nuvykti",
 
@@ -83,15 +82,15 @@
   "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Vilnius",
   "location.pilaite.hours": "I–V: 8:00–20:00, VI: 9:00–18:00, VII: 10:00–16:00",
 
-  "location.silas-bajorai.name": "Jaukuma PC Šilas Bukiškis",
+  "location.silas-bajorai.name": "Jaukuma Bajorai",
   "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
   "location.silas-bajorai.hours": "I–VII: 8:00–21:00",
 
-  "location.silas-zujunai.name": "Jaukuma PC Šilas Zujūnai",
+  "location.silas-zujunai.name": "Jaukuma Zujūnai",
   "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Vilnius",
   "location.silas-zujunai.hours": "I–VII: 8:00–21:00",
 
-  "location.silas-giruliai.name": "Jaukuma PC Šilas Giruliai",
+  "location.silas-giruliai.name": "Jaukuma Perkūnkiemis",
   "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Vilnius",
   "location.silas-giruliai.hours": "I–VII: 8:00–21:00",
   

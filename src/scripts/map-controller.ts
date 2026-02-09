@@ -4,11 +4,64 @@ interface LocationData {
   lng: number;
   name: string;
   address: string;
+  directionsUrl: string;
+  directionsLabel: string;
 }
 
 let map: google.maps.Map | null = null;
 let markers: Map<string, google.maps.marker.AdvancedMarkerElement> = new Map();
 let infoWindow: google.maps.InfoWindow | null = null;
+
+function panToMarkerWithOffset(marker: google.maps.marker.AdvancedMarkerElement): void {
+  if (!map || !marker.position) return;
+
+  const position = marker.position as google.maps.LatLngLiteral;
+  map.panTo(position);
+
+  // Wait for pan to finish, then shift map down so the info window fits on screen.
+  // On mobile screens, the info window takes more relative space, so use a larger offset.
+  google.maps.event.addListenerOnce(map, "idle", () => {
+    if (!map) return;
+    const mapDiv = map.getDiv();
+    const mapHeight = mapDiv.offsetHeight;
+    // Shift the map so the marker ends up in the lower portion,
+    // leaving room for the info window above.
+    // Use ~30% of map height on mobile (<768px), ~25% on larger screens.
+    const isMobile = window.innerWidth < 768;
+    const offsetY = isMobile ? -(mapHeight * 0.3) : -(mapHeight * 0.25);
+    map.panBy(0, offsetY);
+  });
+}
+
+function openInfoWindow(
+  marker: google.maps.marker.AdvancedMarkerElement,
+  location: LocationData
+): void {
+  if (!infoWindow || !map) return;
+
+  infoWindow.setContent(`
+    <div style="font-family: 'Source Sans Pro', sans-serif; overflow: hidden; min-width: 12rem;">
+      <div style="background-color: #333F48; padding: 0.625rem 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+        <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" style="height: 1.25rem; width: auto;" />
+      </div>
+      <div style="padding: 0.75rem;">
+        <strong style="font-family: 'Playfair Display', serif; font-size: 1rem; color: #333F48; display: block;">${location.name}</strong>
+        <p style="margin: 0.375rem 0 0; font-size: 0.875rem; color: #333F48;">${location.address}</p>
+        <a href="${location.directionsUrl}" target="_blank" rel="noopener noreferrer"
+          style="display: block; margin-top: 0.75rem; padding: 0.625rem 1rem; background-color: #333F48; color: #F3F1E8; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.8125rem; text-align: center; text-decoration: none; text-transform: uppercase; transition: background-color 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#6A7866'"
+          onmouseout="this.style.backgroundColor='#333F48'"
+        >${location.directionsLabel}</a>
+      </div>
+    </div>
+  `);
+  infoWindow.open(map, marker);
+  panToMarkerWithOffset(marker);
+
+  window.dispatchEvent(
+    new CustomEvent("highlight-card", { detail: { locationId: location.id } })
+  );
+}
 
 export function initializeMap(
   containerId: string,
@@ -43,19 +96,7 @@ export function initializeMap(
     });
 
     marker.addListener("click", () => {
-      if (infoWindow && map) {
-        infoWindow.setContent(`
-          <div style="padding: 0.5rem; font-family: 'Source Sans Pro', sans-serif;">
-            <strong style="font-family: 'Playfair Display', serif; font-size: 1rem;">${location.name}</strong>
-            <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #333F48;">${location.address}</p>
-          </div>
-        `);
-        infoWindow.open(map, marker);
-      }
-
-      window.dispatchEvent(
-        new CustomEvent("highlight-card", { detail: { locationId: location.id } })
-      );
+      openInfoWindow(marker, location);
     });
 
     markers.set(location.id, marker);
@@ -71,9 +112,7 @@ export function highlightLocation(locationId: string): void {
   const position = marker.position;
   if (!position) return;
 
-  map.panTo(position);
   map.setZoom(15);
-
   google.maps.event.trigger(marker, "click");
 }
 

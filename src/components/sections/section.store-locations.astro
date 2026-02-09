@@ -1,0 +1,491 @@
+---
+import { useTranslations } from "../../lib/utils";
+import { LOCATIONS, CONTACT } from "../../lib/constants";
+
+interface Props {
+    locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const apiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY || "";
+
+const directionsLabel = t("section.store-cards.directions");
+
+const locationsData = LOCATIONS.map((loc) => ({
+    id: loc.id,
+    lat: loc.coordinates.lat,
+    lng: loc.coordinates.lng,
+    name: t(`location.${loc.id}.name`),
+    address: t(`location.${loc.id}.address`),
+    directionsUrl: loc.googleMapsUrl,
+    directionsLabel,
+}));
+---
+
+<section class="store-locations">
+    <div class="store-locations__container">
+        <h2 class="store-locations__title section-title">
+            {t("section.contact-map.title")}
+        </h2>
+        <div class="store-locations__layout">
+            <div class="store-locations__map-column">
+                <div class="store-locations__map-wrapper">
+                    <div id="store-map" class="store-locations__map"></div>
+                    <button
+                        id="use-location-btn"
+                        class="store-locations__locate-btn button-primary-dark"
+                        type="button"
+                    >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="store-locations__locate-icon">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+                        </svg>
+                        {t("section.contact-map.use-location")}
+                    </button>
+                    <p id="map-error" class="store-locations__error" hidden>
+                        {t("section.contact-map.error")}
+                    </p>
+                </div>
+            </div>
+            <div class="store-locations__cards-column">
+                {LOCATIONS.map((location) => (
+                    <div class="store-location-card" data-location-id={location.id}>
+                        <div class="store-location-card__image-wrapper">
+                            <img
+                                src={location.image}
+                                alt={t(`location.${location.id}.name`)}
+                                class="store-location-card__image"
+                                loading="lazy"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                            />
+                            <div class="store-location-card__image-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="store-location-card__content">
+                            <h3 class="store-location-card__name">
+                                {t(`location.${location.id}.name`)}
+                            </h3>
+                            <address class="store-location-card__address">
+                                {t(`location.${location.id}.address`)}
+                            </address>
+                            <a href={`tel:${location.phone}`} class="store-location-card__phone">
+                                {CONTACT.PHONE_DISPLAY}
+                            </a>
+                            <div class="store-location-card__hours">
+                                <span class="store-location-card__hours-label">{t("section.store-cards.hours")}</span>
+                                <span class="store-location-card__hours-value">{t(`location.${location.id}.hours`)}</span>
+                            </div>
+                            <a
+                                href={location.googleMapsUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="store-location-card__directions"
+                            >
+                                {t("section.store-cards.directions")}
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script define:vars={{ apiKey, locationsData }}>
+    window.__JAUKUMA_MAP_CONFIG = { apiKey, locationsData };
+</script>
+
+<script>
+    async function loadMap() {
+        const config = (window as any).__JAUKUMA_MAP_CONFIG;
+        if (!config?.apiKey) return;
+
+        const script = document.createElement("script");
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${config.apiKey}&libraries=marker&v=weekly`;
+        script.async = true;
+
+        script.onload = async () => {
+            const { initializeMap, highlightLocation, findNearestStore } = await import("../../scripts/map-controller");
+
+            initializeMap("store-map", config.locationsData);
+
+            const locateBtn = document.getElementById("use-location-btn");
+            const errorMsg = document.getElementById("map-error");
+
+            locateBtn?.addEventListener("click", () => {
+                locateBtn.setAttribute("disabled", "");
+                errorMsg?.setAttribute("hidden", "");
+
+                findNearestStore(
+                    config.locationsData,
+                    (locationId: string) => {
+                        highlightLocation(locationId);
+                        highlightCard(locationId);
+                        locateBtn.removeAttribute("disabled");
+                    },
+                    () => {
+                        errorMsg?.removeAttribute("hidden");
+                        locateBtn.removeAttribute("disabled");
+                    }
+                );
+            });
+
+            window.addEventListener("highlight-location", ((e: CustomEvent) => {
+                highlightLocation(e.detail.locationId);
+            }) as EventListener);
+        };
+
+        document.head.appendChild(script);
+    }
+
+    function highlightCard(locationId: string) {
+        document.querySelectorAll('.store-location-card').forEach((card) => {
+            card.classList.toggle(
+                'store-location-card--active',
+                (card as HTMLElement).dataset.locationId === locationId
+            );
+        });
+
+        const activeCard = document.querySelector(`[data-location-id="${locationId}"]`);
+        const cardsColumn = document.querySelector('.store-locations__cards-column');
+        if (activeCard && cardsColumn) {
+            // On desktop, scroll within the sidebar
+            if (window.innerWidth >= 768) {
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }
+
+    // Store card clicks
+    document.querySelectorAll('.store-location-card').forEach((card) => {
+        card.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            if (target.closest('a')) return;
+
+            const locationId = (card as HTMLElement).dataset.locationId;
+            if (locationId) {
+                // Highlight the card
+                highlightCard(locationId);
+
+                // Update the map
+                window.dispatchEvent(new CustomEvent('highlight-location', { detail: { locationId } }));
+
+                // On mobile, scroll to the map so the user can see the update
+                if (window.innerWidth < 768) {
+                    const mapEl = document.getElementById('store-map');
+                    if (mapEl) {
+                        mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+        });
+    });
+
+    // Listen for highlight events from map marker clicks
+    window.addEventListener('highlight-card', ((e: CustomEvent) => {
+        highlightCard(e.detail.locationId);
+    }) as EventListener);
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", loadMap);
+    } else {
+        loadMap();
+    }
+</script>
+
+<style>
+    .store-locations {
+        background-color: var(--color-main-secondary);
+        padding: 5rem 2rem;
+    }
+
+    .store-locations__container {
+        max-width: var(--max-page-width);
+        margin: 0 auto;
+    }
+
+    .store-locations__title {
+        text-align: center;
+        margin: 0 0 2.5rem;
+        color: var(--color-main-primary);
+    }
+
+    .store-locations__layout {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .store-locations__map-wrapper {
+        position: relative;
+        position: sticky;
+        top: 5rem;
+    }
+
+    .store-locations__map {
+        width: 100%;
+        height: 34rem;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        background-color: var(--color-light);
+    }
+
+    .store-locations__locate-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .store-locations__locate-btn[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .store-locations__locate-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .store-locations__error {
+        margin: 1rem 0 0;
+        text-align: center;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.875rem;
+        color: var(--color-additional-red);
+    }
+
+    .store-locations__cards-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    /* Card styles — compact horizontal layout for sidebar */
+    .store-location-card {
+        display: flex;
+        flex-direction: row;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .store-location-card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .store-location-card.store-location-card--active {
+        border-left-color: var(--color-additional-green);
+        background-color: #fafaf6;
+    }
+
+    .store-location-card__image-wrapper {
+        position: relative;
+        width: 7rem;
+        min-height: 7rem;
+        flex-shrink: 0;
+        overflow: hidden;
+        background-color: var(--color-main-secondary);
+    }
+
+    .store-location-card__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .store-location-card__image-placeholder {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--color-main-secondary);
+    }
+
+    .store-location-card__image-placeholder svg {
+        width: 2rem;
+        height: 2rem;
+        color: var(--color-main-primary);
+        opacity: 0.4;
+    }
+
+    .store-location-card__content {
+        padding: 1rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .store-location-card__name {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.2;
+        margin: 0;
+        color: var(--color-main-primary);
+    }
+
+    .store-location-card__address {
+        font-family: "Source Sans Pro", sans-serif;
+        font-style: normal;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        color: var(--color-main-primary);
+    }
+
+    .store-location-card__phone {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.875rem;
+        color: var(--color-additional-blue);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .store-location-card__phone:hover {
+        color: var(--color-main-primary);
+    }
+
+    .store-location-card__hours {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+    }
+
+    .store-location-card__hours-label {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        font-size: 0.8125rem;
+        color: var(--color-main-primary);
+    }
+
+    .store-location-card__hours-value {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.8125rem;
+        line-height: 1.4;
+        color: var(--color-main-primary);
+        opacity: 0.8;
+    }
+
+    .store-location-card__directions {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--color-additional-blue);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        margin-top: 0.25rem;
+    }
+
+    .store-location-card__directions:hover {
+        color: var(--color-main-primary);
+        text-decoration: underline;
+    }
+
+    /* Tablet: stack vertically */
+    @media (max-width: 1024px) {
+        .store-locations__layout {
+            grid-template-columns: 1fr;
+        }
+
+        .store-locations__map-wrapper {
+            position: relative;
+            top: auto;
+        }
+
+        .store-locations__map {
+            height: 25rem;
+        }
+
+        .store-locations__cards-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .store-location-card {
+            flex-direction: column;
+        }
+
+        .store-location-card__image-wrapper {
+            width: 100%;
+            min-height: auto;
+            aspect-ratio: 16 / 10;
+        }
+
+        .store-location-card__content {
+            padding: 1.25rem;
+            gap: 0.5rem;
+        }
+
+        .store-location-card__name {
+            font-size: 1.1rem;
+        }
+    }
+
+    /* Mobile: single column */
+    @media (max-width: 768px) {
+        .store-locations {
+            padding: 3rem 1.5rem;
+        }
+
+        .store-locations__map {
+            height: 20rem;
+        }
+
+        .store-locations__locate-btn {
+            position: relative;
+            top: auto;
+            right: auto;
+            margin: 1rem auto 0;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .store-locations__cards-column {
+            grid-template-columns: 1fr;
+        }
+
+        .store-location-card {
+            flex-direction: row;
+        }
+
+        .store-location-card__image-wrapper {
+            width: 6rem;
+            min-height: 6rem;
+            aspect-ratio: auto;
+        }
+
+        .store-location-card__content {
+            padding: 0.875rem 1rem;
+        }
+
+        .store-location-card__name {
+            font-size: 1rem;
+        }
+    }
+</style>
