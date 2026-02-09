@@ -80,18 +80,22 @@
   "location.pilaite.name": "Jaukuma Pilaitė",
   "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Вильнюс",
   "location.pilaite.hours": "Пн–Пт: 8:00–20:00, Сб: 9:00–18:00, Вс: 10:00–16:00",
+  "location.pilaite.description": "Уютный цветочный магазин самообслуживания в районе Пилайте с широким выбором свежих цветов и букетов.",
 
   "location.silas-bajorai.name": "Jaukuma PC Šilas Bukiškis",
   "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
   "location.silas-bajorai.hours": "Пн–Вс: 8:00–21:00",
+  "location.silas-bajorai.description": "Цветочный магазин самообслуживания в ТЦ Шилас, район Баёрай – удобно и быстро.",
 
   "location.silas-zujunai.name": "Jaukuma PC Šilas Zujūnai",
   "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Вильнюс",
   "location.silas-zujunai.hours": "Пн–Вс: 8:00–21:00",
+  "location.silas-zujunai.description": "Цветочный магазин самообслуживания в ТЦ Шилас, район Зуюнай – свежие цветы каждый день.",
 
   "location.silas-giruliai.name": "Jaukuma PC Šilas Giruliai",
   "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Вильнюс",
   "location.silas-giruliai.hours": "Пн–Вс: 8:00–21:00",
+  "location.silas-giruliai.description": "Цветочный магазин самообслуживания в ТЦ Шилас, район Перкункемис – букеты на любой случай.",
   
   "section.aboutus-hero.title": "О <em>нас</em>",
   "section.aboutus-hero.description": "Наша миссия – создавать ручные цветочные композиции, которые не только украшают важные события, но и наполняют их приятными эмоциями.",

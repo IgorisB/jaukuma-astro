@@ -81,18 +81,22 @@
   "location.pilaite.name": "Jaukuma Pilaitė",
   "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Vilnius",
   "location.pilaite.hours": "I–V: 8:00–20:00, VI: 9:00–18:00, VII: 10:00–16:00",
+  "location.pilaite.description": "Jaukios gėlių savitarnos Pilaitės rajone su plačiu šviežių gėlių ir puokščių pasirinkimu.",
 
   "location.silas-bajorai.name": "Jaukuma Bajorai",
   "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
   "location.silas-bajorai.hours": "I–VII: 8:00–21:00",
+  "location.silas-bajorai.description": "Gėlių savitarnos prekybos centre Šilas Bajorų rajone – patogiai ir greitai.",
 
   "location.silas-zujunai.name": "Jaukuma Zujūnai",
   "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Vilnius",
   "location.silas-zujunai.hours": "I–VII: 8:00–21:00",
+  "location.silas-zujunai.description": "Gėlių savitarnos prekybos centre Šilas Zujūnų rajone – šviežios gėlės kiekvieną dieną.",
 
   "location.silas-giruliai.name": "Jaukuma Perkūnkiemis",
   "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Vilnius",
   "location.silas-giruliai.hours": "I–VII: 8:00–21:00",
+  "location.silas-giruliai.description": "Gėlių savitarnos prekybos centre Šilas Perkūnkiemio rajone – puokštės bet kokiai progai.",
   
   "section.aboutus-hero.title": "Apie <em>mus</em>",
   "section.aboutus-hero.description": "Mūsų misija – kurti rankų darbo gėlių kompozicijas, kurios ne tik puošia svarbius įvykius, bet ir pripildo juos malonių emocijų.",
