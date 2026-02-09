@@ -222,9 +222,13 @@ const locationsData = LOCATIONS.map((loc) => ({
 
     .store-locations__layout {
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1fr 1.5fr;
         gap: 2rem;
         align-items: start;
+    }
+
+    .store-locations__cards-column {
+        order: -1;
     }
 
     .store-locations__map-wrapper {
@@ -449,7 +453,7 @@ const locationsData = LOCATIONS.map((loc) => ({
         }
     }
 
-    /* Mobile: single column */
+    /* Mobile */
     @media (max-width: 768px) {
         .store-locations {
             padding: 3rem 1.5rem;
@@ -466,28 +470,6 @@ const locationsData = LOCATIONS.map((loc) => ({
             margin: 1rem auto 0;
             width: 100%;
             justify-content: center;
-        }
-
-        .store-locations__cards-column {
-            grid-template-columns: 1fr;
-        }
-
-        .store-location-card {
-            flex-direction: row;
-        }
-
-        .store-location-card__image-wrapper {
-            width: 6rem;
-            min-height: 6rem;
-            aspect-ratio: auto;
-        }
-
-        .store-location-card__content {
-            padding: 0.875rem 1rem;
-        }
-
-        .store-location-card__name {
-            font-size: 1rem;
         }
     }
 </style>
