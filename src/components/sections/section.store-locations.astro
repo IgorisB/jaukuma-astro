@@ -315,6 +315,7 @@ const locationsData = LOCATIONS.map((loc) => ({
     .store-location-card__image-wrapper {
         position: relative;
         flex: 1;
+        max-width: 50%;
         min-height: 7rem;
         overflow: hidden;
         background-color: var(--color-main-secondary);
@@ -350,7 +351,7 @@ const locationsData = LOCATIONS.map((loc) => ({
         display: flex;
         flex-direction: column;
         gap: 0.375rem;
-        width: 16rem;
+        width: 18rem;
         flex-shrink: 0;
     }
 
@@ -458,6 +459,7 @@ const locationsData = LOCATIONS.map((loc) => ({
 
         .store-location-card__image-wrapper {
             width: 100%;
+            max-width: 100%;
             min-height: auto;
             flex: none;
             aspect-ratio: 16 / 10;
