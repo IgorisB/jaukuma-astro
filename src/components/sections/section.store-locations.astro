@@ -182,21 +182,19 @@ const locationsData = LOCATIONS.map((loc) => ({
 
                 // Update the map
                 window.dispatchEvent(new CustomEvent('highlight-location', { detail: { locationId } }));
-
-                // On mobile, scroll to the map so the user can see the update
-                if (window.innerWidth < 768) {
-                    const mapEl = document.getElementById('store-map');
-                    if (mapEl) {
-                        mapEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                }
             }
         });
     });
 
-    // Listen for highlight events from map marker clicks
+    // Listen for highlight events from map marker clicks (visual only, no scroll)
     window.addEventListener('highlight-card', ((e: CustomEvent) => {
-        highlightCard(e.detail.locationId);
+        const { locationId } = e.detail;
+        document.querySelectorAll('.store-location-card').forEach((card) => {
+            card.classList.toggle(
+                'store-location-card--active',
+                (card as HTMLElement).dataset.locationId === locationId
+            );
+        });
     }) as EventListener);
 
     if (document.readyState === "loading") {

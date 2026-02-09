@@ -58,8 +58,9 @@ function openInfoWindow(
   infoWindow.open(map, marker);
   panToMarkerWithOffset(marker);
 
+  // Highlight the corresponding card visually, but don't scroll to it
   window.dispatchEvent(
-    new CustomEvent("highlight-card", { detail: { locationId: location.id } })
+    new CustomEvent("highlight-card", { detail: { locationId: location.id, scroll: false } })
   );
 }
 
@@ -109,11 +110,13 @@ export function highlightLocation(locationId: string): void {
   const marker = markers.get(locationId);
   if (!marker || !map) return;
 
-  const position = marker.position;
+  const position = marker.position as google.maps.LatLngLiteral;
   if (!position) return;
 
+  // Close any open info window and center on the marker without opening a new one
+  infoWindow?.close();
   map.setZoom(15);
-  google.maps.event.trigger(marker, "click");
+  map.panTo(position);
 }
 
 export function findNearestStore(
