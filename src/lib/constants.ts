@@ -50,6 +50,13 @@ export const PAGES = {
   },
 } as const;
 
+// Locale-aware page slugs for pages with translated URLs
+// Maps canonical page key → locale-specific slug
+export const PAGE_SLUGS: Record<string, Record<string, string>> = {
+  [PAGES.ABOUT]: { lt: "apie-mus", en: "about", ru: "about" },
+  [PAGES.CONTACT]: { lt: "kontaktai", en: "contact", ru: "contact" },
+};
+
 // Breakpoint configuration
 export const BREAKPOINTS = {
   xs: 376,
@@ -75,4 +82,47 @@ export const SOCIAL_MEDIA = {
 // Contact information
 export const CONTACT = {
   PHONE: "+37066821177",
+  PHONE_DISPLAY: "+370 668 21177",
+  EMAIL: "studija@jaukuma.lt",
+  MESSENGER: "https://m.me/studija.jaukuma",
 } as const;
+
+// Store locations
+export interface Location {
+  id: string;
+  coordinates: { lat: number; lng: number };
+  googleMapsUrl: string;
+  phone: string;
+  image: string;
+}
+
+export const LOCATIONS: Location[] = [
+  {
+    id: "pilaite",
+    coordinates: { lat: 54.7024199, lng: 25.1763126 },
+    googleMapsUrl: "https://maps.app.goo.gl/zSE68o8uiVocDfRA7",
+    phone: "+37066821177",
+    image: "/images/store-pilaite.webp",
+  },
+  {
+    id: "silas-bajorai",
+    coordinates: { lat: 54.7578642, lng: 25.2235841 },
+    googleMapsUrl: "https://maps.app.goo.gl/uRcTPd2rH8BM4sMR6",
+    phone: "+37066821177",
+    image: "/images/store-silas-bajorai.webp",
+  },
+  {
+    id: "silas-zujunai",
+    coordinates: { lat: 54.7127783, lng: 25.1597642 },
+    googleMapsUrl: "https://maps.app.goo.gl/fVB1y5DGnxBmvDbH9",
+    phone: "+37066821177",
+    image: "/images/store-silas-zujunai.webp",
+  },
+  {
+    id: "silas-giruliai",
+    coordinates: { lat: 54.73782, lng: 25.21829 },
+    googleMapsUrl: "https://maps.app.goo.gl/2d2CCnVAAS2DZpBZ7",
+    phone: "+37066821177",
+    image: "/images/store-silas-perkunkiemis.webp",
+  },
+] as const;

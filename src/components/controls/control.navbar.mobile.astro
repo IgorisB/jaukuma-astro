@@ -61,7 +61,7 @@ const currentLang = getLangFromUrl(Astro.url);
 
                 <!-- Regular Menu Items -->
                 <a href={getLocalePath(lang, '/#about-video')} class="menu-item-link">{t('nav.about')}</a>
-                <a href={getLocalePath(lang, '/#contact')} class="menu-item-link">{t('nav.contact')}</a>
+                <a href={getLocalePath(lang, '/kontaktai')} class="menu-item-link">{t('nav.contact')}</a>
             </div>
 
             <!-- Menu Footer -->
@@ -77,7 +77,7 @@ const currentLang = getLangFromUrl(Astro.url);
                 </div>
 
                 <!-- Contact Button -->
-                <a href={getLocalePath(lang, '/#contact')} class="button-secondary-light">
+                <a href={getLocalePath(lang, '/kontaktai')} class="button-secondary-light">
                     {t('nav.contact.button')}
                 </a>
 

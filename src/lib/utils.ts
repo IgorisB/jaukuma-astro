@@ -1,6 +1,6 @@
 // General utility functions
 
-import { languages, locales, hostname } from './constants';
+import { languages, locales, hostname, PAGE_SLUGS } from './constants';
 
 // Language and internationalization utilities
 export function getLangFromUrl(url: URL) {
@@ -32,16 +32,32 @@ export function getStaticPaths() {
 export function getLocalePath(code: string, path: string) {
   const segments = path.split('/').filter(Boolean);
   // Remove the first segment if it matches a language code
+  let sourceLang: string | undefined;
   if (segments.length && languages.includes(segments[0])) {
-    segments.shift();
+    sourceLang = segments.shift();
   }
-  const newPath = segments.join('/');
+  let newPath = segments.join('/');
+
+  // Translate slug between locales using PAGE_SLUGS
+  newPath = translateSlug(newPath, sourceLang || getDefaultLang(), code);
+
   const defaultLang = getDefaultLang();
   if (code === defaultLang) {
     return newPath ? `/${newPath}` : '/';
   } else {
     return newPath ? `/${code}/${newPath}` : `/${code}/`;
   }
+}
+
+// Translates a page slug from one locale to another using PAGE_SLUGS mapping
+function translateSlug(slug: string, fromLang: string, toLang: string): string {
+  // Find the canonical key by looking up the slug in the source language
+  for (const [canonicalKey, slugsByLocale] of Object.entries(PAGE_SLUGS)) {
+    if (slugsByLocale[fromLang] === slug || canonicalKey === slug) {
+      return slugsByLocale[toLang] || slug;
+    }
+  }
+  return slug;
 }
 
 // Determine defaultLang: 1) env var, 2) hostname TLD, 3) fallback 'lt'

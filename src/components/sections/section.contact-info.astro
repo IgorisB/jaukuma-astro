@@ -1,0 +1,123 @@
+---
+import { useTranslations } from "../../lib/utils";
+import { CONTACT, SOCIAL_MEDIA } from "../../lib/constants";
+
+interface Props {
+    locale: string;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="contact-info">
+    <div class="contact-info__container">
+        <h2 class="contact-info__title section-title">
+            {t("section.contact-info.title")}
+        </h2>
+        <div class="contact-info__links">
+            <a href={`tel:${CONTACT.PHONE}`} class="contact-info__link">
+                <svg class="contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span class="contact-info__link-label">{t("section.contact-info.phone")}</span>
+                <span class="contact-info__link-value">+370 668 21177</span>
+            </a>
+            <a href={`mailto:${CONTACT.EMAIL}`} class="contact-info__link">
+                <svg class="contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span class="contact-info__link-label">{t("section.contact-info.email")}</span>
+                <span class="contact-info__link-value">{CONTACT.EMAIL}</span>
+            </a>
+            <a href={CONTACT.MESSENGER} target="_blank" rel="noopener noreferrer" class="contact-info__link">
+                <svg class="contact-info__icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.2 5.42 3.15 7.2V22l2.95-1.62c.84.23 1.72.36 2.65.36h.25c5.64 0 10-4.13 10-9.7S17.64 2 12 2zm1.05 13.07l-2.54-2.72L5.97 15.1l5.04-5.36 2.54 2.72 4.54-2.75-5.04 5.36z"/>
+                </svg>
+                <span class="contact-info__link-label">{t("section.contact-info.messenger")}</span>
+                <span class="contact-info__link-value">Messenger</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .contact-info {
+        background-color: var(--color-light);
+        padding: 5rem 2rem;
+    }
+
+    .contact-info__container {
+        max-width: var(--max-page-width);
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .contact-info__title {
+        margin: 0 0 3rem;
+        color: var(--color-main-primary);
+    }
+
+    .contact-info__links {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+
+    .contact-info__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: var(--color-main-primary);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        min-width: 12rem;
+    }
+
+    .contact-info__link:hover {
+        background-color: var(--color-main-secondary);
+        transform: translateY(-0.25rem);
+    }
+
+    .contact-info__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--color-additional-green);
+    }
+
+    .contact-info__link-label {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        font-size: 1.125rem;
+        line-height: 1.3;
+    }
+
+    .contact-info__link-value {
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 0.9375rem;
+        color: var(--color-additional-blue);
+        line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+        .contact-info {
+            padding: 3rem 1.5rem;
+        }
+
+        .contact-info__links {
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-info__link {
+            width: 100%;
+            max-width: 20rem;
+            padding: 1.5rem;
+        }
+    }
+</style>

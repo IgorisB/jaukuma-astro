@@ -1,5 +1,7 @@
 ---
 import SectionPageHero from "../sections/section.page-hero.astro";
+import SectionContactInfo from "../sections/section.contact-info.astro";
+import SectionStoreLocations from "../sections/section.store-locations.astro";
 import { useTranslations } from "../../lib/utils";
 
 const lang = Astro.props.locale;
@@ -13,4 +15,6 @@ const t = useTranslations(lang);
         description={t("section.contact-hero.description")}
         locale={lang}
     />
+    <SectionContactInfo locale={lang} />
+    <SectionStoreLocations locale={lang} />
 </main>

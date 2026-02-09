@@ -63,7 +63,40 @@
   "section.contact.button": "SUSISIEKIME",
   
   "section.contact-hero.title": "Kontaktai",
-  "section.contact-hero.description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+  "section.contact-hero.description": "Susisiekite su mumis bet kuriuo patogiu būdu arba aplankykite vieną iš mūsų parduotuvių Vilniuje.",
+
+  "section.contact-info.title": "Susisiekite su mumis",
+  "section.contact-info.phone": "Telefonas",
+  "section.contact-info.email": "El. paštas",
+  "section.contact-info.messenger": "Facebook Messenger",
+
+  "section.contact-map.title": "Mūsų parduotuvės",
+  "section.contact-map.use-location": "Rasti artimiausią",
+  "section.contact-map.nearest": "Artimiausia parduotuvė",
+  "section.contact-map.error": "Nepavyko nustatyti jūsų buvimo vietos",
+
+  "section.store-cards.hours": "Darbo laikas",
+  "section.store-cards.directions": "Kaip nuvykti",
+
+  "location.pilaite.name": "Jaukuma Pilaitė",
+  "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Vilnius",
+  "location.pilaite.hours": "I–V 08:00–20:00, VI–VII 10:00–18:00.",
+  "location.pilaite.description": "Jauki ir stilinga studija, kurioje rasite platų šviežių puokščių, augalų bei dovanų kompozicijų pasirinkimą. Čia galite ne tik įsigyti helio balionų ar pasinaudoti profesionalaus dovanų pakavimo paslaugomis, bet ir individualiai aptarti asmeninių švenčių ar erdvių dekoravimo idėjas. Mūsų floristai pasiruošę padėti sukurti išskirtinę atmosferą jūsų svarbiausioms akimirkoms.",
+
+  "location.silas-bajorai.name": "Jaukuma Bajorai",
+  "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
+  "location.silas-bajorai.hours": "I–V 10:00–19:00, VI–VII 10:00–18:00.<br>Savitarna: kasdien 07:30–23:00",
+  "location.silas-bajorai.description": "Maža ir jauki gėlių erdvė PC „Šilas“, sukurta ieškantiems kokybės ir patogumo. Čia galite rinktis iš stilingų, jau paruoštų puokščių arba patikėti kūrybą mūsų floristei. Jūsų patogumui čia veikia ir savitarna.",
+
+  "location.silas-zujunai.name": "Jaukuma Zujūnai",
+  "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Vilnius",
+  "location.silas-zujunai.hours": "Savitarna: kasdien 07:30–23:00",
+  "location.silas-zujunai.description": "Jauki gėlių erdvė PC „Šilas“, kurioje galite įsigyti gėlių greitai ir patogiai savitarnos būdu. Čia taip pat rasite kambarinių augalų bei smulkių dovanėlių.",
+
+  "location.silas-giruliai.name": "Jaukuma Perkūnkiemis",
+  "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Vilnius",
+  "location.silas-giruliai.hours": "I–VI: 9:00–21:00, VII: 10-18<br>Savitarna: kasdien 07:30–23:00",
+  "location.silas-giruliai.description": "Erdvi ir jauki gėlių bei dovanų oazė PC „Šilas“. Čia rasite viską: nuo skintų gėlių ir stilingų puokščių iki kambarinių augalų, dovanų bei balionų. Jūsų patogumui parduotuvėje veikia ir savitarna.",
   
   "section.aboutus-hero.title": "Apie <em>mus</em>",
   "section.aboutus-hero.description": "Mūsų misija – kurti rankų darbo gėlių kompozicijas, kurios ne tik puošia svarbius įvykius, bet ir pripildo juos malonių emocijų.",

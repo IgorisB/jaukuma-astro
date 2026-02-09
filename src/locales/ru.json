@@ -8,7 +8,7 @@
   "page.contact.title": "Контакты",
   "page.contact.description": "Свяжитесь с Jaukuma",
   
-  "section.footer.copyright": "Все права защищены © 2025 jaukuma.lt",
+  "section.footer.copyright": "Все права защищены © 2014-2026 jaukuma.lt",
   "section.footer.services.title": "Услуги",
   "section.footer.services.bouquets": "Букеты цветов",
   "section.footer.services.decoration": "Декор интерьера и экстерьера",
@@ -18,8 +18,9 @@
   "section.footer.contact.title": "Контакты",
   "section.footer.contact.phone": "+370 668 21177",
   "section.footer.contact.address1": "Bitėnų g. 1C-81, Pilaitė",
-  "section.footer.contact.address2": "PC Šilas, Bajorai",
-  "section.footer.contact.address3": "PC Šilas, Zujūnai",
+  "section.footer.contact.address2": "PC Šilas, Šaulio g. 70, Bukiškis",
+  "section.footer.contact.address3": "PC Šilas, Zujūnų g. 5, Vilnius",
+  "section.footer.contact.address4": "PC Šilas, Girulių g. 2, Vilnius",
   "section.footer.company.title": "Jaukuma",
   "section.footer.company.about": "О нас",
   "section.footer.company.privacy": "Политика конфиденциальности",
@@ -62,7 +63,40 @@
   "section.contact.button": "СВЯЗАТЬСЯ",
   
   "section.contact-hero.title": "Контакты",
-  "section.contact-hero.description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+  "section.contact-hero.description": "Свяжитесь с нами любым удобным способом или посетите один из наших магазинов в Вильнюсе.",
+
+  "section.contact-info.title": "Свяжитесь с нами",
+  "section.contact-info.phone": "Телефон",
+  "section.contact-info.email": "Эл. почта",
+  "section.contact-info.messenger": "Facebook Messenger",
+
+  "section.contact-map.title": "Наши магазины",
+  "section.contact-map.use-location": "Найти ближайший",
+  "section.contact-map.nearest": "Ближайший магазин",
+  "section.contact-map.error": "Не удалось определить ваше местоположение",
+
+  "section.store-cards.hours": "Часы работы",
+  "section.store-cards.directions": "Как добраться",
+
+  "location.pilaite.name": "Jaukuma Pilaitė",
+  "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Вильнюс",
+  "location.pilaite.hours": "Пн–Пт 08:00–20:00, Сб–Вс 10:00–18:00",
+  "location.pilaite.description": "Уютная и стильная студия, где представлен широкий выбор свежих букетов, растений и подарочных композиций. Здесь вы можете не только приобрести гелиевые шары или воспользоваться услугами профессиональной упаковки подарков, но и обсудить индивидуальные проекты по декорированию ваших праздников и пространств. Наши флористы помогут воплотить в жизнь ваши самые красивые идеи.",
+
+  "location.silas-bajorai.name": "Jaukuma Bajorai",
+  "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
+  "location.silas-bajorai.hours": "Пн–Пт 10:00–19:00, Сб–Вс 10:00–18:00.<br>Самообслуживание: ежедневно 07:30–23:00",
+  "location.silas-bajorai.description": "Маленькое и уютное цветочное пространство в ТЦ «Шилас», созданное для тех, кто ценит качество и удобство. Здесь вы можете выбрать стильные готовые букеты или доверить создание композиции нашему флористу. Для вашего удобства здесь также работает зона самообслуживания.",
+
+  "location.silas-zujunai.name": "Jaukuma PC Šilas Zujūnai",
+  "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Вильнюс",
+  "location.silas-zujunai.hours": "Самообслуживание: ежедневно 07:30–23:00",
+  "location.silas-zujunai.description": "Уютное цветочное пространство в ТЦ «Шилас», где можно быстро и удобно приобрести цветы в режиме самообслуживания. Здесь вы также найдете комнатные растения и небольшие подарки.",
+
+  "location.silas-giruliai.name": "Jaukuma Perkūnkiemis",
+  "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Вильнюс",
+  "location.silas-giruliai.hours": "Пн–Вс: 9:00–21:00",
+  "location.silas-giruliai.description": "Просторный и уютный оазис цветов и подарков в ТЦ «Шилас». Здесь вы найдете все: от свежесрезанных цветов и стильных букетов до комнатных растений, подарков и шаров. Для вашего удобства в магазине также работает зона самообслуживания.",
   
   "section.aboutus-hero.title": "О <em>нас</em>",
   "section.aboutus-hero.description": "Наша миссия – создавать ручные цветочные композиции, которые не только украшают важные события, но и наполняют их приятными эмоциями.",

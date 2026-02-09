@@ -8,7 +8,7 @@
   "page.contact.title": "Contact",
   "page.contact.description": "Get in touch with Jaukuma",
   
-  "section.footer.copyright": "All rights reserved © 2025 jaukuma.lt",
+  "section.footer.copyright": "All rights reserved © 2014-2026 jaukuma.lt",
   "section.footer.services.title": "Services",
   "section.footer.services.bouquets": "Flower bouquets",
   "section.footer.services.decoration": "Interior, exterior decoration",
@@ -18,8 +18,9 @@
   "section.footer.contact.title": "Contact",
   "section.footer.contact.phone": "+370 668 21177",
   "section.footer.contact.address1": "Bitėnų g. 1C-81, Pilaitė",
-  "section.footer.contact.address2": "PC Šilas, Bajorai",
-  "section.footer.contact.address3": "PC Šilas, Zujūnai",
+  "section.footer.contact.address2": "PC Šilas, Šaulio g. 70, Bukiškis",
+  "section.footer.contact.address3": "PC Šilas, Zujūnų g. 5, Vilnius",
+  "section.footer.contact.address4": "PC Šilas, Girulių g. 2, Vilnius",
   "section.footer.company.title": "Jaukuma",
   "section.footer.company.about": "About us",
   "section.footer.company.privacy": "Privacy policy",
@@ -62,7 +63,40 @@
   "section.contact.button": "CONTACT US",
   
   "section.contact-hero.title": "Contact us",
-  "section.contact-hero.description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+  "section.contact-hero.description": "Get in touch with us in any convenient way or visit one of our stores in Vilnius.",
+
+  "section.contact-info.title": "Get in touch",
+  "section.contact-info.phone": "Phone",
+  "section.contact-info.email": "Email",
+  "section.contact-info.messenger": "Facebook Messenger",
+
+  "section.contact-map.title": "Our stores",
+  "section.contact-map.use-location": "Find nearest",
+  "section.contact-map.nearest": "Nearest store",
+  "section.contact-map.error": "Could not determine your location",
+
+  "section.store-cards.hours": "Opening hours",
+  "section.store-cards.directions": "Get directions",
+
+  "location.pilaite.name": "Jaukuma Pilaitė",
+  "location.pilaite.address": "Bitėnų g. 1C-81, Pilaitė, Vilnius",
+  "location.pilaite.hours": "Mon–Fri 08:00–20:00, Sat–Sun 10:00–18:00",
+  "location.pilaite.description": "A cozy and stylish studio offering a wide selection of fresh bouquets, plants, and gift arrangements. Beyond finding the perfect gift, you can avail of our professional gift wrapping and helium balloon services. We also invite you to discuss bespoke decoration services for your special events or interior spaces. Our florists are dedicated to bringing your unique visions to life.",
+
+  "location.silas-bajorai.name": "Jaukuma Bajorai",
+  "location.silas-bajorai.address": "PC Šilas, Šaulio g. 70, Bukiškis",
+  "location.silas-bajorai.hours": "Mon–Fri 10:00–19:00, Sat–Sun 10:00–18:00.<br>Self-service: daily 07:30–23:00",
+  "location.silas-bajorai.description": "A small and cozy flower space in the 'Šilas' shopping center, designed for those seeking quality and convenience. Choose from our stylish ready-made bouquets or have a custom arrangement created by our florist. For your convenience, self-service is also available.",
+
+  "location.silas-zujunai.name": "Jaukuma PC Šilas Zujūnai",
+  "location.silas-zujunai.address": "PC Šilas, Zujūnų g. 5, Vilnius",
+  "location.silas-zujunai.hours": "Self-service: daily 07:30–23:00",
+  "location.silas-zujunai.description": "A cozy flower space in the 'Šilas' shopping center, where you can buy flowers quickly and conveniently via self-service. You will also find indoor plants and small gifts here.",
+
+  "location.silas-giruliai.name": "Jaukuma Perkūnkiemis",
+  "location.silas-giruliai.address": "PC Šilas, Girulių g. 2, Vilnius",
+  "location.silas-giruliai.hours": "Mon–Sun: 9:00–21:00",
+  "location.silas-giruliai.description": "A spacious and cozy flower and gift oasis at the 'Šilas' shopping center. Here you will find everything from fresh-cut flowers and stylish bouquets to indoor plants, gifts, and balloons. For your convenience, a self-service area is also available.",
 
   "section.aboutus-hero.title": "About <em>us</em>",
   "section.aboutus-hero.description": "Our mission is to create handcrafted flower compositions that not only decorate important events but also fill them with pleasant emotions.",
