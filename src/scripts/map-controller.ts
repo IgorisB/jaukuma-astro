@@ -39,22 +39,22 @@ function openInfoWindow(
 ): void {
   if (!infoWindow || !map) return;
 
-  infoWindow.setContent(`
-    <div style="font-family: 'Source Sans Pro', sans-serif; overflow: hidden; min-width: 12rem;">
-      <div style="background-color: #333F48; padding: 0.625rem 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
-        <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" style="height: 1.25rem; width: auto;" />
-      </div>
-      <div style="padding: 0.75rem;">
-        <strong style="font-family: 'Playfair Display', serif; font-size: 1rem; color: #333F48; display: block;">${location.name}</strong>
-        <p style="margin: 0.375rem 0 0; font-size: 0.875rem; color: #333F48;">${location.address}</p>
-        <a href="${location.directionsUrl}" target="_blank" rel="noopener noreferrer"
-          style="display: block; margin-top: 0.75rem; padding: 0.625rem 1rem; background-color: #333F48; color: #F3F1E8; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.8125rem; text-align: center; text-decoration: none; text-transform: uppercase; transition: background-color 0.3s ease;"
-          onmouseover="this.style.backgroundColor='#6A7866'"
-          onmouseout="this.style.backgroundColor='#333F48'"
-        >${location.directionsLabel}</a>
-      </div>
-    </div>
-  `);
+  const template = document.getElementById("map-infowindow-template") as HTMLTemplateElement | null;
+  if (!template) return;
+
+  const content = template.content.cloneNode(true) as DocumentFragment;
+  const nameEl = content.querySelector('[data-field="name"]');
+  const addressEl = content.querySelector('[data-field="address"]');
+  const directionsEl = content.querySelector('[data-field="directions"]') as HTMLAnchorElement | null;
+
+  if (nameEl) nameEl.textContent = location.name;
+  if (addressEl) addressEl.textContent = location.address;
+  if (directionsEl) {
+    directionsEl.href = location.directionsUrl;
+    directionsEl.textContent = location.directionsLabel;
+  }
+
+  infoWindow.setContent(content.firstElementChild as HTMLElement);
   infoWindow.open(map, marker);
   panToMarkerWithOffset(marker);
 

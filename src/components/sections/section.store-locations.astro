@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from "../../lib/utils";
 import { LOCATIONS, CONTACT } from "../../lib/constants";
+import ControlMapInfowindow from "../controls/control.map-infowindow.astro";
 
 interface Props {
     locale: string;
@@ -33,6 +34,7 @@ const locationsData = LOCATIONS.map((loc) => ({
             <div class="store-locations__map-column">
                 <div class="store-locations__map-wrapper">
                     <div id="store-map" class="store-locations__map"></div>
+                    <ControlMapInfowindow />
                     <button
                         id="use-location-btn"
                         class="store-locations__locate-btn button-primary-dark"

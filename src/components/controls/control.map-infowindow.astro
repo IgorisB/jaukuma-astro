@@ -1,0 +1,25 @@
+<template id="map-infowindow-template">
+  <div style="font-family: 'Source Sans Pro', sans-serif; overflow: hidden; min-width: 12rem;">
+    <div style="background-color: #333F48; padding: 0.625rem 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+      <img src="/images/jaukuma-logo-rect.svg" alt="Jaukuma" style="height: 1.25rem; width: auto;" />
+    </div>
+    <div style="padding: 0.75rem;">
+      <strong
+        data-field="name"
+        style="font-family: 'Playfair Display', serif; font-size: 1rem; color: #333F48; display: block;"
+      ></strong>
+      <p
+        data-field="address"
+        style="margin: 0.375rem 0 0; font-size: 0.875rem; color: #333F48;"
+      ></p>
+      <a
+        data-field="directions"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="display: block; margin-top: 0.75rem; padding: 0.625rem 1rem; background-color: #333F48; color: #F3F1E8; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 0.8125rem; text-align: center; text-decoration: none; text-transform: uppercase; transition: background-color 0.3s ease;"
+        onmouseover="this.style.backgroundColor='#6A7866'"
+        onmouseout="this.style.backgroundColor='#333F48'"
+      ></a>
+    </div>
+  </div>
+</template>
